@@ -1,0 +1,100 @@
+<#assign modulePath="${adminPath}/tdds/product" />
+<@layout.override name="body">
+<ol class="breadcrumb">
+  <li><a href="${modulePath}/list.html">产品列表</a></li>
+  <li><a href="javascript:;">编辑</a></li>
+</ol>
+<div class="container-fluid">
+  <ul class="nav nav-tabs">
+	<li role="presentation"><a href="${modulePath}/list.html">列表</a></li>
+	<li role="presentation" class="active"><a href="javascript:;">编辑</a></li>
+  </ul>
+  
+  <form id="validateForm" action="${modulePath!}/save.html" class="form-horizontal" role="form" method="post" >
+	  <div class="row form-group" style="margin-top: 12px;">
+	  	 <label class="control-label col-sm-2"><font color="red">*&nbsp;</font>设备编号</label>
+	     <div class="col-sm-2">
+	      	<input type="text" name="sbbh" id="sbbh" value="${(entity.sbbh)!}" class="form-control input-sm" required />
+	     </div>
+	       <label class="control-label col-sm-1"><font color="red">*&nbsp;</font>使用年限(/月)</label>
+	     <div class="col-sm-2">
+	     	<input type="text" name="synx" id="synx" value="${(entity.synx)!}" class="form-control input-sm" required/>
+	     </div>
+	  </div>
+	  <div class="row form-group" style="margin-top: 12px;">
+	  	 <label class="control-label col-sm-2"><font color="red">*&nbsp;</font>设备名称</label>
+	     <div class="col-sm-2">
+	      	<input type="text" name="sbmc" id="sbmc" value="${(entity.sbmc)!}" class="form-control input-sm" required />
+	     </div>
+	       <label class="control-label col-sm-1"><font color="red">*&nbsp;</font>规格型号</label>
+	     <div class="col-sm-2">
+	     	<input type="text" name="ggxh" id="ggxh" value="${(entity.ggxh)!}" class="form-control input-sm" required/>
+	     </div>
+	  </div>
+	  <div class="row form-group">
+	     <label class="control-label col-sm-2"><font color="red">*&nbsp;</font>使用工序</label>
+	     <div class="col-sm-2">
+	     	<input type="text" name="sygx" id="sygx" value="${(entity.sygx)!}" class="form-control input-sm" required/>
+	     </div>
+	    <#--  <label class="control-label col-sm-1"><font color="red">*&nbsp;</font>出厂时间</label>
+	     <div class="col-sm-2">
+	     	<input type="text" name="createTime" id="createTime" value="${(entity.createTime)!}" class="form-control input-sm" required/>
+	     </div> -->
+	  </div>
+	  
+	  <div class="row form-group">
+	    <label class="control-label col-sm-2"><em class="spk-required"></em>备注</label>
+	    <div class="col-sm-5">
+		  	<textarea cols="20" rows="10" id="description" name="description">${(entity.description)!}</textarea>
+		</div>
+	  </div>
+	  <hr class="spk-hr" />
+	  <div class="row form-group">
+	    <div class="col-sm-8 col-sm-offset-4">
+	      <button type="button" onclick="doSubmit()" class="btn btn-info btn-sm">保存</button>
+	      <button type="button" class="btn btn-primary btn-sm" onclick="on_return()">返回</button>
+	    </div>
+	  </div>
+	  <input type="hidden" name="id" value="${(entity.id)!}">
+  </form>
+</div>
+<script type="text/javascript">
+var ue = UE.getEditor('description', {
+    toolbars: [
+        ['fullscreen', 'source', 'bold', 'italic', 'underline', 'fontborder', '|','indent','justifyleft', 'justifycenter', 'justifyright'
+         ,'|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
+    ],
+    initialFrameHeight: 200
+});
+
+var validateForm;
+$(function(){
+	validateForm=$("#validateForm").validate({
+		rules:{
+			scale:{min:1},
+		},
+		messages : {
+			scale:{min:"请选择食规模"},
+		}
+	});
+});
+function doSubmit(){
+	if(!validateForm.form()){
+		return false;
+	}
+	$("#validateForm").submit();
+}
+
+function on_return(){
+	history.back(-1);
+}
+</script>
+</@layout.override>
+<@layout.override name="css">
+<@layout.super/>
+</@layout.override>
+<@layout.override name="js">
+<@layout.super/>
+<script type="text/javascript" src="/themes/ui/js/ajaxfileupload.js"></script>
+</@layout.override>
+<@layout.extends name="../../_layouts/bootstrap.html"/>

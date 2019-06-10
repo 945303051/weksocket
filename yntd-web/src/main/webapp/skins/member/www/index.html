@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	    <script src="/assets/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="../js/machinestatus.js"></script>  -->
+		<script src="/themes/website/js/jquery.liMarquee.js"></script>
+		<script src="/assets/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/echarts/echarts.min.js"></script>
+		<script src="/themes/website/mycharts/controller/option/barOption.js"></script>
+		<script src="/themes/website/mycharts/controller/option/lineOption.js"></script>
+		<script src="/themes/website/mycharts/controller/option/pieOption.js"></script>
+		<script src="/themes/website/mycharts/controller/option/customOption.js"></script>
+		<script src="/themes/website/mycharts/controller/option/timelineOption.js"></script>
+		<script src="/themes/website/mycharts/controller/option/mywebsocket.js"></script>
+		<link href="/assets/fonts/font-awesome4.7.0/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="/themes/website/css/index.css" rel="stylesheet" type="text/css" media="all" />
+ 		<link href="/assets/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+	</head>
+	<body>
+		<div class="container-fluid1" ng-app="myApp" ng-controller="myCtrl">
+				<div class="header">
+						<div clas="logo">
+						 	<img height="50px" style="margin-top:1px;" src="/themes/website/images/other/xbdslogo.jpeg" />
+					 	</div>
+						<div id="clock" class="clock">
+							<p id="time" class="time"></p>
+							<p id="date" class="date"></p>
+						</div> 
+				</div>	
+								
+				<div class="cjbj">
+					<div class="cjbj-div">
+						 <div class="cjbj-title">
+						 <i class="fa fa-university" aria-hidden="true"></i>
+							 车间布局
+						 </div>
+					</div>
+					<div style="height:93%;padding:5px;">
+						   <img height="95%" src="/themes/website/images/other/xbdscjbj.png" width="100%">
+					</div>
+				</div>
+				<div class="sbyxfx">
+					<div class="panel-heading" style="border:solid 1px #005387">
+						 <div class="sbyxfx-title">
+							<i class="fa fa-pie-chart" aria-hidden="true"></i>
+							设备运行状态时长对比分析（单位：秒）
+						 </div>
+						 <div class="sbyxfx-lenged">
+							<i class="fa fa-circle" style="color:#33CC66">运行</i>
+	                        <i class="fa fa-circle" style="color:#909090">停机</i>
+	                        <i class="fa fa-circle" style="color:#880000">报警</i>
+	                        <i class="fa fa-circle" style="color:#CCFF66">等待</i>
+						 </div>
+					</div>
+					<div style="height:93%;">
+						<ul class="pies" id="pies">
+							<li echarts-type="pie"></li>
+							<li echarts-type="pie"></li>
+							<li echarts-type="pie"></li>
+							<li echarts-type="pie"></li>
+							<li echarts-type="pie"></li>
+							<li echarts-type="pie"></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="timeline">
+					<div class="timeline-div">
+						 <div class="timeline-title">
+						  <i class="fa fa-line-chart" aria-hidden="true"></i>
+							 时间线
+						 </div>
+						 <div class="timeline-lenged">
+							<i class="fa fa-circle" style="color:#33CC66">运行</i>
+	                        <i class="fa fa-circle" style="color:#909090">停机</i>
+	                        <i class="fa fa-circle" style="color:#880000">报警</i>
+	                        <i class="fa fa-circle" style="color:#CCFF66">等待</i>
+						 </div>
+					</div>
+					<div time-line='true' class="panel-body" style="height:100%;">
+					
+					</div>
+				</div>
+				
+				<div class="ranking">
+					<div class="ranking-title">
+						 <div class="ranking-head">
+						 <i class="fa fa-area-chart" aria-hidden="true"></i>
+							每日设备运行排行（单位：秒）
+						 </div>
+					</div>
+					<div data-ranking="true" class="panel-body" style="height:100%;">
+						
+					</div>
+				</div>
+				
+				<div class="yxcs">
+					<div class="yxcs-div">
+						<div class="yxcs-head">
+							<i class="fa fa-list-ul" aria-hidden="true"></i>
+							设备运行参数
+						</div>
+						 <div class="yxcs-lenged">
+							<i class="fa fa-circle" style="color:#33CC66">运行</i>
+ 	 	                    <i class="fa fa-circle" style="color:#909090">停机</i>
+	                        <i class="fa fa-circle" style="color:#880000">报警</i>
+	                        <i class="fa fa-circle" style="color:#CCFF66">等待</i>
+						 </div>
+					</div>
+			 		<div style="height:93%;">
+						 <table class="table">
+						 	<thead>
+							 	<tr>
+							 		<th>设备名称</th>
+							 		<th>运转模式</th>
+							 		<th>主程序编号</th>
+							 		<th>子程序编号</th>
+							 		<th>刀具编号</th>
+							 		<th>刀具名称</th>
+							 		<th>设备状态</th>
+							 	<tr>
+						 	</thead>
+						 	<tbody>
+						 		<tr ng-repeat="item in items">
+						      		<td>{{item.machineName}}</td>
+						      		<td>{{item.machineMode}}</td>
+						      		<td>{{item.mainprogramNo}}</td>
+						      		<td>{{item.subprogramNo}}</td>
+						      		<td>{{item.toolNo}}</td>
+						      		<td>{{item.toolName}}</td>
+						      		<td ng-if="item.machineSignal=='RUNNING'" style="background-color:#33CC66"></td>
+						      		<td ng-if="item.machineSignal=='POWEROFF'" style="background-color:#909090"></td>
+						      		<td ng-if="item.machineSignal=='ALARM'" style="background-color:#880000"></td>
+						      		<td ng-if="item.machineSignal=='WAITING'" style="background-color:#CCFF66"></td>
+ 			      				</tr>
+						 	</tbody>
+						 </table>
+					</div>
+				</div>
+				
+			<div class="xlzx">
+			<div class="xlzx-div">
+			<div class="xlzxhead">
+				 <i class="fa fa-bar-chart" aria-hidden="true"></i>
+					设备每日运行状态时长折线图（单位：秒）
+				 </div>
+				<div class="xlzx-lenged">
+					<i class="fa fa-circle" style="color:#33CC66">运行</i>
+					<i class="fa fa-circle" style="color:#909090">停机</i>
+					<i class="fa fa-circle" style="color:#880000">报警</i>
+					<i class="fa fa-circle" style="color:#CCFF66">等待</i>
+				</div>
+			</div>
+				<div echarts-type="line" style="height:93%;">
+				</div>
+			</div>
+		</div>
+		<script src="/themes/website/mycharts/controller/controller.js"></script>
+	</body>
+</html>
