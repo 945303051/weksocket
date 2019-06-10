@@ -109,6 +109,25 @@ public class LogRecordServiceImpl implements LogRecordService {
 		}
 		return count;
 	}
+
+
+	@Override
+	public List<Map<String, Object>> exportPowerOffData(Long machineId, String startTime, String endTime) {
+		return daoLogRecord.exportPowerOffData(machineId,startTime,endTime);
+	}
+
+	@Override
+	public List<Map<String, Object>> exportAlarmData(Long machineId, String startTime, String endTime) {
+		// TODO Auto-generated method stub
+		return daoLogRecord.exportAlarmData(machineId,startTime,endTime);
+	}
+
+	@Override
+	public List<Map<String, Object>> exportWaittingData(Long machineId, String startTime, String endTime) {
+		// TODO Auto-generated method stub
+		return daoLogRecord.exportWaittingData(machineId,startTime,endTime);
+	}
+
 }
 
 

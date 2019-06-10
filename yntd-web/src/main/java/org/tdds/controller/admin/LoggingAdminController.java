@@ -33,6 +33,7 @@ import com.alibaba.druid.sql.dialect.mysql.ast.MysqlForeignKey.On;
 
 import cn.hxz.webapp.syscore.support.BaseWorkbenchController;
 import cn.hxz.webapp.util.ExcelExportUtils;
+import cn.hxz.webapp.util.echarts.StatusEnum;
 import net.chenke.playweb.QueryFilters;
 import net.chenke.playweb.util.FiltersUtils;
 import net.chenke.playweb.util.HashUtils;
@@ -156,19 +157,27 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/exportdata", method = RequestMethod.GET)
 	public void exportData(Model model,HttpServletRequest request,HttpServletResponse response,
-			@RequestParam(value = "machineId", required = false) Long machineId,
-			@RequestParam(value = "node", required = false) String node,
-			@RequestParam(value = "startTime", required = false) String startTime,
-			@RequestParam(value = "endTime", required = false) String endTime,
-			@RequestParam(value = "status", required = false) String status) throws UnsupportedEncodingException {
+			@RequestParam(value = "machineId") Long machineId,
+			@RequestParam(value = "node") String node,
+			@RequestParam(value = "startTime") String startTime,
+			@RequestParam(value = "endTime") String endTime,
+			@RequestParam(value = "status") String status) throws UnsupportedEncodingException {
 		String filename =null;
-		if(machineId==0){
-			filename="机台信息";
-		}else{
-			Machine machine = bizMachine.load(machineId);
-			filename=machine.getName()+"信息";
-		}
-		List<Map<String,Object>> entities = bizMachine.exportInfore(machineId);
+		List<Map<String,Object>> entities  = new ArrayList<>();
+		if(status!=null){
+			String statusZh=StatusEnum.getValue(status);
+			filename="机台"+statusZh+"信息";
+			if(status.equalsIgnoreCase(STATUS[0])) {
+				entities=bizLogRecord.exportPowerOffData(machineId,startTime,endTime);
+			}else if(status.equalsIgnoreCase(STATUS[1])) {
+				entities=bizLogRecord.exportAlarmData(machineId,startTime,endTime);
+			}else if(status.equalsIgnoreCase(STATUS[2])) {
+				entities =bizLogRecord.exportWaittingData(machineId,startTime,endTime);
+			}
+		} 
+		
+		/*List<Map<String,Object>> entities = bizLogRecord.exportData(map);*/
+		
 		byte[] bytes = ExcelExportUtils.createExcel(node, null, entities);
 		response.reset();
 		response.setContentType("application/vnd.ms-excel;charset=utf-8");

@@ -1,7 +1,7 @@
 package cn.hxz.webapp.util.echarts;
 
 public enum StatusEnum{
-	        Enum1("RUNNING","正常运行"),Enum2("POWEROFF","停机"),Enum3("WARNING","报警"),Enum4("WAITING","等待");
+	        Enum1("RUNNING","正常运行"),Enum2("POWEROFF","停机"),Enum3("ALARM","报警"),Enum4("WAITING","等待"),Enum5("MANUAL","手动");
 	        private String key;
 	        private String status_cn;
 	        StatusEnum(String key,String status_cn){

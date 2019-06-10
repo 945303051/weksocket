@@ -1,9 +1,5 @@
 package org.tdds.controller.admin;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +22,6 @@ import org.tdds.service.MachineService;
 import cn.hxz.webapp.syscore.entity.Site;
 import cn.hxz.webapp.syscore.support.BaseWorkbenchController;
 import cn.hxz.webapp.util.AjaxFileUploadUtil;
-import cn.hxz.webapp.util.ExcelExportUtils;
 import cn.hxz.webapp.util.UploadUtils;
 import net.chenke.playweb.QueryFilters;
 import net.chenke.playweb.util.FiltersUtils;
