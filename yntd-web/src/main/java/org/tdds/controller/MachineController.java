@@ -95,8 +95,8 @@ public class MachineController extends BasePortalController {
 		for (String status : STATUS) {
 			Map<String, Object> entity = new HashMap<>();
 			List<Object> value = new LinkedList<>();
-			for (String str : days) {
-				Double num = bizLogRecord.findLineData(str, status);
+			for (String date : days) {
+				Double num = bizLogRecord.findData(date,status, null);
 				value.add(num); 
 			}
 			entity.put("data", value);
@@ -141,7 +141,7 @@ public class MachineController extends BasePortalController {
 			List<Map<String, Object>> entities = new LinkedList<>();
 			for (String status : STATUS) {
 				Map<String, Object> entity = new HashMap<>();
-				Double num = bizLogRecord.findPieData(status, machine.getId());
+				Double num = bizLogRecord.findData(null,status,machine.getId());
 				entity.put("value", num);
 				entity.put("name", status);
 				entities.add(new JSONObject(entity));
@@ -186,7 +186,7 @@ public class MachineController extends BasePortalController {
 		Calendar calendar = Calendar.getInstance();
 		Map<String, Double> sortMap = new HashMap<>();
 		for (Machine machine : machines) {
-			Double num = bizLogRecord.selectRankData(machine.getId());
+			Double num = bizLogRecord.findRankData(machine.getId());
 			sortMap.put(machine.getName(), num);
 		}
 		return sortMap(sortMap);
@@ -235,12 +235,12 @@ public class MachineController extends BasePortalController {
 		}
 		Map<String, Object> option = new HashMap<>();
 		option.put("type", "bar");
-		option.put("series", seriesData(time));
+	/*	option.put("series", seriesData(time));*/
 		timeLineOption.add(option);
 		return timeLineOption;
 	}
 
-	@ResponseBody
+/*	@ResponseBody
 	private List<Map<String, Object>> seriesData(String time) {
 		List<Machine> machines = bizMachine.findMachine();
 		List<Map<String, Object>> list = new ArrayList<>();
@@ -255,7 +255,7 @@ public class MachineController extends BasePortalController {
 			list.add(data);
 		}
 		return list;
-	}
+	}*/
 
 	/**
 	 * @param running:运行

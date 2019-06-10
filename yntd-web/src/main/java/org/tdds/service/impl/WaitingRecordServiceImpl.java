@@ -1,8 +1,5 @@
 package org.tdds.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tdds.entity.WaitingRecord;
@@ -20,40 +17,4 @@ public class WaitingRecordServiceImpl implements WaitingRecordService{
 		daoWaitingRecord.insert(wRecord);
 		
 	}
-
-	@Override
-	public Double selectWaitingTime(Long id) {
-		return daoWaitingRecord.selectWaitingTime(id);
-	}
-
-
-	@Override
-	public List<Map<String, Object>> findAllRecordById(Long id) {
-		return daoWaitingRecord.findAllRecordById(id);
-	}
-
-	@Override
-	public Double findPieData(Long id) {
-		 
-		return daoWaitingRecord.findPieData(id);
-	}
-
-	@Override
-	public Double findLineData(String str,Long id) {
-		 
-		return daoWaitingRecord.findLineData(str,id);
-	}
-
-	@Override
-	public Double findGaugeData(Long id) {
-		 
-		return daoWaitingRecord.findGaugeData(id);
-	}
-
-	@Override
-	public Double findLineData(String str) {
-		 
-		return daoWaitingRecord.findMemberLineData(str);
-	}
-
 }

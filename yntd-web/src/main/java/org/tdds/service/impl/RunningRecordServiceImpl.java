@@ -18,15 +18,4 @@ public class RunningRecordServiceImpl implements RunningRecordService {
 	public int insert(RunningRecord rr) {
 		return runningRecordDao.insert(rr);
 	}
-
-	@Override
-	public Double selectRankData(Long machineId) {
-		return runningRecordDao.selectRankData(machineId);
-	}
-
-	@Override
-	public Double findLineData(String date) {
-	 
-		return runningRecordDao.findMemberLineData(date);
-	}
 }

@@ -67,7 +67,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 		List<Map<String, Object>> entities = new LinkedList<>();
 		for(String status:STATUS){
 			Map<String, Object> entity = new HashMap<>();
-			Double num= bizLogRecord.findPieData(status,id);
+			Double num= bizLogRecord.findData(null,status,id);
 			entity.put("value", num);
 			entity.put("name",status);
 			entities.add(entity);
@@ -99,7 +99,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	@ResponseBody
 	private Object getGaugeData(String status,Long id){
 		List<Map<String, Object>> list = new LinkedList<>();
-		Double num=bizLogRecord.findGaugeData(status,id);
+		Double num=bizLogRecord.findData(null,status,id);
 		Map<String, Object> map = new HashMap<>();
 		if(num==null){
 			map.put("value", 0);
@@ -123,7 +123,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 			Map<String, Object> entity = new HashMap<>();
 			List<Object> value=new LinkedList<>();
 			for(String str:days){
-				Double num=bizLogRecord.findLineData(str,status,id);
+				Double num=bizLogRecord.findData(str,status,id);
 				value.add(num);
 			}
 				entity.put("data", value);

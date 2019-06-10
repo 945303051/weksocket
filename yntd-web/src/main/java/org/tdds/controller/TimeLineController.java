@@ -1,4 +1,4 @@
-package org.tdds.controller;
+/*package org.tdds.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -67,12 +67,12 @@ public class TimeLineController {
 		System.out.println("Connected ... " + session.getId());
 	}
 	
-	/**
+	*//**
 	 * 收到客户端消息后调用的方法
 	 * @param time 客户端发送过来的消息
 	 * @param session 可选的参数
 	 * @throws IOException 
-	 */
+	 *//*
 	@OnMessage
     public void onMessage(String message, Session session) throws IOException {
 	
@@ -147,3 +147,4 @@ public class TimeLineController {
     }
     
 }
+*/

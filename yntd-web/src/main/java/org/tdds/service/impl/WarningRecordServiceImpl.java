@@ -19,38 +19,4 @@ public class WarningRecordServiceImpl implements WarningRecordService{
 	public void insert(WarningRecord warningRecord) {
 		daoWarningRecord.insert(warningRecord);
 	}
-
-	@Override
-	public Double selectWarningTime(Long id) {
-		return daoWarningRecord.selectWarningTime(id);
-	}
- 
-	@Override
-	public List<Map<String, Object>> findAllRecordById(Long id) {
-		return daoWarningRecord.findAllRecordById(id);
-	}
-
-	@Override
-	public Double findPieData(Long id) {
-		// TODO Auto-generated method stub
-		return daoWarningRecord.findPieData(id);
-	}
-
-	@Override
-	public Double findLineData(String str,Long id) {
-		 
-		return daoWarningRecord.findLineData(str,id);
-	}
-
-	@Override
-	public Double findGaugeData(Long id) {
-		// TODO Auto-generated method stub
-		return daoWarningRecord.findGaugeData(id);
-	}
-
-	@Override
-	public Double findLineData(String date) {
-		return daoWarningRecord.findMemberLineData(date);
-	}
-
 }
