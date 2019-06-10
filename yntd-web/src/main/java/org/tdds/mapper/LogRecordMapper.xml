@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.tdds.mapper.LogRecordMapper">
+	<!-- 单表查询映射结果 -->
+    <sql id="Base_Column_List">
+    </sql>
+    <select id="findRunningData" resultType="java.lang.Double">
+		SELECT
+			IFNULL(TIMESTAMPDIFF(SECOND,MIN(record_time),MAX(record_time)),0)  AS timed
+		FROM znzz_running_record
+		WHERE
+		<if test="map.machineId!=null">
+			machine_id =#{id}
+		</if>
+		 <>
+		AND DATE(record_time) =CURRENT_DATE
+    </select>
+</mapper>
