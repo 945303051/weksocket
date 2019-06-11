@@ -13,13 +13,12 @@ public class ManualRecordServiceImpl implements ManualRecordService {
 	private ManualRecordMapper daoManualRecord;
 
 	@Override
-	public void insert(ManualRecord mr) {
+	public void insert(ManualRecord mr) { 
 		daoManualRecord.insert(mr);
 	}
 
 	@Override
 	public Double selectManualTimes(Long id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

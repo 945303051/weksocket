@@ -1,13 +1,14 @@
 /**
  * 
+ * "RUNNING", "POWEROFF", "ALARM", "WAITTING","MANUAL"
  */
 	var optionLine = {
-			color: ['#909090','#880000','#CCFF66'],
+			color: ['#00FF00','#696969', '#DC143C','#FFFF00','#7FFF00'],
 		    tooltip: {
 		        trigger: 'axis'
 		    },
 		    legend: {
-		        data:['停机','报警','等待']
+		    	data:['运行','停机','报警','等待','手动']
 		    },
 		    grid: {
 		        left: '3%',
@@ -47,7 +48,7 @@
 		    },
 		    yAxis: {
 		        type: 'value',
-		        name:'运行时间单位：秒',
+		        name:'运行时间单位：分钟',
 		        axisLabel: {
 	                textStyle: {
 	                    color: '#33cc66',//坐标值得具体的颜色

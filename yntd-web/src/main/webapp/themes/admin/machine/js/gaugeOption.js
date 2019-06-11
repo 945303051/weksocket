@@ -36,7 +36,7 @@ var gaugeOption = {
             },axisLabel: {
                 color: 'green',
             },detail:{
-                formatter:'{value}%',
+                formatter:'{value}分钟',
                 fontSize: 24,
                 offsetCenter: [0, '85%']
               },title:{

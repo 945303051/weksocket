@@ -1,8 +1,8 @@
 /**
- * 
+ * "RUNNING", "POWEROFF", "ALARM", "WAITTING","MANUAL"
  */
 var optionPie = {
-		color: ['#909090', '#880000','#CCFF66'],
+		color: ['#00FF00','#696969', '#DC143C','#FFFF00','#7FFF00'],
 		title:{
 			text:"",
 			textStyle:{
@@ -14,7 +14,7 @@ var optionPie = {
 			top:'40%'
 		},
 		legend: {
-	        data:['停机','报警','等待']
+	        data:['运行','停机','报警','等待','手动']
 	    },
 		tooltip: {
 		        trigger: 'item',

@@ -1,6 +1,9 @@
+/**
+ * "RUNNING", "POWEROFF", "ALARM", "WAITTING","MANUAL"
+ */
 ;(function($, e){
 var optionPie = {
-		color: ['#33CC66','#909090', '#880000','#CCFF66'],
+		color: ['#00FF00','#696969', '#DC143C','#FFFF00','#7FFF00'],
 		title:{
 			text:"",
 			textStyle:{
@@ -19,7 +22,7 @@ var optionPie = {
 		    	show:false,
 		        orient: 'vertical',
 		        x: 'left',
-		        data:['停机','手动','运行','报警','等待'],
+		        data:['运行','停机','报警','等待','手动'],
 		        top:"middle"
 		    },
 		    series: [

@@ -75,7 +75,7 @@ var optionBar = {
             type: 'bar',
             yAxisIndex: 1,
             barGap: '-100%',
-            data: [5000,5000,5000,5000,5000,5000],
+            data: [1500,1500,1500,1500,1500,1500],
             barWidth: 20,
             itemStyle: {
                 normal: {
@@ -90,7 +90,7 @@ var optionBar = {
             type: 'bar',
             yAxisIndex: 2,
             barGap: '-100%',
-            data: [5000,5000,5000,5000,5000,5000],
+            data: [1500,1500,1500,1500,1500,1500],
             barWidth: 25,
             itemStyle: {
                 normal: {
@@ -167,7 +167,7 @@ var	_this = this;
 			optionBar.series[0].data=targetData.reverse();
 			optionBar.yAxis[0].data=names.reverse();
 			 var max = Math.max.apply(null, targetData);
-			if(10000-max<3000){
+			if(1500-max<100){
 				 $.each(optionBar.series[1].data,function(){
 					 _otherData.push(max+1000);
 				 })

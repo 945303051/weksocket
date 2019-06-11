@@ -50,7 +50,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	@Autowired
 	private MachineService bizMachine;
 	
-	private static final String[] STATUS = {"POWEROFF","ALARM","WAITTING"};
+	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITTING","MANUAL"};
 	
 	private static final String uuid = HashUtils.MD5(LoggingAdminController.class.getName());
 	
@@ -155,7 +155,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	}
 	
 	@SuppressWarnings("deprecation")
-	@RequestMapping(value = "/exportdata", method = RequestMethod.GET)
+	@RequestMapping(value = "/exportdata", method = RequestMethod.POST)
 	public void exportData(Model model,HttpServletRequest request,HttpServletResponse response,
 			@RequestParam(value = "machineId") Long machineId,
 			@RequestParam(value = "node") String node,
@@ -164,9 +164,10 @@ public class LoggingAdminController extends BaseWorkbenchController{
 			@RequestParam(value = "status") String status) throws UnsupportedEncodingException {
 		String filename =null;
 		List<Map<String,Object>> entities  = new ArrayList<>();
+		Machine  machine = bizMachine.load(machineId);
 		if(status!=null){
 			String statusZh=StatusEnum.getValue(status);
-			filename="机台"+statusZh+"信息";
+			filename=machine.getName()+statusZh+"信息";
 			if(status.equalsIgnoreCase(STATUS[0])) {
 				entities=bizLogRecord.exportPowerOffData(machineId,startTime,endTime);
 			}else if(status.equalsIgnoreCase(STATUS[1])) {
@@ -175,8 +176,6 @@ public class LoggingAdminController extends BaseWorkbenchController{
 				entities =bizLogRecord.exportWaittingData(machineId,startTime,endTime);
 			}
 		} 
-		
-		/*List<Map<String,Object>> entities = bizLogRecord.exportData(map);*/
 		
 		byte[] bytes = ExcelExportUtils.createExcel(node, null, entities);
 		response.reset();

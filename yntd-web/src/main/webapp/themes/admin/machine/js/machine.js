@@ -182,6 +182,7 @@ var uuid=$("#uuid").val();
 	}
 	
 	$scope.realTimeData=function(id,name){
+		$scope.crName=name;
 		layer.open({
 			type: 1,
 			title:name+"运行实时数据",
@@ -192,8 +193,9 @@ var uuid=$("#uuid").val();
 			success:function(){
 				createGauge(id);
 				$interval(function(){
-					getMonitor(name);
-				},4000)
+					console.info($scope.crName);
+					getMonitor($scope.crName);
+				},2000)
 			}
 		})
 	}
@@ -235,5 +237,29 @@ var uuid=$("#uuid").val();
 		},4000)
 	}
 	
+	$(function(){
+	    new ZouMa().Start();
+	});
+
+	function ZouMa() {
+		this.maxLength = 3;  
+		this.Timer = 6000; 
+		this.Ul = $("div#gauges");
+		var handId; 
+		var self = this;
+		this.Start = function () {
+		    if (self.Ul.children().length < this.maxLength) {
+		        self.Ul.append(self.Ul.children().clone());
+		    }
+		    handId = setInterval(self.Play, self.Timer);
+		}
+			this.Play = function () {
+		    var li = self.Ul.children("div").eq(0);
+		    var left = li.eq(0).width();
+		    li.animate({ "marginLeft": (-1 * left) + "px" }, 1000, function () {
+				$(this).css("margin-left", "auto").appendTo(self.Ul);
+	        });
+	    }
+	}
 	  
 })

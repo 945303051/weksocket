@@ -1,10 +1,8 @@
 package org.tdds.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,7 +90,8 @@ public class LogRecordServiceImpl implements LogRecordService {
 		Map<String, Object> map = new HashMap<>();
 		if(date!=null){
 			map.put("date",date);
-		}else if(id!=null){
+		}
+		if(id!=null){
 			map.put("machineId",id);
 		}
 		Double count=0.0;
@@ -118,13 +117,11 @@ public class LogRecordServiceImpl implements LogRecordService {
 
 	@Override
 	public List<Map<String, Object>> exportAlarmData(Long machineId, String startTime, String endTime) {
-		// TODO Auto-generated method stub
 		return daoLogRecord.exportAlarmData(machineId,startTime,endTime);
 	}
 
 	@Override
 	public List<Map<String, Object>> exportWaittingData(Long machineId, String startTime, String endTime) {
-		// TODO Auto-generated method stub
 		return daoLogRecord.exportWaittingData(machineId,startTime,endTime);
 	}
 
