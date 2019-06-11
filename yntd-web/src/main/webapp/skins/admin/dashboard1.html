@@ -1,9 +1,3 @@
-<@layout.override name="css">
-<@layout.super/>
-</@layout.override>
-<@layout.override name="js">
-<@layout.super/>
-</@layout.override>
 <@layout.override name="body">
 <section class="content-header">
   <h1><small></small>
@@ -14,65 +8,67 @@
   </ol>
 </section>
 
-<section class="content">
-  <!-- Small boxes (Stat box) -->
+<section class="content" ng-app="dashboradApp" ng-controller="myCon">
   <div class="row">
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="small-box bg-aqua">
-        <div class="inner">
-          <h3>150</h3>
-          <p>New Orders</p>
+    <div class="col-lg-3 col-xs-6" style="width:20%">
+      <div class="small-box" style="background-color:#00FF00;color:#FFFFF">
+        <div class="inner" style="color:#FFFFFF">
+          <h3>{{runningTimes}}分钟</h3>
+          <p>RUNNING</p>
         </div>
         <div class="icon">
-          <i class="ion ion-bag"></i>
+          <i class="fa fa-database" aria-hidden="true"></i>
         </div>
-        <a href="#" class="small-box-footer">More info 
-        	<i class="fa fa-arrow-circle-right"></i>
-        </a>
       </div>
     </div>
     <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-      <div class="small-box bg-green">
-        <div class="inner">
-          <h3>53<sup style="font-size: 20px">%</sup></h3>
-          <p>Bounce Rate</p>
+    <div class="col-lg-3 col-xs-6" style="width:20%">
+      <div class="small-box" style="background-color:#696969">
+        <div class="inner" style="color:#FFFFFF">
+          <h3>{{poweroffTimes}}分钟<sup style="font-size: 20px">%</sup></h3>
+          <p>POWEROFF</p>
         </div>
         <div class="icon">
-          <i class="ion ion-stats-bars"></i>
+          <i class="fa fa-database" aria-hidden="true"></i>
         </div>
-        <a href="#" class="small-box-footer">More info
-        	 <i class="fa fa-arrow-circle-right"></i>
-       	 </a>
       </div>
     </div>
     <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-3 col-xs-6" style="width:20%">
       <!-- small box -->
-      <div class="small-box bg-yellow">
-        <div class="inner">
-          <h3>44</h3>
-          <p>User Registrations</p>
+      <div class="small-box" style="background-color:#DC143C">
+        <div class="inner" style="color:#FFFFFF">
+          <h3>{{alarmTimes}}分钟</h3>
+          <p>ALARM</p>
         </div>
         <div class="icon">
-          <i class="ion ion-person-add"></i>
+          <i class="fa fa-database" aria-hidden="true"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-3 col-xs-6" style="width:20%">
       <!-- small box -->
-      <div class="small-box bg-red">
-        <div class="inner">
-          <h3>65</h3>
-          <p>Unique Visitors</p>
+      <div class="small-box" style="background-color:#FFFF00">
+        <div class="inner" style="color:#FFFFFF">
+          <h3>{{waitingTimes}}分钟</h3>
+          <p>WAITING</p>
         </div>
         <div class="icon">
-          <i class="ion ion-pie-graph"></i>
+          <i class="fa fa-database" aria-hidden="true"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6" style="width:20%">
+      <!-- small box -->
+      <div class="small-box" style="background-color:#7FFF00">
+        <div class="inner" style="color:#FFFFFF">
+          <h3>{{manualTimes}}分钟</h3>
+          <p>MANUAL</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-database" aria-hidden="true"></i>
+        </div>
       </div>
     </div>
     <!-- ./col -->
@@ -502,18 +498,15 @@
                 <div class="progress-bar progress-bar-green" style="width: 40%;"></div>
               </div>
             </div>
-            <!-- /.col -->
           </div>
-          <!-- /.row -->
         </div>
       </div>
-      <!-- /.box -->
-
     </section>
-    <!-- right col -->
   </div>
-  <!-- /.row (main row) -->
-
 </section>
+</@layout.override>
+<@layout.override name="js">
+<@layout.super/>
+<script src="/themes/admin/index/js/dashboard.js"></script>
 </@layout.override>
 <@layout.extends name="_layouts/bootstrap1.html"/>

@@ -13,9 +13,14 @@
 				Machine_Name as machineName,
 				Machine_Signal as machineSignal,
 				Machine_Mode as machineMode,
-				Mainprogram_No as mainprogramNo,
-				Subprogram_No as subprogramNo,
-				Tool_No as toolNo
+				Machine_Status as machineStatus,
+				Maintenance_Signal as maintenanceSignal,
+				PartsCount_Target as partscountTarget,
+				PartsCount_Result as partscountResult,
+				Override_Rapid as overrideRapid,
+				Override_Spindle as overrideSpindle,
+				Override_Feed as overrideFeed,
+				Spindle_Mode as spindleMode
 			FROM
 				Monitoring_List
 			WHERE 

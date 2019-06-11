@@ -118,21 +118,29 @@
 							 	<tr>
 							 		<th>设备名称</th>
 							 		<th>运转模式</th>
-							 		<th>主程序编号</th>
-							 		<th>子程序编号</th>
-							 		<th>刀具编号</th>
-							 		<th>刀具名称</th>
 							 		<th>设备状态</th>
+							 		<th>维护信号</th>
+							 		<th>加工计数目標値</th>
+							 		<th>加工计数实际値</th>
+							 		<th>快进倍率</th>
+							 		<th>主轴倍率</th>
+							 		<th>切削倍率</th>
+							 		<th>主轴模式</th>
+							 		<th>设备运行状态</th>
 							 	<tr>
 						 	</thead>
 						 	<tbody>
 						 		<tr ng-repeat="item in items">
 						      		<td>{{item.machineName}}</td>
 						      		<td>{{item.machineMode}}</td>
-						      		<td>{{item.mainprogramNo}}</td>
-						      		<td>{{item.subprogramNo}}</td>
-						      		<td>{{item.toolNo}}</td>
-						      		<td>{{item.toolName}}</td>
+						      		<td>{{item.machineStatus}}</td>
+						      		<td>{{item.maintenanceSignal}}</td>
+						      		<td>{{item.partscountTarget}}</td>
+						      		<td>{{item.partscountResult}}</td>
+						      		<td>{{item.overrideRapid}}</td>
+						      		<td>{{item.overrideFeed}}</td>
+						      		<td>{{item.overrideSpindle}}</td>
+						      		<td>{{item.spindleMode}}</td>
 						      		<td ng-if="item.machineSignal=='RUNNING'" style="background-color:#00FF00"></td>
 						      		<td ng-if="item.machineSignal=='POWEROFF'" style="background-color:#696969"></td>
 						      		<td ng-if="item.machineSignal=='ALARM'" style="background-color:#DC143C"></td>
