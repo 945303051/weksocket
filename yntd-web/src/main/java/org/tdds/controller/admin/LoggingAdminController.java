@@ -50,7 +50,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	@Autowired
 	private MachineService bizMachine;
 	
-	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITTING","MANUAL"};
+	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING","MANUAL"};
 	
 	private static final String uuid = HashUtils.MD5(LoggingAdminController.class.getName());
 	

@@ -48,7 +48,7 @@ public class MachineController extends BasePortalController {
 
 	private List<String> NAMES = new ArrayList<>();
 
-	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITTING","MANUAL"};
+	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING","MANUAL"};
 
 	List<Map<String, Object>> statuslist = new ArrayList<>();
 
