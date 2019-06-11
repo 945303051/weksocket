@@ -47,7 +47,7 @@
 	                    color: '#33cc66',//坐标值得具体的颜色
 	                }
 	            },
-	            name:'运行时间单位：秒',
+	            name:'运行时间单位：分钟',
 	            nameTextStyle:{
 	        		color:"#FFFFFF",
 	        		fontSize:12
