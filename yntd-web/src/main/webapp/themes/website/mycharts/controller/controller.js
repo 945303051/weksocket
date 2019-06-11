@@ -1,4 +1,4 @@
-/*var myTimeLine = new MyTimeLine();*/
+var myTimeLine = new MyTimeLine();
 var ranking = new Ranking();
 var myLine = new MyLine();
 

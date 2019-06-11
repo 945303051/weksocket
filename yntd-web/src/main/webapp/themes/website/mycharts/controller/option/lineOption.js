@@ -28,6 +28,10 @@
 		        type: 'category',
 	            axisLine: {onZero: true},
 	            name:"日期",
+	            nameTextStyle:{
+	        		color:"#FFFFFF",
+	        		fontSize:12
+	    		},
 		        boundaryGap: false,
 		        data: [],
 		        axisLabel: {
@@ -44,6 +48,10 @@
 	                }
 	            },
 	            name:'运行时间单位：秒',
+	            nameTextStyle:{
+	        		color:"#FFFFFF",
+	        		fontSize:12
+	    		},	
 		    },
 			series: [{
 	            name:'正常运行',

@@ -235,27 +235,27 @@ public class MachineController extends BasePortalController {
 		}
 		Map<String, Object> option = new HashMap<>();
 		option.put("type", "bar");
-	/*	option.put("series", seriesData(time));*/
+		option.put("series", seriesData(time));
 		timeLineOption.add(option);
 		return timeLineOption;
 	}
 
-/*	@ResponseBody
+	@ResponseBody
 	private List<Map<String, Object>> seriesData(String time) {
 		List<Machine> machines = bizMachine.findMachine();
 		List<Map<String, Object>> list = new ArrayList<>();
 		for (String status : STATUS) {
 			Map<String, Object> data = new HashMap<>();
-			List<Integer> machineNum = new ArrayList<>();
+			List<Double> machineNum = new ArrayList<>();
 			for (Machine machine : machines) {
-				Map<String, Object> dataMap = bizLogRecord.findTimeLineSeriesData(status, machine.getName(), time);
-				machineNum.add(Integer.parseInt(dataMap.get("NUM").toString()));
+				Double num  = bizLogRecord.findData(null,status,machine.getId());
+				machineNum.add(num);
 			}
 			data.put("data", machineNum);
 			list.add(data);
 		}
 		return list;
-	}*/
+	}
 
 	/**
 	 * @param running:运行
