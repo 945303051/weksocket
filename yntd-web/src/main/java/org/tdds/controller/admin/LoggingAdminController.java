@@ -168,11 +168,11 @@ public class LoggingAdminController extends BaseWorkbenchController{
 		if(status!=null){
 			String statusZh=StatusEnum.getValue(status);
 			filename=machine.getName()+statusZh+"信息";
-			if(status.equalsIgnoreCase(STATUS[0])) {
+			if(status.equalsIgnoreCase(STATUS[1])) {
 				entities=bizLogRecord.exportPowerOffData(machineId,startTime,endTime);
-			}else if(status.equalsIgnoreCase(STATUS[1])) {
-				entities=bizLogRecord.exportAlarmData(machineId,startTime,endTime);
 			}else if(status.equalsIgnoreCase(STATUS[2])) {
+				entities=bizLogRecord.exportAlarmData(machineId,startTime,endTime);
+			}else if(status.equalsIgnoreCase(STATUS[3])) {
 				entities =bizLogRecord.exportWaittingData(machineId,startTime,endTime);
 			}
 		} 
