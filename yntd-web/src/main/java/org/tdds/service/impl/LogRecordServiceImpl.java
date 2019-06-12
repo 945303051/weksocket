@@ -61,13 +61,13 @@ public class LogRecordServiceImpl implements LogRecordService {
 			pr.setMachineId(mid);
 			bizPowerOff.insert(pr);
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[2])) {
-			WaitingRecord wRecord = new WaitingRecord();
-			wRecord.setMachineId(mid);
-			bizWaiting.insert(wRecord);
-		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[3])){
 			WarningRecord warningRecord = new WarningRecord();
 			warningRecord.setMachineId(mid);
 			bizWarning.insert(warningRecord);
+		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[3])){
+			WaitingRecord wRecord = new WaitingRecord();
+			wRecord.setMachineId(mid);
+			bizWaiting.insert(wRecord);
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[4])){
 			ManualRecord mr = new ManualRecord();
 			mr.setMachineId(mid);

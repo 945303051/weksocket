@@ -7,10 +7,7 @@
 		    tooltip: {
 		        trigger: 'axis'
 		    },
-		    legend: {
-		    	data:['运行','停机','报警','等待','手动']
-		    },
-		    grid: {
+		    grid:{
 		        left: '3%',
 		        right: '4%',
 		        bottom: '3%',

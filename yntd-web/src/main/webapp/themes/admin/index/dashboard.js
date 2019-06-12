@@ -3,6 +3,7 @@
  */
 var app = angular.module('dashboradApp', []);
 app.controller('myCon', function($scope,$http,$interval) {
+	var bar = echarts.init(document.getElementById('stackBar'));
 	$interval(function(){
 		$http({
 			method: 'GET',
@@ -14,6 +15,31 @@ app.controller('myCon', function($scope,$http,$interval) {
 			$scope.alarmTimes=res.data.ALARM;
 			$scope.waitingTimes=res.data.WAITING;
 			$scope.manualTimes=res.data.MANUAL;
+			createBar();
 		})
 	},2000)
+	
+	function createBar(){
+		$.ajax({
+			type :"GET",
+			url :"/admin/index/bar.json",
+			async:true,
+			cache : false,
+			ifModified:true,
+			success : function(data) {
+				console.info(data);
+				barOption.yAxis.data=data.yAxisData;
+				barOption.series=data.series;
+				addLables(barOption.series);
+				bar.setOption(barOption);
+			}
+		})
+		
+	}
+	
+	function addLables(obj){
+		$.each(obj,function(){
+			this.label=lable;
+		})
+	}
 })

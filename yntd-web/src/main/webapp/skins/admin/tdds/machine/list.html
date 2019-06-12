@@ -70,9 +70,9 @@
 						<table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
           					<thead>
                					<tr role="row">
-									<th rowspan="1" colspan="1" style="width:300px;">机台名称</th>
+									<th rowspan="1" colspan="1" style="width:100px;">机台名称</th>
 									<th rowspan="1" colspan="1"  style="width:100px;">机台编号</th>
-									<th rowspan="1" colspan="1"  style="width:100px;">机台类型</th>
+									<!-- <th rowspan="1" colspan="1"  style="width:100px;">机台类型</th> -->
 									<th rowspan="1" colspan="1"  style="width:100px;">机台IP</th>
 									<th rowspan="1" colspan="1"  style="width:50px;text-align:center;">图片</th>
 									<th rowspan="1" colspan="1"  style="width:100px;text-align:center;">操作</th>
@@ -82,7 +82,7 @@
 							 <tr role="row" class="odd" ng-repeat="item in items">
 							   <td>{{item.name}}</td>
 							   <td>{{item.code}}</td>
-							   <td>{{item.type}}</td>
+							 <!--   <td>{{item.type}}</td> -->
 							   <td>{{item.mIp}}</td>
 							   <td style="text-align:center;">
 									<a id="preview_btn" class="btn btn-success btn-xs" ng-if="item.imgUrl==null" ng-click="editImg(item.id)" title="上传">
@@ -124,7 +124,7 @@
           <!--图片预览 start-->
 			<div id="boxPreview" style="display:none; text-align:center; margin:0px auto;width:630px;height:500px">
 				<div class="thum">
-					<img id="imgPreview" height="100%" width="100%" src="{{imageUrl}}" alt="图片预览">
+					<img id="imgPreview" height="100%" width="100%" src="" alt="图片预览">
 				</div>
 				<div class="col-sm-7" style="text-align:right;">
 				  <label for="upload" class="btn btn-success btn-sm">选择图片</label>
@@ -322,12 +322,12 @@
 									<label>开始时间:</label>
 								</div>
 					     		<input type="text" id="startTime" name="startTime" class="Wdate form-control" 
-					     		style="height:33px;border-color:#d2d6de;" required onclick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'endTime\')}'})">
+					     		style="height:33px;border-color:#d2d6de;" required onclick="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}'})">
 						       <div class="input-group-addon">
 						        	 <label>结束时间:</label>
 						       </div>
 					      	<input type="text" id="endTime" name="endTime" required class="Wdate form-control" 
-					      	style="height:33px;border-color:#d2d6de;" onclick="WdatePicker({skin:'whyGreen',minDate:'#F{$dp.$D(\'startTime\')}'})">
+					      	style="height:33px;border-color:#d2d6de;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}'})">
 					    </div>
 					</div>
 					<div class="checkbox">
@@ -338,7 +338,7 @@
 					      <input type="radio" id="status1" name="status" value="ALARM"  required/>ALARM
 					    </label>
 					    <label>
-					      <input type="radio" id="status2" name="status" value="WAITTING"  required/>WAITTING
+					      <input type="radio" id="status2" name="status" value="WAITING"  required/>WAITING
 					    </label>
 					</div>
               </div>

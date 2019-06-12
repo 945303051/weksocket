@@ -29,9 +29,7 @@ var uuid=$("#uuid").val();
 			$scope.machineId=id;
 			if(typeof imageUrl!="undefined"){
 				$("#imgPreview").attr("src",imageUrl);
-				$scope.imageUrl=imageUrl;
  			}
-			$scope.imageUrl="";
 			$scope.myLayer("图片编辑",$("#boxPreview"));
 		}
 		

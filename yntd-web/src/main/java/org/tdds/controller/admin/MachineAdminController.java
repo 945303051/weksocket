@@ -53,6 +53,7 @@ public class MachineAdminController extends BaseWorkbenchController {
 		if(machines==null){
 			success=false;
 		}
+		map.put("success", success);
 		map.put("resault",machines);
 		map.put("count",machines.size());
 		return map;
