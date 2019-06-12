@@ -39,7 +39,7 @@ var uuid=$("#uuid").val();
 				title:title,
 				offset : [ '200px', '' ],
 				border : [ 10, 0.3, '#000', true ],
-				area : [ '600px', '480px' ],
+				area : [ '649px', '557px' ],
 				content: obj,
 			})
 		}
