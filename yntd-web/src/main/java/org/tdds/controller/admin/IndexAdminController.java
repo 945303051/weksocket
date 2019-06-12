@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.crypto.Mac;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.tdds.entity.Machine;
+import org.tdds.entity.MonitoringList;
 import org.tdds.service.LogRecordService;
 import org.tdds.service.MachineService;
+import org.tdds.service.MonitoringService;
+import org.tdds.service.WarningRecordService;
 
 import cn.hxz.webapp.util.echarts.StatusEnum;
 import net.chenke.playweb.QueryFilters;
@@ -34,6 +38,9 @@ public class IndexAdminController {
 	@Autowired
 	private MachineService bizMachine;
 	
+	@Autowired
+	private MonitoringService bizMonitoring;
+	
 	private  static List<Map<String, Object>> series = new ArrayList<>();
 	
 	private  static List<String> names = new ArrayList<>();
@@ -50,6 +57,23 @@ public class IndexAdminController {
 		}
 		return entity;
 	}
+	
+	@RequestMapping(value = "/monitoring", method = RequestMethod.GET)
+	@ResponseBody
+	public Object warningRecord(HttpServletRequest request,HttpServletResponse response){
+		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid);
+		Map<String, Object> map =new HashMap<>();
+		List<Machine> machines = bizMachine.findMachine();
+		List<MonitoringList> entities = new ArrayList<>();
+		for (Machine machine : machines) {
+				MonitoringList monitoringList = bizMonitoring.findByName(machine.getName());
+				entities.add(monitoringList);
+		}
+		map.put("resault", entities);
+		map.put("count", entities);
+		return map;
+	}
+	
 	
 	/*
 	 *name: '直接访问',

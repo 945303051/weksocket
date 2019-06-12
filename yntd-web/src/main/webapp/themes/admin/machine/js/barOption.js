@@ -3,9 +3,9 @@
  */
 var barOption = {
 	color: ['#00FF00','#696969', '#DC143C','#FFFF00','#7FFF00'],
-	title:{
-		text:"每台设备运行状态",
-	},
+	/*title:{
+		text:"",
+	},*/
     tooltip : {
         trigger: 'axis',
         axisPointer : {            // 坐标轴指示器，坐标轴触发有效

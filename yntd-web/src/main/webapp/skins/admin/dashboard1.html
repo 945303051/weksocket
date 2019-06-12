@@ -73,51 +73,57 @@
     </div>
   </div>
   <div class="row">
-    <section class="col-lg-7 connectedSortable">
-    	<div id="stackBar" style="height:492px;width:95%">
-    		 
+    <section class="col-lg-6 connectedSortable">
+    	<div class="box" style="height:492px;">
+    		<div class="box-header ui-sortable-handle" style="cursor: move;">
+              <h3 class="box-title">每台设备运行状态</h3>
+            </div>
+            <div class="box-body" style="height:100%;width:95%">
+		    	<div id="stackBar" style="height:100%;width:95%">
+		    		 
+		    	</div>
+	    	</div>
     	</div>
     </section>
-    <section class="col-lg-5 connectedSortable ui-sortable">
-           <div class="box" style="height:390px;">
-            <div class="box-header ui-sortable-handle" style="cursor: move;">
-              <h3 class="box-title">报警信息</h3>
+    <section class="col-lg-5 connectedSortable ui-sortable" style="width:49.666667%">
+           <div class="box" style="height:492px;">
+            <div class="box-header ui-sortable-handle" style="cursor:move;height:16%">
+              <h3 class="box-title">设备实时运行状态</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-hover dataTable no-footer" role="grid">
+            <div class="box-body" style="height:84%;width:95%">
+				<table class="table table-striped" style="height:75%">
                 <thead>
-                <tr role="row">
-                	<th class="sorting_asc" rowspan="1" colspan="1">序号</th>
-                	<th class="sorting"  rowspan="1" colspan="1">报警时间</th>
-                	<th class="sorting"  rowspan="1" colspan="1">制造商</th>
-                	<th class="sorting"  rowspan="1" colspan="1">设备型号</th>
-                	<th class="sorting"  rowspan="1" colspan="1">设备编号</th>
-                	<th class="sorting"  rowspan="1" colspan="1">报警代码</th>
-                	<th class="sorting"  rowspan="1" colspan="1">处理状态</th>
-               	</tr>
+					<tr>
+				 		<th>设备名称</th>
+				 		<th>运转模式</th>
+				 		<th>设备状态</th>
+				 		<th>维护信号</th>
+				 		<th>快进倍率</th>
+				 		<th>主轴倍率</th>
+				 		<th>切削倍率</th>
+				 		<th>主轴模式</th>
+				 		<th>设备运行状态</th>
+				 	</tr>
                 </thead>
                 <tbody>
-	                <tr role="row" class="odd">
-	                  <td class="sorting_1">1</td>
-	                  <td>2019-5-24 16:22:33</td>
-	                  <td>马扎克</td>
-	                  <td>LG-YQWEG</td>
-	                  <td>LX-1234568</td>
-	                  <td>1104</td>
-	                  <td>待处理</td>
-	                </tr> 
+	                <tr ng-repeat="item in entities">
+			      		<td>{{item.machineName}}</td>
+			      		<td>{{item.machineMode}}</td>
+			      		<td>{{item.machineStatus}}</td>
+			      		<td>{{item.maintenanceSignal}}</td>
+			      		<td>{{item.overrideRapid}}</td>
+			      		<td>{{item.overrideFeed}}</td>
+			      		<td>{{item.overrideSpindle}}</td>
+			      		<td>{{item.spindleMode}}</td>
+			      		<td ng-if="item.machineSignal=='RUNNING'" style="background-color:#00FF00"></td>
+			      		<td ng-if="item.machineSignal=='POWEROFF'" style="background-color:#696969"></td>
+			      		<td ng-if="item.machineSignal=='ALARM'" style="background-color:#DC143C"></td>
+			      		<td ng-if="item.machineSignal=='WAITING'" style="background-color:#FFFF00"></td>
+			      		<td ng-if="item.machineSignal=='MANUAL'" style="background-color:#7FFF00"></td>
+    				</tr>
                 </tbody>
               </table>
-              </div></div>
-              <div class="row">
-              	<div class="col-sm-5"></div>
-              		<div class="col-sm-7">
-					  <!------分页------->        			
-           			</div>
-          		</div>
              </div>
-            	</div>
           </div>
         </section>
   </div>

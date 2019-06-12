@@ -125,7 +125,7 @@
 							 		<th>切削倍率</th>
 							 		<th>主轴模式</th>
 							 		<th>设备运行状态</th>
-							 	<tr>
+							 	</tr>
 						 	</thead>
 						 	<tbody>
 						 		<tr ng-repeat="item in items">
@@ -140,7 +140,7 @@
 						      		<td ng-if="item.machineSignal=='RUNNING'" style="background-color:#00FF00"></td>
 						      		<td ng-if="item.machineSignal=='POWEROFF'" style="background-color:#696969"></td>
 						      		<td ng-if="item.machineSignal=='ALARM'" style="background-color:#DC143C"></td>
-						      		<td ng-if="item.machineSignal=='WAITTING'" style="background-color:#FFFF00"></td>
+						      		<td ng-if="item.machineSignal=='WAITING'" style="background-color:#FFFF00"></td>
 						      		<td ng-if="item.machineSignal=='MANUAL'" style="background-color:#7FFF00"></td>
  			      				</tr>
 						 	</tbody>

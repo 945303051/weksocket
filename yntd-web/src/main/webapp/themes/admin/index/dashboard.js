@@ -16,8 +16,22 @@ app.controller('myCon', function($scope,$http,$interval) {
 			$scope.waitingTimes=res.data.WAITING;
 			$scope.manualTimes=res.data.MANUAL;
 			createBar();
+			MonitoringList();
 		})
 	},2000)
+	
+	function MonitoringList(){
+			$.ajax({
+				type :"GET",
+				url :"/admin/index/monitoring.json",
+				async:true,
+				cache : false,
+				ifModified:true,
+				success : function(data) {
+					$scope.entities=data.resault;
+				}
+		})
+	}
 	
 	function createBar(){
 		$.ajax({
