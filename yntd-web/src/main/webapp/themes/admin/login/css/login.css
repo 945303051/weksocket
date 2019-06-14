@@ -7,12 +7,12 @@
 			background: #ffffff;
 		}
 		.top{
-			background: url(../images/topbg.jpg) no-repeat;
+			background: url(../images/xbdsadminbacgroundimage.jpg) no-repeat;
 			width: 100%;
 			padding-top: 120px;
 			text-align: center;
 			background-size:100% ;
-			height:590px;
+			height:520px;
 		}
 		.loginform{
 			margin: -320px auto;
