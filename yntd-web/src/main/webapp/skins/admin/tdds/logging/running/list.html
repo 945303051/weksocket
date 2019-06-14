@@ -1,0 +1,227 @@
+<#assign modulePath="${adminPath}/logging"/>
+<@layout.override name="body">
+<div na-app="myApp" ng-controller="myCtrl">
+
+<div class="row">
+<div class="col-xs-12">
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">所有设备每日运行状态折线图（单位：分钟）</h3>
+	      <div class="box-tools pull-right">
+	        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+	        </button>
+	        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+	      </div>
+    </div>
+    <div class="box-body">
+	    <div echarts-type="line" style="height:100%;">
+		</div>
+   </div>
+  </div>
+  </div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-success">
+			<div class="box-header">
+			  <h3 class="box-title">设备运行状态日志</h3>
+			</div>
+			<div class="box-body">
+				<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+				<div class="row">
+					<div class="col-sm-6" style="margin-bottom:3px">
+						<div class="box-tools">
+							<div class="input-group input-group-sm" style="width: 300px;">
+							  <input type="text" name="table_search" 
+							  class="form-control pull-right" ng-model="value" placeholder="输入内容">
+							  <div class="input-group-btn">
+							    <select class="btn btn-default" ng-model="selected">
+							    	 <option ng-repeat="item in keys" value="{{item.key}}">{{item.value}}</option>
+							    </select>
+							    <button type="button" class="btn btn-default">
+							    	<i class="fa fa-search" ng-click="search()"></i>
+							    </button>
+							    <button type="button" class="btn btn-warning btn-sm search_adv_btn">
+						       	 高级搜索
+						       </button>
+							  </div>
+							</div>
+						</div>
+					</div>
+					<div class="row search_adv_box">
+						<div class="search_adv_row">
+							<div class="search_adv_label">机台类型</div>
+							<div class="search_adv_items">
+								<a href="javascript:;" ng-click="removeFilter('type')" class="${fn.search_adv_item_cur(filters, 'type')}">不限</a>
+								<@sys.optionList groupId='42'; items>
+								<a href="javascript:;" ng-click="updateFilter('type', ${(items.id)!})" class="${fn.search_adv_item_cur(filters, 'type', '${(items.id)!}')}">${(items.name)!}</a>
+								</@sys.optionList>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<table id="example2" class="table table-bordered table-hover dataTable" role="grid">
+				           <thead>
+				            <tr role="row">
+				            	<th class="sorting" rowspan="1" colspan="1">设备名称</th>
+				            	<th class="sorting" rowspan="1" colspan="1">维护信号</th>
+				            	<th class="sorting" rowspan="1" colspan="1">报警代码</th>
+				            	<th class="sorting" rowspan="1" colspan="1">报警信息</th>
+				            	<th class="sorting" rowspan="1" colspan="1">主程序号</th>
+				            	<th class="sorting" rowspan="1" colspan="1">主程序备注</th>
+				            	<th class="sorting" rowspan="1" colspan="1">子程序号</th>
+				            	<th class="sorting" rowspan="1" colspan="1">子程序备注</th>
+				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具号</th>
+				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具Suffix</th>
+				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具类型</th>
+				            	<th class="sorting" rowspan="1" colspan="1">加工计数目標値</th>
+				            	<th class="sorting" rowspan="1" colspan="1">快进倍率：</th>
+				            	<th class="sorting" rowspan="1" colspan="1">主轴倍率</th>
+				            	<th class="sorting" rowspan="1" colspan="1">切削倍率</th>
+				            	<th class="sorting" rowspan="1" colspan="1">主轴模式</th>
+				            	<th class="sorting" rowspan="1" colspan="1">记录时间</th>
+				           	</tr>
+				           </thead>
+							<tbody>
+								<tr role="row" class="odd">
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								</tr>
+								<tr role="row" class="odd">
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								</tr>
+								<tr role="row" class="odd">
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								</tr>
+								<tr role="row" class="odd">
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								</tr>
+								<tr role="row" class="odd">
+								 <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								</tr>
+								<tr role="row" class="odd">
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">Misc</td>
+								  <td class="">NetFront 3.4</td>
+								  <td class="">Embedded devices</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								  <td class="">-</td>
+								  <td class="sorting_1">A</td>
+								</tr>
+							</tbody>
+						</table>
+			        </div>
+			    </div>
+				 <div class="row"> 
+				 	<div class="col-sm-7" style="float:right;text-align: right;">
+				 		<div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+				 			<ul class="pagination" style="margin:0px 0;">
+				 				<li class="paginate_button previous disabled" id="example2_previous">
+				 					<a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">上一页</a>
+			 					</li>
+			 					<li class="paginate_button active">
+			 						<a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a>
+		 						</li>
+		 						<li class="paginate_button ">
+		 							<a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a>
+		 							</li><li class="paginate_button ">
+		 							<a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a>
+		 							</li><li class="paginate_button ">
+		 							<a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li>
+		 							<li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li>
+		 							<li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li>
+		 							<li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">下一页</a></li>
+		 							</ul></div>
+		 							</div>
+ 							</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+</@layout.override>
+<@layout.override name="js">
+<@layout.super/>
+<script src="/themes/admin/logging/runninglist.js"></script>
+</@layout.override>
+<@layout.extends name="../../../_layouts/bootstrap1.html"/>

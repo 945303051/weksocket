@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,12 +55,12 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	
 	private static final String uuid = HashUtils.MD5(LoggingAdminController.class.getName());
 	
-	@RequestMapping(value = "/charts", method = RequestMethod.GET)
-	public String list(@RequestParam(value="id",required=false)Long id,HttpServletRequest request,HttpServletResponse response){
-		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid);
-		Map<String, Object > map = new HashMap<>();
-		map.put("filters", filters);
-		return this.view("/tdds/logging/charts");
+	
+	@RequestMapping(value = "/{type}/list", method = RequestMethod.GET)
+	public String list(@PathVariable String type,Model model,HttpServletRequest request,HttpServletResponse response){
+		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid+type);
+		 model.addAttribute("filters",filters);
+		return this.view("/tdds/logging/"+type+"/list");
 	}
 	
 	@RequestMapping(value = "/pie", method = RequestMethod.GET)
