@@ -1,7 +1,6 @@
 <#assign modulePath="${adminPath}/logging"/>
 <@layout.override name="body">
 <div na-app="myApp" ng-controller="myCtrl">
-
 <div class="row">
 <div class="col-xs-12">
   <div class="box box-info">
@@ -13,10 +12,10 @@
 	        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 	      </div>
     </div>
-    <div class="box-body">
-	    <div echarts-type="line" style="height:100%;">
+	<div class="box-body">
+		<div echarts-type="line" style="height:100%;">
 		</div>
-   </div>
+	</div>
   </div>
   </div>
 </div>
@@ -31,7 +30,7 @@
 				<div class="row">
 					<div class="col-sm-6" style="margin-bottom:3px">
 						<div class="box-tools">
-							<div class="input-group input-group-sm" style="width: 300px;">
+							<div class="input-group input-group-sm" style="width:359px;">
 							  <input type="text" name="table_search" 
 							  class="form-control pull-right" ng-model="value" placeholder="输入内容">
 							  <div class="input-group-btn">
@@ -48,7 +47,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row search_adv_box">
+					<div class="row search_adv_box" style="left:25px;top:80px">
 						<div class="search_adv_row">
 							<div class="search_adv_label">机台类型</div>
 							<div class="search_adv_items">
@@ -62,7 +61,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<table id="example2" class="table table-bordered table-hover dataTable" role="grid">
+						<table id="example2" class="table table-bordered table-hover">
 				           <thead>
 				            <tr role="row">
 				            	<th class="sorting" rowspan="1" colspan="1">设备名称</th>
@@ -77,115 +76,38 @@
 				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具Suffix</th>
 				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具类型</th>
 				            	<th class="sorting" rowspan="1" colspan="1">加工计数目標値</th>
-				            	<th class="sorting" rowspan="1" colspan="1">快进倍率：</th>
+				            	<th class="sorting" rowspan="1" colspan="1">快进倍率</th>
 				            	<th class="sorting" rowspan="1" colspan="1">主轴倍率</th>
 				            	<th class="sorting" rowspan="1" colspan="1">切削倍率</th>
 				            	<th class="sorting" rowspan="1" colspan="1">主轴模式</th>
 				            	<th class="sorting" rowspan="1" colspan="1">记录时间</th>
+				            	<th class="sorting" rowspan="1" colspan="1">操作</th>
 				           	</tr>
 				           </thead>
 							<tbody>
-								<tr role="row" class="odd">
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								</tr>
-								<tr role="row" class="odd">
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								</tr>
-								<tr role="row" class="odd">
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								</tr>
-								<tr role="row" class="odd">
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								</tr>
-								<tr role="row" class="odd">
-								 <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								</tr>
-								<tr role="row" class="odd">
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">Misc</td>
-								  <td class="">NetFront 3.4</td>
-								  <td class="">Embedded devices</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
-								  <td class="">-</td>
-								  <td class="sorting_1">A</td>
+								<tr>
+								  <td>Misc</td>
+								  <td>NetFront 3.4</td>
+								  <td>Embedded devices</td>
+								  <td>-</td>
+								  <td>A</td>
+								  <td>Misc</td>
+								  <td>NetFront 3.4</td>
+								  <td>Embedded devices</td>
+								  <td>-</td>
+								  <td>A</td>
+								  <td>Misc</td>
+								  <td>NetFront 3.4</td>
+								  <td>Embedded devices</td>
+								  <td>-</td>
+								  <td>A</td>
+								  <td>-</td>
+								  <td>A</td>
+								  <td>
+								  	<a class="btn btn-danger btn-xs" title="删除">
+								  		<i class="fa fa-trash" aria-hidden="true"></i>
+								  	</a>
+								  </td>
 								</tr>
 							</tbody>
 						</table>

@@ -25,17 +25,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.tdds.entity.Machine;
+import org.tdds.entity.ManualRecord;
 import org.tdds.entity.MonitoringList;
+import org.tdds.entity.PowerOffRecord;
+import org.tdds.entity.RunningRecord;
+import org.tdds.entity.WaitingRecord;
+import org.tdds.entity.WarningRecord;
 import org.tdds.service.LogRecordService;
 import org.tdds.service.MachineService;
 import org.tdds.service.MonitoringService;
-
-import com.alibaba.druid.sql.dialect.mysql.ast.MysqlForeignKey.On;
+import org.tdds.service.RunningRecordService;
 
 import cn.hxz.webapp.syscore.support.BaseWorkbenchController;
 import cn.hxz.webapp.util.ExcelExportUtils;
 import cn.hxz.webapp.util.echarts.StatusEnum;
 import net.chenke.playweb.QueryFilters;
+import net.chenke.playweb.support.mybatis.Page;
+import net.chenke.playweb.support.mybatis.PageRequest;
 import net.chenke.playweb.util.FiltersUtils;
 import net.chenke.playweb.util.HashUtils;
 
@@ -51,6 +57,9 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	@Autowired
 	private MachineService bizMachine;
 	
+	@Autowired
+	private RunningRecordService bizRunning;
+	
 	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING","MANUAL"};
 	
 	private static final String uuid = HashUtils.MD5(LoggingAdminController.class.getName());
@@ -62,6 +71,33 @@ public class LoggingAdminController extends BaseWorkbenchController{
 		 model.addAttribute("filters",filters);
 		return this.view("/tdds/logging/"+type+"/list");
 	}
+	
+	@RequestMapping(value = "/{type}/data", method = RequestMethod.GET)
+	@ResponseBody
+	public Object data(HttpServletRequest request,HttpServletResponse response,@PathVariable String type){
+		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid+type);
+		PageRequest pageable = FiltersUtils.getPageable(filters);
+		Map<String, Object> map=new HashMap<>();
+		if(type.equalsIgnoreCase(STATUS[0].toLowerCase())){
+			Page<RunningRecord> runningRecords = bizRunning.findAllRecords(filters,pageable);
+			map.put("runningRecords",runningRecords);
+		}/*else if(type.equalsIgnoreCase(STATUS[1].toLowerCase())){
+			Page<PowerOffRecord> powerOffRecords = new ArrayList<>();
+			map.put("powerOffRecords",powerOffRecords);
+		}else if(type.equalsIgnoreCase(STATUS[2].toLowerCase())){
+			Page<WarningRecord> warningRecords = new ArrayList<>();
+			map.put("warningRecords",warningRecords);
+		}else if(type.equalsIgnoreCase(STATUS[3].toLowerCase())){
+			Page<WaitingRecord> waitingRecords = new ArrayList<>();
+			map.put("waitingRecords",waitingRecords);
+		}else{
+			Page<ManualRecord> manualRecords = new ArrayList<>();
+			map.put("manualRecords",manualRecords);
+		}
+		*/
+		return map;
+	}
+	
 	
 	@RequestMapping(value = "/pie", method = RequestMethod.GET)
 	@ResponseBody

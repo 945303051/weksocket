@@ -113,16 +113,16 @@ $(function() {
 	$(".search_adv_btn:first").hover(function() {
 		btnSearchAdv = $(".search_adv_btn");
 		btnSearchAdv.removeClass("btn-warning").addClass("btn-success");
-		offsetTop = btnSearchAdv.offset().top + btnSearchAdv.outerHeight(true);
+		/*offsetTop = btnSearchAdv.offset().top + btnSearchAdv.outerHeight(true);
 		$(".search_adv_box").offset({
 			'top' : 80
-		});
-		$(".search_adv_box").show();
+		});*/
+		$(".search_adv_box").fadeIn();
 	}, function() {
 	});
 	$(".search_adv_box:first").hover(function() {}, function() {
 		$(".search_adv_btn").removeClass("btn-success").addClass("btn-warning");
-		$(".search_adv_box").hide();
+		$(".search_adv_box").fadeOut();
 	});
 });
 
