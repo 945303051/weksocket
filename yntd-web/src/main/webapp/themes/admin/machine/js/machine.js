@@ -3,7 +3,7 @@ app.controller('myCtrl', function($scope,$http,$interval) {
 var uuid=$("#uuid").val();
 		$http({
 				method: 'GET',
-				url:"/admin/machine/data.json",
+				url:"/admin/machine/running/data.json",
 				cache:false,
 				async:false
 			}).then(function(res){

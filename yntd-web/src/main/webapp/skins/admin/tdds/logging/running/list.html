@@ -73,7 +73,6 @@
 				            	<th class="sorting" rowspan="1" colspan="1">子程序号</th>
 				            	<th class="sorting" rowspan="1" colspan="1">子程序备注</th>
 				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具号</th>
-				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具Suffix</th>
 				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具类型</th>
 				            	<th class="sorting" rowspan="1" colspan="1">加工计数目標値</th>
 				            	<th class="sorting" rowspan="1" colspan="1">加工计数实际値</th>
@@ -86,24 +85,24 @@
 				           	</tr>
 				           </thead>
 							<tbody>
-								<tr>
-								  <td>Misc</td>
-								  <td>NetFront 3.4</td>
-								  <td>Embedded devices</td>
-								  <td>-</td>
-								  <td>A</td>
-								  <td>Misc</td>
-								  <td>NetFront 3.4</td>
-								  <td>Embedded devices</td>
-								  <td>-</td>
-								  <td>A</td>
-								  <td>Misc</td>
-								  <td>NetFront 3.4</td>
-								  <td>Embedded devices</td>
-								  <td>-</td>
-								  <td>A</td>
-								  <td>-</td>
-								  <td>A</td>
+								<tr ng-repeat="item in items">
+								  <td>{{item.name}}</td>
+								  <td>{{item.machineMode}}</td>
+								  <td>{{item.alarmNo}}</td>
+								  <td>{{item.alarmMessage}}</td>
+								  <td>{{item.mainProgramNo}}</td>
+								  <td>{{item.mainProgramComment}}</td>
+								  <td>{{item.subProgramNo}}</td>
+								  <td>{{item.subProgramComment}}</td>
+								  <td>{{item.toolNo}}</td>
+								  <td>{{item.toolName}}</td>
+								  <td>{{item.partsCountTarget}}</td>
+								  <td>{{item.partsCountResult}}</td>
+								  <td>{{item.overrideRapid}}</td>
+								  <td>{{item.overrideSpindle}}</td>
+								  <td>{{item.overrideFeed}}</td>
+								  <td>{{item.spindleMode}}</td>
+								  <td>{{item.recordTime}}</td>
 								  <td>
 								  	<a class="btn btn-danger btn-xs" title="删除">
 								  		<i class="fa fa-trash" aria-hidden="true"></i>
