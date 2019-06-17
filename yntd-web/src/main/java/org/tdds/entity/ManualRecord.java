@@ -12,6 +12,7 @@ public class ManualRecord {
 	@Column(name = "id")
 	private Long id;
 	
+	@Column(name = "machine_name")
 	private String machineName;
 	
 	@Column(name = "machine_id")

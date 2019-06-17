@@ -55,6 +55,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 		if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[0])){
 			RunningRecord rr = new RunningRecord();
 				rr.setMachineId(mid);
+				rr.setMachineName(ml.getMachineName());
 				rr.setAlarmMessage(ml.getAlarmMessage());
 				rr.setAlarmNo(ml.getAlarmNo());
 				rr.setMachineMode(ml.getMachineMode());
@@ -72,6 +73,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[1])){
 			PowerOffRecord pr= new PowerOffRecord();
 				pr.setMachineId(mid);
+				pr.setMachineName(ml.getMachineName());
 				pr.setAlarmMessage(ml.getAlarmMessage());
 				pr.setAlarmNo(ml.getAlarmNo());
 				pr.setMachineMode(ml.getMachineMode());
@@ -89,6 +91,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[2])) {
 			WarningRecord warningRecord = new WarningRecord();
 				warningRecord.setMachineId(mid);
+				warningRecord.setMachineName(ml.getMachineName());
 				warningRecord.setAlarmMessage(ml.getAlarmMessage());
 				warningRecord.setAlarmNo(ml.getAlarmNo());
 				warningRecord.setMachineMode(ml.getMachineMode());
@@ -106,6 +109,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[3])){
 			WaitingRecord wRecord = new WaitingRecord();
 			wRecord.setMachineId(mid);
+			wRecord.setMachineName(ml.getMachineName());
 			wRecord.setAlarmMessage(ml.getAlarmMessage());
 			wRecord.setAlarmNo(ml.getAlarmNo());
 			wRecord.setMachineMode(ml.getMachineMode());
@@ -123,6 +127,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[4])){
 			ManualRecord mr = new ManualRecord();
 				mr.setMachineId(mid);
+				mr.setMachineName(ml.getMachineName());
 				mr.setAlarmMessage(ml.getAlarmMessage());
 				mr.setAlarmNo(ml.getAlarmNo());
 				mr.setMachineMode(ml.getMachineMode());

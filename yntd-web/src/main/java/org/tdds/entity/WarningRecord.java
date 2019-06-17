@@ -16,6 +16,7 @@ public class WarningRecord {
 	@Column(name = "machine_id")
 	private Long machineId;
 	
+	@Column(name = "machine_name")
 	private String machineName;
 
 	@Column(name = "machine_mode")
