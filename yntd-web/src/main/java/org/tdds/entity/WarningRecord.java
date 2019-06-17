@@ -1,5 +1,7 @@
 package org.tdds.entity;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Table;
 
@@ -15,6 +17,9 @@ public class WarningRecord {
 	
 	@Column(name = "machine_id")
 	private Long machineId;
+	
+	@Column(name = "record_time")
+	private Timestamp  recordTime;
 	
 	@Column(name = "machine_name")
 	private String machineName;
@@ -262,5 +267,13 @@ public class WarningRecord {
 
 	public void setMachineName(String machineName) {
 		this.machineName = machineName;
+	}
+
+	public Timestamp getRecordTime() {
+		return recordTime;
+	}
+
+	public void setRecordTime(Timestamp recordTime) {
+		this.recordTime = recordTime;
 	}
 }
