@@ -19,7 +19,8 @@ var myPies = new MyPies();
 
 setInterval(function(){
 	var now = new Date();
-	var date = now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate()+"星期"+now.getDay();
+	var weekArray  =  new Array("日", "一", "二", "三", "四", "五", "六");
+	var date = now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate()+"星期"+weekArray[now.getDay()];
 	var time = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
 	$("#date").text(date);
 	$("#time").text(time);
