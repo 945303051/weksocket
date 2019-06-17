@@ -33,8 +33,12 @@ import org.tdds.entity.WaitingRecord;
 import org.tdds.entity.WarningRecord;
 import org.tdds.service.LogRecordService;
 import org.tdds.service.MachineService;
+import org.tdds.service.ManualRecordService;
 import org.tdds.service.MonitoringService;
+import org.tdds.service.PowerOffRecordService;
 import org.tdds.service.RunningRecordService;
+import org.tdds.service.WaitingRecordService;
+import org.tdds.service.WarningRecordService;
 
 import cn.hxz.webapp.syscore.support.BaseWorkbenchController;
 import cn.hxz.webapp.util.ExcelExportUtils;
@@ -60,6 +64,18 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	@Autowired
 	private RunningRecordService bizRunning;
 	
+	@Autowired
+	private PowerOffRecordService bizPowerOff;
+	
+	@Autowired
+	private WarningRecordService bizWarning;
+	
+	@Autowired
+	private WaitingRecordService bizWaiting;
+	
+	@Autowired
+	private ManualRecordService bizManual;
+	
 	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING","MANUAL"};
 	
 	private static final String uuid = HashUtils.MD5(LoggingAdminController.class.getName());
@@ -81,23 +97,21 @@ public class LoggingAdminController extends BaseWorkbenchController{
 		if(type.equalsIgnoreCase(STATUS[0].toLowerCase())){
 			Page<RunningRecord> runningRecords = bizRunning.findAllRecords(filters,pageable);
 			map.put("runningRecords",runningRecords);
-		}/*else if(type.equalsIgnoreCase(STATUS[1].toLowerCase())){
-			Page<PowerOffRecord> powerOffRecords = new ArrayList<>();
+		}else if(type.equalsIgnoreCase(STATUS[1].toLowerCase())){
+			Page<PowerOffRecord> powerOffRecords = bizPowerOff.findAllRecords(filters,pageable);
 			map.put("powerOffRecords",powerOffRecords);
 		}else if(type.equalsIgnoreCase(STATUS[2].toLowerCase())){
-			Page<WarningRecord> warningRecords = new ArrayList<>();
+			Page<WarningRecord> warningRecords = bizWarning.findAllRecords(filters,pageable);
 			map.put("warningRecords",warningRecords);
 		}else if(type.equalsIgnoreCase(STATUS[3].toLowerCase())){
-			Page<WaitingRecord> waitingRecords = new ArrayList<>();
+			Page<WaitingRecord> waitingRecords = bizWaiting.findAllRecords(filters,pageable);
 			map.put("waitingRecords",waitingRecords);
 		}else{
-			Page<ManualRecord> manualRecords = new ArrayList<>();
+			Page<ManualRecord> manualRecords = bizManual.findAllRecords(filters,pageable);
 			map.put("manualRecords",manualRecords);
 		}
-		*/
 		return map;
 	}
-	
 	
 	@RequestMapping(value = "/pie", method = RequestMethod.GET)
 	@ResponseBody
@@ -191,7 +205,6 @@ public class LoggingAdminController extends BaseWorkbenchController{
 		return days;
 	}
 	
-	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/exportdata", method = RequestMethod.POST)
 	public void exportData(Model model,HttpServletRequest request,HttpServletResponse response,
 			@RequestParam(value = "machineId") Long machineId,

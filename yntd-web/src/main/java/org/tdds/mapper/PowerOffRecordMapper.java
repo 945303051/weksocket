@@ -20,4 +20,5 @@ public interface PowerOffRecordMapper extends DynaMapper<PowerOffRecord>{
 	Double findGaugeData(@Param(value="id")Long id);
 
 	Double findMemberLineData(@Param(value="date")String date);
+
 }

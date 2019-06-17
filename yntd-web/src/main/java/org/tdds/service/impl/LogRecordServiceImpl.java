@@ -50,30 +50,94 @@ public class LogRecordServiceImpl implements LogRecordService {
 	@Autowired
 	private MachineService bizMachine;
  
-	public int insert(MonitoringList ml) {
+	public void insert(MonitoringList ml) {
 		Long mid = getMachineIdByName(ml.getMachineName());
 		if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[0])){
 			RunningRecord rr = new RunningRecord();
-			rr.setMachineId(mid);
+				rr.setMachineId(mid);
+				rr.setAlarmMessage(ml.getAlarmMessage());
+				rr.setAlarmNo(ml.getAlarmNo());
+				rr.setMachineMode(ml.getMachineMode());
+				rr.setMachineStatus(ml.getMachineStatus());
+				rr.setMachiningTimeProgress(ml.getMachiningTimeProgress());
+				rr.setMainProgramNo(ml.getMainprogramNo());
+				rr.setMaintenanceSignal(ml.getMaintenanceSignal());
+				rr.setOverrideFeed(ml.getOverrideFeed());
+				rr.setOverrideRapid(ml.getOverrideRapid());
+				rr.setOverrideSpindle(ml.getOverrideSpindle());
+				rr.setPartsCountResult(ml.getPartscountResult());
+				rr.setPartsCountTarget(ml.getPartscountTarget());
+				rr.setSpindleMode(ml.getSpindleMode());
 			bizRunning.insert(rr);
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[1])){
 			PowerOffRecord pr= new PowerOffRecord();
-			pr.setMachineId(mid);
+				pr.setMachineId(mid);
+				pr.setAlarmMessage(ml.getAlarmMessage());
+				pr.setAlarmNo(ml.getAlarmNo());
+				pr.setMachineMode(ml.getMachineMode());
+				pr.setMachineStatus(ml.getMachineStatus());
+				pr.setMachiningTimeProgress(ml.getMachiningTimeProgress());
+				pr.setMainProgramNo(ml.getMainprogramNo());
+				pr.setMaintenanceSignal(ml.getMaintenanceSignal());
+				pr.setOverrideFeed(ml.getOverrideFeed());
+				pr.setOverrideRapid(ml.getOverrideRapid());
+				pr.setOverrideSpindle(ml.getOverrideSpindle());
+				pr.setPartsCountResult(ml.getPartscountResult());
+				pr.setPartsCountTarget(ml.getPartscountTarget());
+				pr.setSpindleMode(ml.getSpindleMode());
 			bizPowerOff.insert(pr);
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[2])) {
 			WarningRecord warningRecord = new WarningRecord();
-			warningRecord.setMachineId(mid);
+				warningRecord.setMachineId(mid);
+				warningRecord.setAlarmMessage(ml.getAlarmMessage());
+				warningRecord.setAlarmNo(ml.getAlarmNo());
+				warningRecord.setMachineMode(ml.getMachineMode());
+				warningRecord.setMachineStatus(ml.getMachineStatus());
+				warningRecord.setMachiningTimeProgress(ml.getMachiningTimeProgress());
+				warningRecord.setMainProgramNo(ml.getMainprogramNo());
+				warningRecord.setMaintenanceSignal(ml.getMaintenanceSignal());
+				warningRecord.setOverrideFeed(ml.getOverrideFeed());
+				warningRecord.setOverrideRapid(ml.getOverrideRapid());
+				warningRecord.setOverrideSpindle(ml.getOverrideSpindle());
+				warningRecord.setPartsCountResult(ml.getPartscountResult());
+				warningRecord.setPartsCountTarget(ml.getPartscountTarget());
+				warningRecord.setSpindleMode(ml.getSpindleMode());
 			bizWarning.insert(warningRecord);
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[3])){
 			WaitingRecord wRecord = new WaitingRecord();
 			wRecord.setMachineId(mid);
+			wRecord.setAlarmMessage(ml.getAlarmMessage());
+			wRecord.setAlarmNo(ml.getAlarmNo());
+			wRecord.setMachineMode(ml.getMachineMode());
+			wRecord.setMachineStatus(ml.getMachineStatus());
+			wRecord.setMachiningTimeProgress(ml.getMachiningTimeProgress());
+			wRecord.setMainProgramNo(ml.getMainprogramNo());
+			wRecord.setMaintenanceSignal(ml.getMaintenanceSignal());
+			wRecord.setOverrideFeed(ml.getOverrideFeed());
+			wRecord.setOverrideRapid(ml.getOverrideRapid());
+			wRecord.setOverrideSpindle(ml.getOverrideSpindle());
+			wRecord.setPartsCountResult(ml.getPartscountResult());
+			wRecord.setPartsCountTarget(ml.getPartscountTarget());
+			wRecord.setSpindleMode(ml.getSpindleMode());
 			bizWaiting.insert(wRecord);
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[4])){
 			ManualRecord mr = new ManualRecord();
-			mr.setMachineId(mid);
+				mr.setMachineId(mid);
+				mr.setAlarmMessage(ml.getAlarmMessage());
+				mr.setAlarmNo(ml.getAlarmNo());
+				mr.setMachineMode(ml.getMachineMode());
+				mr.setMachineStatus(ml.getMachineStatus());
+				mr.setMachiningTimeProgress(ml.getMachiningTimeProgress());
+				mr.setMainProgramNo(ml.getMainprogramNo());
+				mr.setMaintenanceSignal(ml.getMaintenanceSignal());
+				mr.setOverrideFeed(ml.getOverrideFeed());
+				mr.setOverrideRapid(ml.getOverrideRapid());
+				mr.setOverrideSpindle(ml.getOverrideSpindle());
+				mr.setPartsCountResult(ml.getPartscountResult());
+				mr.setPartsCountTarget(ml.getPartscountTarget());
 			bizManualRecord.insert(mr);
 		}
-			return 0;
+		 
 	}
 	
 	private Long getMachineIdByName(String machineName){

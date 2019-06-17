@@ -52,7 +52,6 @@ public class MachineController extends BasePortalController {
 
 	List<Map<String, Object>> statuslist = new ArrayList<>();
 
-	@SuppressWarnings("unused")
 	@RequestMapping(value = "datalist", method = RequestMethod.GET)
 	public Object loging(HttpServletRequest request, HttpServletResponse res) {
 		Boolean success = true;
@@ -153,24 +152,7 @@ public class MachineController extends BasePortalController {
 		}
 		return list;
 	}
-
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = "bar", method = RequestMethod.GET) public Object
-	 * bar(HttpServletRequest request, HttpServletResponse res) {
-	 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); String time =
-	 * sdf.format(new Date()); List<String> days = getMonthDate(time);
-	 * EchartsCreater.BAR_XAXIS_DATA.clear();
-	 * EchartsCreater.BAR_SERIES_DATA.clear(); for (String date: days) {
-	 * EchartsCreater.BAR_XAXIS_DATA.add(date); Map<String, Object> entity = new
-	 * HashMap<>(); Map<String, Object> statusMap = new HashMap<>(); for (String
-	 * str : STATUS) { statusMap = bizLogRecord.selectData(date, str);
-	 * entity.put(str, statusMap.get("num")); }
-	 * EchartsCreater.BAR_SERIES_DATA.add(entity); } Map<String, Object> map =
-	 * new HashMap<>(); map.put("success", true); map.put("resault",
-	 * EchartsCreater.buildBar()); return map; }
-	 */
+	 
 	/**
 	 * 
 	 * 设备运行排名

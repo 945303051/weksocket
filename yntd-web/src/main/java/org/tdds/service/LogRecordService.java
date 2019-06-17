@@ -9,7 +9,7 @@ import org.tdds.entity.MonitoringList;
 
 public interface LogRecordService {
 
-	int insert(MonitoringList lr);
+	void insert(MonitoringList lr);
 	 
 	/**
 	 * 查询时间轴数据

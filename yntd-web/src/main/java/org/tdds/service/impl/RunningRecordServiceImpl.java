@@ -9,7 +9,6 @@ import org.tdds.entity.RunningRecord;
 import org.tdds.mapper.RunningRecordMapper;
 import org.tdds.service.RunningRecordService;
 
-import cn.hxz.webapp.syscore.support.BaseWorkbenchController;
 import net.chenke.playweb.QueryFilters;
 import net.chenke.playweb.support.mybatis.Page;
 import net.chenke.playweb.support.mybatis.PageImpl;
@@ -18,8 +17,8 @@ import tk.mybatis.mapper.entity.Example;
 
 @Service
 public class RunningRecordServiceImpl implements RunningRecordService {
-	private static final String ORDER_BY="record_time desc";
 	
+	private  static final String ORDER_BY="id desc";
 
 	@Autowired
 	private RunningRecordMapper runningRecordDao;

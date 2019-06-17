@@ -14,9 +14,6 @@ public class ManualRecord {
 	
 	@Column(name = "machine_id")
 	private Long machineId;
-
-	@Column(name = "machine_signal")
-	private String machineSignal;
 	
 	@Column(name = "machine_mode")
 	private String machineMode;
@@ -33,22 +30,19 @@ public class ManualRecord {
 	@Column(name = "alarm_textColor")
 	private String alarmTextColor;
 	
-	@Column(name = "alarm_backgroundColor")
-	private String alarmBackgroundColor;
-	
 	@Column(name = "maintenance_signal")
 	private String maintenanceSignal;
 	
 	@Column(name = "mainProgram_no")
 	private String mainProgramNo;
 	
-	@Column(name = "mainProgramComment")
+	@Column(name = "mainProgram_comment")
 	private String mainProgramComment;
 	
 	@Column(name = "subProgram_no")
 	private String subProgramNo;
 	
-	@Column(name = "subProgramComment")
+	@Column(name = "subProgram_comment")
 	private String subProgramComment;
 	
 	@Column(name = "tool_no")
@@ -62,24 +56,6 @@ public class ManualRecord {
 	
 	@Column(name = "tool_part")
 	private String toolPart;
-	
-	@Column(name = "tool_partBackgroundColor")
-	private String toolPartBackgroundColor;
-	
-	@Column(name = "tool2_no")
-	private String tool2No;
-	
-	@Column(name = "tool2_suffix")
-	private String tool2Suffix;
-	
-	@Column(name = "tool2_name")
-	private String tool2Name;
-	
-	@Column(name = "tool2_part")
-	private String tool2Part;
-	
-	@Column(name = "tool2_partBackgroundColor")
-	private String tool2PartBackgroundColor;
 	
 	@Column(name = "partsCount_target")
 	private String partsCountTarget;
@@ -116,14 +92,6 @@ public class ManualRecord {
 
 	public void setMachineId(Long machineId) {
 		this.machineId = machineId;
-	}
-
-	public String getMachineSignal() {
-		return machineSignal;
-	}
-
-	public void setMachineSignal(String machineSignal) {
-		this.machineSignal = machineSignal;
 	}
 
 	public String getMachineMode() {
@@ -164,14 +132,6 @@ public class ManualRecord {
 
 	public void setAlarmTextColor(String alarmTextColor) {
 		this.alarmTextColor = alarmTextColor;
-	}
-
-	public String getAlarmBackgroundColor() {
-		return alarmBackgroundColor;
-	}
-
-	public void setAlarmBackgroundColor(String alarmBackgroundColor) {
-		this.alarmBackgroundColor = alarmBackgroundColor;
 	}
 
 	public String getMaintenanceSignal() {
@@ -244,54 +204,6 @@ public class ManualRecord {
 
 	public void setToolPart(String toolPart) {
 		this.toolPart = toolPart;
-	}
-
-	public String getToolPartBackgroundColor() {
-		return toolPartBackgroundColor;
-	}
-
-	public void setToolPartBackgroundColor(String toolPartBackgroundColor) {
-		this.toolPartBackgroundColor = toolPartBackgroundColor;
-	}
-
-	public String getTool2No() {
-		return tool2No;
-	}
-
-	public void setTool2No(String tool2No) {
-		this.tool2No = tool2No;
-	}
-
-	public String getTool2Suffix() {
-		return tool2Suffix;
-	}
-
-	public void setTool2Suffix(String tool2Suffix) {
-		this.tool2Suffix = tool2Suffix;
-	}
-
-	public String getTool2Name() {
-		return tool2Name;
-	}
-
-	public void setTool2Name(String tool2Name) {
-		this.tool2Name = tool2Name;
-	}
-
-	public String getTool2Part() {
-		return tool2Part;
-	}
-
-	public void setTool2Part(String tool2Part) {
-		this.tool2Part = tool2Part;
-	}
-
-	public String getTool2PartBackgroundColor() {
-		return tool2PartBackgroundColor;
-	}
-
-	public void setTool2PartBackgroundColor(String tool2PartBackgroundColor) {
-		this.tool2PartBackgroundColor = tool2PartBackgroundColor;
 	}
 
 	public String getPartsCountTarget() {
