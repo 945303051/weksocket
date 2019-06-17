@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 import cn.hxz.webapp.support.UploadException;
 import cn.hxz.webapp.syscore.entity.Site;
 import cn.hxz.webapp.syscore.support.BaseWorkbenchController;
-import sun.tools.tree.ThisExpression;
 
 public class AjaxFileUploadUtil extends BaseWorkbenchController {
 
