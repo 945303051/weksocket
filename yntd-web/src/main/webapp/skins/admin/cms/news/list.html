@@ -196,7 +196,7 @@ $(function(){
 		pageCount : ${(entities.totalPages)!},
 		current : ${(entities.number)!},
 		backFn : function(to){
-			Fw.updateFilter('${filters.uuid!}', 'page', to);
+			Fw.updateFilter($("#uuid").val(), 'page', to);
 		}
 	})
 });

@@ -1,5 +1,6 @@
 package org.tdds.service.impl;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +57,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 			RunningRecord rr = new RunningRecord();
 				rr.setMachineId(mid);
 				rr.setMachineName(ml.getMachineName());
+				rr.setRecordTime(new Date());
 				rr.setAlarmMessage(ml.getAlarmMessage());
 				rr.setAlarmNo(ml.getAlarmNo());
 				rr.setMachineMode(ml.getMachineMode());

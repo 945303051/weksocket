@@ -1,6 +1,6 @@
 package org.tdds.entity;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
@@ -18,7 +18,7 @@ public class ManualRecord {
 	private String machineName;
 	
 	@Column(name = "record_time")
-	private Timestamp  recordTime;
+	private Date  recordTime;
 	
 	@Column(name = "machine_id")
 	private Long machineId;
@@ -278,11 +278,11 @@ public class ManualRecord {
 		this.machineName = machineName;
 	}
 
-	public Timestamp getRecordTime() {
+	public Date getRecordTime() {
 		return recordTime;
 	}
 
-	public void setRecordTime(Timestamp recordTime) {
+	public void setRecordTime(Date recordTime) {
 		this.recordTime = recordTime;
 	}
 }

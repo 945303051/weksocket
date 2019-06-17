@@ -1,5 +1,6 @@
 <#assign modulePath="${adminPath}/logging"/>
 <@layout.override name="body">
+<input type="hidden" id="uuid" ng-model="uuid" value="${(filters.uuid)!}">
 <div ng-app="myApp" ng-controller="myCtrl">
 <div class="row">
 <div class="col-xs-12">
@@ -66,15 +67,15 @@
 				            <tr role="row">
 				            	<th class="sorting" rowspan="1" colspan="1">设备名称</th>
 				            	<th class="sorting" rowspan="1" colspan="1">维护信号</th>
-				            	<th class="sorting" rowspan="1" colspan="1">报警代码</th>
+				            	<!-- <th class="sorting" rowspan="1" colspan="1">报警代码</th>
 				            	<th class="sorting" rowspan="1" colspan="1">报警信息</th>
 				            	<th class="sorting" rowspan="1" colspan="1">主程序号</th>
 				            	<th class="sorting" rowspan="1" colspan="1">主程序备注</th>
 				            	<th class="sorting" rowspan="1" colspan="1">子程序号</th>
 				            	<th class="sorting" rowspan="1" colspan="1">子程序备注</th>
 				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具号</th>
-				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具类型</th>
-				            	<th class="sorting" rowspan="1" colspan="1">加工计数目標値</th>
+				            	<th class="sorting" rowspan="1" colspan="1">主軸刀具类型</th> -->
+				            	<th class="sorting" rowspan="1" colspan="1">加工计数目标値</th>
 				            	<th class="sorting" rowspan="1" colspan="1">加工计数实际値</th>
 				            	<th class="sorting" rowspan="1" colspan="1">快进倍率</th>
 				            	<th class="sorting" rowspan="1" colspan="1">主轴倍率</th>
@@ -86,23 +87,23 @@
 				           </thead>
 							<tbody>
 								<tr ng-repeat="item in items">
-								  <td>{{item.name}}</td>
+								  <td>{{item.machineName}}</td>
 								  <td>{{item.machineMode}}</td>
-								  <td>{{item.alarmNo}}</td>
+								 <!--  <td>{{item.alarmNo}}</td>
 								  <td>{{item.alarmMessage}}</td>
 								  <td>{{item.mainProgramNo}}</td>
 								  <td>{{item.mainProgramComment}}</td>
 								  <td>{{item.subProgramNo}}</td>
 								  <td>{{item.subProgramComment}}</td>
 								  <td>{{item.toolNo}}</td>
-								  <td>{{item.toolName}}</td>
+								  <td>{{item.toolName}}</td> -->
 								  <td>{{item.partsCountTarget}}</td>
 								  <td>{{item.partsCountResult}}</td>
 								  <td>{{item.overrideRapid}}</td>
 								  <td>{{item.overrideSpindle}}</td>
 								  <td>{{item.overrideFeed}}</td>
 								  <td>{{item.spindleMode}}</td>
-								  <td>{{item.recordTime}}</td>
+								  <td>{{item.recordTime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
 								  <td>
 								  	<a class="btn btn-danger btn-xs" title="删除">
 								  		<i class="fa fa-trash" aria-hidden="true"></i>
@@ -115,32 +116,16 @@
 			    </div>
 				 <div class="row"> 
 				 	<div class="col-sm-7" style="float:right;text-align: right;">
-				 		<div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-				 			<ul class="pagination" style="margin:0px 0;">
-				 				<li class="paginate_button previous disabled" id="example2_previous">
-				 					<a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">上一页</a>
-			 					</li>
-			 					<li class="paginate_button active">
-			 						<a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a>
-		 						</li>
-		 						<li class="paginate_button ">
-		 							<a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a>
-		 							</li><li class="paginate_button ">
-		 							<a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a>
-		 							</li><li class="paginate_button ">
-		 							<a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li>
-		 							<li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li>
-		 							<li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li>
-		 							<li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">下一页</a></li>
-		 							</ul></div>
-		 							</div>
- 							</div>
+		 				<div class="pull-right tcdPageCode"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	</div>
 </div>
 </div>
+ 
 </@layout.override>
 <@layout.override name="js">
 <@layout.super/>

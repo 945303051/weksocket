@@ -1,5 +1,6 @@
 package org.tdds.controller.admin;
 
+import java.io.Console;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
@@ -84,7 +85,9 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	@RequestMapping(value = "/{type}/list", method = RequestMethod.GET)
 	public String list(@PathVariable String type,Model model,HttpServletRequest request,HttpServletResponse response){
 		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid+type);
-		 model.addAttribute("filters",filters);
+		PageRequest pageable = FiltersUtils.getPageable(filters);
+		System.out.println(pageable.getPageNumber());
+		model.addAttribute("filters",filters);
 		return this.view("/tdds/logging/"+type+"/list");
 	}
 	
@@ -110,6 +113,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 			Page<ManualRecord> manualRecords = bizManual.findAllRecords(filters,pageable);
 			map.put("manualRecords",manualRecords);
 		}
+			map.put("number",pageable.getPageNumber());
 		return map;
 	}
 	
