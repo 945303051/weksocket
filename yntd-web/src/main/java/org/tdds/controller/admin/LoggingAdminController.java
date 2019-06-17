@@ -1,6 +1,5 @@
 package org.tdds.controller.admin;
 
-import java.io.Console;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
@@ -17,6 +16,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -115,6 +115,21 @@ public class LoggingAdminController extends BaseWorkbenchController{
 		}
 			map.put("number",pageable.getPageNumber());
 		return map;
+	}
+	
+	
+	@RequestMapping(value = "/{type}/selectTimeDifferenceData", method = RequestMethod.POST)
+	public String selectTimeDifferenceData(HttpServletRequest request,
+			HttpServletResponse response,@PathVariable String type,
+			@RequestParam(value="startTime",required=true)String startTime,
+			@RequestParam(value="endTime",required=true)String endTime){
+		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid+type);
+		if(StringUtils.isNotBlank(startTime)&& StringUtils.isNotBlank(endTime)){
+			 String recordTime=startTime+"&"+endTime;
+			 filters.put("recordTime", recordTime);
+			 filters.put("timeDifference", true);
+		}
+		return this.redirect("/logging/"+type+"/list");
 	}
 	
 	@RequestMapping(value = "/pie", method = RequestMethod.GET)

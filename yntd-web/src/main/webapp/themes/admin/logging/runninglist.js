@@ -26,4 +26,16 @@ function pagination(totalElements,totalPages,number){
 		}
 	})
 };
+
+$scope.chosenTime=function(){
+	layer.open({
+		type: 1,
+		title:"数据导出",
+		offset : [ '200px', '' ],
+		border : [ 10, 0.3, '#000', true ],
+		area : [ '550px', '180px' ],
+		content: $("#chosenTime")
+	})
+}
+
 })

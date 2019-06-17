@@ -90,9 +90,9 @@ var uuid=$("#uuid").val();
 				offset : [ '200px', '' ],
 				border : [ 10, 0.3, '#000', true ],
 				area : [ '550px', '210px' ],
-				content: $("#exportLogging"),
+				content: $("#chosenTime"),
 				success:function(){
-					$scope.machineId=id;
+					 
 				}
 			})
 			/*$scope.exportData(id);*/
