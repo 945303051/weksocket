@@ -15,6 +15,8 @@ public class WarningRecord {
 	
 	@Column(name = "machine_id")
 	private Long machineId;
+	
+	private String machineName;
 
 	@Column(name = "machine_mode")
 	private String machineMode;
@@ -27,9 +29,6 @@ public class WarningRecord {
 	 
 	@Column(name = "alarm_message")
 	private String alarmMessage;
-	
-	@Column(name = "alarm_textColor")
-	private String alarmTextColor;
 	
 	@Column(name = "maintenance_signal")
 	private String maintenanceSignal;
@@ -255,5 +254,12 @@ public class WarningRecord {
 	public void setSpindleMode(String spindleMode) {
 		this.spindleMode = spindleMode;
 	}
-	
+
+	public String getMachineName() {
+		return machineName;
+	}
+
+	public void setMachineName(String machineName) {
+		this.machineName = machineName;
+	}
 }

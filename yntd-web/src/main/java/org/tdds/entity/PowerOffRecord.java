@@ -13,6 +13,8 @@ public class PowerOffRecord {
 	@Column(name = "id")
 	private Long id;
 	
+	private String machineName;
+	
 	@Column(name = "machine_id")
 	private Long machineId;
 
@@ -27,9 +29,6 @@ public class PowerOffRecord {
 	 
 	@Column(name = "alarm_message")
 	private String alarmMessage;
-	
-	@Column(name = "alarm_textColor")
-	private String alarmTextColor;
 	
 	@Column(name = "maintenance_signal")
 	private String maintenanceSignal;
@@ -253,6 +252,14 @@ public class PowerOffRecord {
 
 	public void setSpindleMode(String spindleMode) {
 		this.spindleMode = spindleMode;
+	}
+
+	public String getMachineName() {
+		return machineName;
+	}
+
+	public void setMachineName(String machineName) {
+		this.machineName = machineName;
 	}
 	
 }

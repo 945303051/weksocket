@@ -12,6 +12,8 @@ public class ManualRecord {
 	@Column(name = "id")
 	private Long id;
 	
+	private String machineName;
+	
 	@Column(name = "machine_id")
 	private Long machineId;
 	
@@ -261,6 +263,13 @@ public class ManualRecord {
 	public void setSpindleMode(String spindleMode) {
 		this.spindleMode = spindleMode;
 	}
-	
+
+	public String getMachineName() {
+		return machineName;
+	}
+
+	public void setMachineName(String machineName) {
+		this.machineName = machineName;
+	}
 	
 }
