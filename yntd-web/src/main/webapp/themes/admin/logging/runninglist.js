@@ -38,4 +38,46 @@ $scope.chosenTime=function(){
 	})
 }
 
+$scope.keys=[{key:"name",value:"名称"}]
+
+$scope.search=function(){
+	var val= $scope.value;
+	var key= $scope.selected;
+	if(typeof val=="undefined"){
+		layer.msg("请输入需要查询的内容");
+		$scope.removeFilter(key);
+		return;
+	}else{
+		$scope.updateFilter(key,val);
+	}
+}
+
+$scope.createRecordTime=function(){
+	var startTime=$("#startTime").val();
+	var endTime=$("#endTime").val();
+	console.info(startTime);
+	if(startTime==""){
+		layer.msg("请选择开始时间！");
+		return;
+	}else if(endTime==""){
+		layer.msg("请选择结束时间！");
+		return;
+	}
+	var recordTime=startTime+"&"+endTime;
+	$scope.updateFilter("recordTime",recordTime);
+	
+}
+
+$scope.updateFilter=function(key,val){
+	Fw.updateFilter($("#uuid").val(),key,val);
+}
+
+$scope.removeFilter=function(key){
+	Fw.removeFilter($("#uuid").val(),key);
+}
+
+$scope.exportData=function(){
+	window.location.href="/admin/logging/running/exportdata";
+}
+
 })

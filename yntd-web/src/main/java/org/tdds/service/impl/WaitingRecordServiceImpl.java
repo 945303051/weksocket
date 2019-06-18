@@ -1,6 +1,7 @@
 package org.tdds.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,11 @@ public class WaitingRecordServiceImpl implements WaitingRecordService{
 		example.setOrderByClause(ORDER_BY);
 		List<WaitingRecord> entities = daoWaitingRecord.selectByExampleAndRowBounds(example, pageable);
 		return new PageImpl<WaitingRecord>(entities, pageable);
+	}
+
+	@Override
+	public List<Map<String, Object>> exportData(QueryFilters filters) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

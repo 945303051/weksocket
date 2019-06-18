@@ -1,6 +1,7 @@
 package org.tdds.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,11 @@ public class WarningRecordServiceImpl implements WarningRecordService{
 		example.setOrderByClause(ORDER_BY);
 		List<WarningRecord> entities = daoWarningRecord.selectByExampleAndRowBounds(example, pageable);
 		return new PageImpl<WarningRecord>(entities, pageable);
+	}
+
+	@Override
+	public List<Map<String, Object>> exportData(QueryFilters filters) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

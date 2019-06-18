@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.tdds.entity.Machine;
 import org.tdds.entity.ManualRecord;
 import org.tdds.entity.MonitoringList;
 import org.tdds.entity.PowerOffRecord;
@@ -123,11 +122,9 @@ public class LoggingAdminController extends BaseWorkbenchController{
 			HttpServletResponse response,@PathVariable String type,
 			@RequestParam(value="startTime",required=true)String startTime,
 			@RequestParam(value="endTime",required=true)String endTime){
-		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid+type);
 		if(StringUtils.isNotBlank(startTime)&& StringUtils.isNotBlank(endTime)){
 			 String recordTime=startTime+"&"+endTime;
-			 filters.put("recordTime", recordTime);
-			 filters.put("timeDifference", true);
+			 FiltersUtils.updateFilter(request, response, uuid, "recordTime", recordTime);
 		}
 		return this.redirect("/logging/"+type+"/list");
 	}
@@ -224,30 +221,32 @@ public class LoggingAdminController extends BaseWorkbenchController{
 		return days;
 	}
 	
-	@RequestMapping(value = "/exportdata", method = RequestMethod.POST)
-	public void exportData(Model model,HttpServletRequest request,HttpServletResponse response,
-			@RequestParam(value = "machineId") Long machineId,
-			@RequestParam(value = "node") String node,
-			@RequestParam(value = "startTime") String startTime,
-			@RequestParam(value = "endTime") String endTime,
-			@RequestParam(value = "status") String status) throws UnsupportedEncodingException {
+	@RequestMapping(value = "/{type}/exportdata", method = RequestMethod.GET)
+	public void exportData(HttpServletRequest request,
+			HttpServletResponse response,@PathVariable(value = "type") String type) throws UnsupportedEncodingException {
+		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid+type);
 		String filename =null;
-		List<Map<String,Object>> entities  = new ArrayList<>();
-		Machine  machine = bizMachine.load(machineId);
-		if(status!=null){
-			String statusZh=StatusEnum.getValue(status);
-			filename=machine.getName()+statusZh+"信息";
-			if(status.equalsIgnoreCase(STATUS[1])) {
-				entities=bizLogRecord.exportPowerOffData(machineId,startTime,endTime);
-			}else if(status.equalsIgnoreCase(STATUS[2])) {
-				entities=bizLogRecord.exportAlarmData(machineId,startTime,endTime);
-			}else if(status.equalsIgnoreCase(STATUS[3])) {
-				entities =bizLogRecord.exportWaittingData(machineId,startTime,endTime);
-			}
-		} 
-		
-		byte[] bytes = ExcelExportUtils.createExcel(node, null, entities);
-		response.reset();
+		if(type!=null){
+			String statusZh=StatusEnum.getValue(type);
+		}
+		List<Map<String, Object>> entities = new ArrayList<>();
+		if(type.equalsIgnoreCase(STATUS[0].toLowerCase())){
+			filename="设备运行日志";
+			entities=bizRunning.exportData(filters);
+		}else if(type.equalsIgnoreCase(STATUS[1].toLowerCase())){
+			filename="设备停机日志";
+			entities=bizPowerOff.exportData(filters);
+		}else if(type.equalsIgnoreCase(STATUS[2].toLowerCase())){
+			filename="设备报警日志";
+			entities=bizWarning.exportData(filters);
+		}else if(type.equalsIgnoreCase(STATUS[3].toLowerCase())){
+			filename="设备等待日志";
+			entities=bizWaiting.exportData(filters);
+		}else{
+			filename="设备手动日志";
+			entities=bizManual.exportData(filters);
+		}
+		byte[] bytes = ExcelExportUtils.createExcel(type+"_", null, entities);
 		response.setContentType("application/vnd.ms-excel;charset=utf-8");
 		response.addHeader("Content-Disposition", "attachment;filename=" +URLEncoder.encode(filename+ ".xlsx","utf-8"));
 		try {
@@ -257,6 +256,4 @@ public class LoggingAdminController extends BaseWorkbenchController{
 			e.printStackTrace();
 		}
 	}
-
- 
 }

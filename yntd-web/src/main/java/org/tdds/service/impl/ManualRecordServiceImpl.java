@@ -1,6 +1,7 @@
 package org.tdds.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,12 @@ public class ManualRecordServiceImpl implements ManualRecordService {
 		example.setOrderByClause(ORDER_BY);
 		List<ManualRecord> entities = daoManualRecord.selectByExampleAndRowBounds(example, pageable);
 		return new PageImpl<ManualRecord>(entities, pageable);
+	}
+
+	@Override
+	public List<Map<String, Object>> exportData(QueryFilters filters) {
+	 
+		return null;
 	}
 	
 }

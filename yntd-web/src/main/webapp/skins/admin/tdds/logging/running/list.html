@@ -38,8 +38,8 @@
 							    <select class="btn btn-default" ng-model="selected">
 							    	 <option ng-repeat="item in keys" value="{{item.key}}">{{item.value}}</option>
 							    </select>
-							    <button type="button" class="btn btn-default">
-							    	<i class="fa fa-search" ng-click="search()"></i>
+							    <button type="button" class="btn btn-default" ng-click="search()"> 
+							    	<i class="fa fa-search"></i>
 							    </button>
 							    <button type="button" class="btn btn-warning btn-sm search_adv_btn">
 						       	 高级搜索
@@ -48,22 +48,18 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-sm-6" style="text-align:right;margin-bottom:3px">
+						 <a class="btn btn-success btn-sm" ng-click="exportData()">
+							日志导出
+						</a>
+					</div>
 					<div class="row search_adv_box" style="left:25px;top:80px">
 						<div class="search_adv_row">
-							<div class="search_adv_label">机台类型</div>
-							<div class="search_adv_items">
-								<a href="javascript:;" ng-click="removeFilter('type')" class="${fn.search_adv_item_cur(filters, 'type')}">不限</a>
-								<@sys.optionList groupId='42'; items>
-								<a href="javascript:;" ng-click="updateFilter('type', ${(items.id)!})" class="${fn.search_adv_item_cur(filters, 'type', '${(items.id)!}')}">${(items.name)!}</a>
-								</@sys.optionList>
-							</div>
-						</div>
-						<div class="search_adv_row">
-							<div class="search_adv_label">机台类型</div>
+							<div class="search_adv_label">时间</div>
 							<div class="search_adv_items">
 								<a href="javascript:;" ng-click="removeFilter('recordTime')" class="${fn.search_adv_item_cur(filters, 'recordTime')}">不限</a>
 								<@sys.optionList groupId='43'; items>
-									<a href="javascript:;" ng-click="updateFilter('recordTime', ${(items.id)!})" class="${fn.search_adv_item_cur(filters, 'recordTime', '${(items.id)!}')}">${(items.name)!}</a>
+									<a href="javascript:;" ng-click="updateFilter('recordTime', ${(items.value)!})" class="${fn.search_adv_item_cur(filters, 'recordTime', '${(items.value)!}')}">${(items.name)!}</a>
 								</@sys.optionList>
 									<a href="javascript:;" ng-click="chosenTime()">自定义时间</a>
 							</div>
@@ -92,7 +88,7 @@
 				            	<th class="sorting" rowspan="1" colspan="1">切削倍率</th>
 				            	<th class="sorting" rowspan="1" colspan="1">主轴模式</th>
 				            	<th class="sorting" rowspan="1" colspan="1">记录时间</th>
-				            	<th class="sorting" rowspan="1" colspan="1">操作</th>
+				            	<!-- <th class="sorting" rowspan="1" colspan="1">操作</th> -->
 				           	</tr>
 				           </thead>
 							<tbody>
@@ -114,11 +110,11 @@
 								  <td>{{item.overrideFeed}}</td>
 								  <td>{{item.spindleMode}}</td>
 								  <td>{{item.recordTime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
-								  <td>
+								 <!--  <td>
 								  	<a class="btn btn-danger btn-xs" title="删除">
 								  		<i class="fa fa-trash" aria-hidden="true"></i>
 								  	</a>
-								  </td>
+								  </td> -->
 								</tr>
 							</tbody>
 						</table>
@@ -135,34 +131,32 @@
 	</div>
 </div>
 <!--------时间选择--------->
-        	<div id="chosenTime" style="display:none">
-        	<div class="box box-primary" style="height:0px">
-            <div class="box-body">
-            <form id="exportForm" action="${modulePath!}/running/selectTimeDifferenceData" method="post">
-				<div class="form-group">
-				    <div class="input-group">
-							<div class="input-group-addon">
-								<label>开始时间:</label>
-							</div>
-				     		<input type="text" id="startTime" name="startTime" class="Wdate form-control" 
-				     		style="height:33px;border-color:#d2d6de;" required onclick="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}'})">
-					       <div class="input-group-addon">
-					        	 <label>结束时间:</label>
-					       </div>
-				      	<input type="text" id="endTime" name="endTime" required class="Wdate form-control" 
-				      	style="height:33px;border-color:#d2d6de;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}'})">
-				    </div>
-					</div>
-              </div>
-              <div class="box-footer clearfix" style="line-height:40px">
-              	<button type="submit" class="btn btn-success btn-xs">确定</button>
-              	<button type="reset" class="btn btn-warning btn-xs">重置</button>
-              </div>
-              </form>
-            </div>
-          </div>
+<div id="chosenTime" style="display:none">
+<div class="box box-primary" style="height:0px">
+		<div class="box-body">
+			<div class="form-group">
+			    <div class="input-group">
+						<div class="input-group-addon">
+							<label>开始时间:</label>
+						</div>
+			     		<input type="text" id="startTime" name="startTime" class="Wdate form-control" 
+			     		style="height:33px;border-color:#d2d6de;" 
+			onclick="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}'})">
+			 <div class="input-group-addon">
+			  	 <label>结束时间:</label>
+			 </div>
+			<input type="text" id="endTime" name="endTime" class="Wdate form-control" 
+			style="height:33px;border-color:#d2d6de;" 
+			onclick="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}'})">
+			   </div>
+			</div>
+		</div>
+         <div class="box-footer clearfix" style="line-height:40px;text-align:right;">
+    	<a class="btn btn-success btn-xs" ng-click="createRecordTime()">确定</a>
+    </div>
+  </div>
 </div>
- 
+</div>
 </@layout.override>
 <@layout.override name="js">
 <@layout.super/>

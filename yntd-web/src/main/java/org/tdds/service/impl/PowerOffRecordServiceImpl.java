@@ -1,6 +1,7 @@
 package org.tdds.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,11 @@ public class PowerOffRecordServiceImpl implements PowerOffRecordService{
 		example.setOrderByClause("ORDER_BY");
 		List<PowerOffRecord> entities= daoPoweroff.selectByExampleAndRowBounds(example, pageable);
 		return new PageImpl<PowerOffRecord>(entities, pageable);
+	}
+
+	@Override
+	public List<Map<String, Object>> exportData(QueryFilters filters) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
