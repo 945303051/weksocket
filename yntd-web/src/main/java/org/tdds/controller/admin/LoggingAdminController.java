@@ -84,8 +84,6 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	@RequestMapping(value = "/{type}/list", method = RequestMethod.GET)
 	public String list(@PathVariable String type,Model model,HttpServletRequest request,HttpServletResponse response){
 		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid+type);
-		PageRequest pageable = FiltersUtils.getPageable(filters);
-		System.out.println(pageable.getPageNumber());
 		model.addAttribute("filters",filters);
 		return this.view("/tdds/logging/"+type+"/list");
 	}

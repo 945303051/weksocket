@@ -35,8 +35,8 @@
 					                    <select class="btn btn-default" ng-model="selected">
 					                    	 <option ng-repeat="item in keys" value="{{item.key}}">{{item.value}}</option>
 					                    </select>
-					                    <button type="button" class="btn btn-default">
-					                    	<i class="fa fa-search" ng-click="search()"></i>
+					                    <button type="button" class="btn btn-default" ng-click="search()">
+					                    	<i class="fa fa-search"></i>
 					                    </button>
 					                  </div>
 					                </div>
@@ -93,9 +93,9 @@
 							   </td>
 							   
 							   <td style="text-align:center;">
-									<a class="btn btn-success btn-xs" ng-click="exportData(item.id)" title="数据导出">
+									<!-- <a class="btn btn-success btn-xs" ng-click="exportData(item.id)" title="数据导出">
 										<i class="fa fa-download" aria-hidden="true"></i>
-									</a>
+									</a> -->
 								   <a class="btn btn-warning btn-xs" ng-click="logingData(item.id,item.name,item.code,item.mIp,item.imgUrl)" title="状态记录">
 								   	<i class="fa fa-history" aria-hidden="true"></i>
 								   </a>
