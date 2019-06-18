@@ -9,9 +9,9 @@ app.controller('myCtrl', function($scope,$http,$interval) {
 		cache:false,
 		async:false
 	}).then(function(res){
-		$scope.items=res.data.runningRecords.content;
-		var totalElements=res.data.runningRecords.totalElements;
-		var totalPages=res.data.runningRecords.totalPages;
+		$scope.items=res.data.powerOffRecords.content;
+		var totalElements=res.data.powerOffRecords.totalElements;
+		var totalPages=res.data.powerOffRecords.totalPages;
 		var number=res.data.number;
 		pagination(totalElements,totalPages,number)
 })

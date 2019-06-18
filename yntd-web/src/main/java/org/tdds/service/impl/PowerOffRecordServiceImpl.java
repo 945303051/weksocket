@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.tdds.entity.PowerOffRecord;
+import org.tdds.entity.RunningRecord;
 import org.tdds.mapper.PowerOffRecordMapper;
 import org.tdds.service.PowerOffRecordService;
 
@@ -54,14 +55,14 @@ public class PowerOffRecordServiceImpl implements PowerOffRecordService{
 			}
 		} 
 		if(StringUtils.hasText(Objects.toString(filters.get("name"), null))){
-			 criteria.andEqualTo("name", Objects.toString(filters.get("name")));
+			 criteria.andEqualTo("machineName", Objects.toString(filters.get("name")));
 		 }
 		List<PowerOffRecord> entities=daoPoweroff.selectByExampleAndRowBounds(example, pageable);
 		return new PageImpl<PowerOffRecord>(entities, pageable);
 	}
 
 	private Map<String, String> getTime(Integer flag){
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Calendar now = Calendar.getInstance();
 		Map<String , String> timeMap = new HashMap<>();
 		timeMap.put("endTime", sdf.format(now.getTime()));
@@ -92,7 +93,27 @@ public class PowerOffRecordServiceImpl implements PowerOffRecordService{
 	
 	@Override
 	public List<Map<String, Object>> exportData(QueryFilters filters) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> filter = new HashMap<>();
+		if(StringUtils.hasText(Objects.toString(filters.get("recordTime"), null))){
+			String recordTime = Objects.toString(filters.get("recordTime"), null);
+			String startTime=null;
+			String endTime=null;
+			if(recordTime.indexOf("&")>-1){
+				 startTime=recordTime.split("&")[0];
+				 endTime=recordTime.split("&")[1];
+			} 
+			if(NumberUtils.isNumber(recordTime)){
+				Integer num=Integer.valueOf(recordTime);
+				Map<String, String> map = getTime(num);
+				 startTime=map.get("startTime");
+				 endTime=map.get("endTime");
+			}
+			filter.put("startTime",startTime);
+			filter.put("endTime", endTime);
+		}
+		if(StringUtils.hasText(Objects.toString(filters.get("name"), null))){
+			filter.put("name", Objects.toString(filters.get("name")));
+		 }
+		return daoPoweroff.exportData(filter);
 	}
 }

@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import org.springframework.util.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.tdds.entity.RunningRecord;
 import org.tdds.mapper.RunningRecordMapper;
 import org.tdds.service.RunningRecordService;
@@ -55,14 +55,14 @@ public class RunningRecordServiceImpl implements RunningRecordService {
 			}
 		} 
 		if(StringUtils.hasText(Objects.toString(filters.get("name"), null))){
-			 criteria.andEqualTo("name", Objects.toString(filters.get("name")));
+			 criteria.andEqualTo("machineName", Objects.toString(filters.get("name")));
 		 }
 		List<RunningRecord> entities=runningRecordDao.selectByExampleAndRowBounds(example, pageable);
 		return new PageImpl<RunningRecord>(entities, pageable);
 	}
 	
 	private Map<String, String> getTime(Integer flag){
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Calendar now = Calendar.getInstance();
 		Map<String , String> timeMap = new HashMap<>();
 		timeMap.put("endTime", sdf.format(now.getTime()));
@@ -93,9 +93,6 @@ public class RunningRecordServiceImpl implements RunningRecordService {
 
 	@Override
 	public List<Map<String, Object>> exportData(QueryFilters filters) {
-		Example example = new Example(RunningRecord.class);
-		example.setOrderByClause(ORDER_BY);
-		Criteria criteria = example.createCriteria();
 		Map<String, Object> filter = new HashMap<>();
 		if(StringUtils.hasText(Objects.toString(filters.get("recordTime"), null))){
 			String recordTime = Objects.toString(filters.get("recordTime"), null);
