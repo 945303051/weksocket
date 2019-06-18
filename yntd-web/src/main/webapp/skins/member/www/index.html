@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title></title>
+		<title>看板首页</title>
 	    <script src="/assets/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<!-- <script src="../js/machinestatus.js"></script>  -->
 		<script src="/themes/website/js/jquery.liMarquee.js"></script>
@@ -21,150 +21,158 @@
 	<body style="background-color:#00003b">
 		<div class="container-fluid1" ng-app="myApp" ng-controller="myCtrl">
 				<div class="header">
-						<div clas="logo">
-						 	<img height="50px" style="margin-top:1px;" src="/themes/website/images/other/xbdslogo.jpeg" />
-					 	</div>
-						<div id="clock" class="clock">
-							<p id="time" class="time"></p>
-							<p id="date" class="date"></p>
-						</div> 
+					<div class="logo">
+					 	<img height="50px" style="margin-top:1px;" src="/themes/website/images/other/xbdslogo.jpeg" />
+				 	</div>
+					<div id="clock" class="clock">
+						<p id="time" class="time"></p>
+						<p id="date" class="date"></p>
+					</div> 
 				</div>	
-								
-				<div class="cjbj">
-					<div class="cjbj-div">
-						 <div class="cjbj-title">
-						 <i class="fa fa-university" aria-hidden="true"></i>
-							 车间布局
-						 </div>
+				
+				<div class="box-cont">	
+				<div class="box">				
+					<div class="cjbj">
+						<div class="cjbj-div">
+							 <div class="cjbj-title">
+							 <i class="fa fa-university" aria-hidden="true"></i>
+								 车间布局
+							 </div>
+						</div>
+						<div class="cjbjimg">
+							   <img class="img-responsive" src="/themes/website/images/other/xbdscjbj.png">
+						</div>
 					</div>
-					<div style="height:93%;padding:5px;">
-						   <img height="95%" src="/themes/website/images/other/xbdscjbj.png" width="100%">
+					<div class="sbyxfx">
+						<div class="sbyxfx-div">
+							 <div class="sbyxfx-title">
+								<i class="fa fa-pie-chart" aria-hidden="true"></i>
+								设备运行状态时长对比分析（单位：分钟）
+							 </div>
+							 <div class="sbyxfx-lenged">
+								<i class="fa fa-circle" style="color:#00FF00">运行</i>
+		                        <i class="fa fa-circle" style="color:#696969">停机</i>
+		                        <i class="fa fa-circle" style="color:#DC143C">报警</i>
+		                        <i class="fa fa-circle" style="color:#FFFF00">等待</i>
+		                        <i class="fa fa-circle" style="color:#7FFF00">手动</i>
+							 </div>
+						</div>
+						<div class="sbyxfx-chart">
+							<ul class="pies" id="pies">
+								<li echarts-type="pie"></li>
+								<li echarts-type="pie"></li>
+								<li echarts-type="pie"></li>
+								<li echarts-type="pie"></li>
+								<li echarts-type="pie"></li>
+								<li echarts-type="pie"></li>
+							</ul>
+						</div>
 					</div>
-				</div>
-				<div class="sbyxfx">
-					<div class="panel-heading" style="border:solid 1px #005387">
-						 <div class="sbyxfx-title">
-							<i class="fa fa-pie-chart" aria-hidden="true"></i>
-							设备运行状态时长对比分析（单位：分钟）
-						 </div>
-						 <div class="sbyxfx-lenged">
-							<i class="fa fa-circle" style="color:#00FF00">运行</i>
-	                        <i class="fa fa-circle" style="color:#696969">停机</i>
-	                        <i class="fa fa-circle" style="color:#DC143C">报警</i>
-	                        <i class="fa fa-circle" style="color:#FFFF00">等待</i>
-	                        <i class="fa fa-circle" style="color:#7FFF00">手动</i>
-						 </div>
+				
+					<div class="timeline">
+						<div class="timeline-div">
+							 <div class="timeline-title">
+							  <i class="fa fa-line-chart" aria-hidden="true"></i>
+								 时间线
+							 </div>
+							 <div class="timeline-lenged">
+								<i class="fa fa-circle" style="color:#00FF00">运行</i>
+		                        <i class="fa fa-circle" style="color:#696969">停机</i>
+		                        <i class="fa fa-circle" style="color:#DC143C">报警</i>
+		                        <i class="fa fa-circle" style="color:#FFFF00">等待</i>
+		                        <i class="fa fa-circle" style="color:#7FFF00">手动</i>
+							 </div>
+						</div>
+						<div time-line='true' class="panel-body" style="height:389px;">
+						
+						</div>
 					</div>
-					<div style="height:93%;">
-						<ul class="pies" id="pies">
-							<li echarts-type="pie"></li>
-							<li echarts-type="pie"></li>
-							<li echarts-type="pie"></li>
-							<li echarts-type="pie"></li>
-							<li echarts-type="pie"></li>
-							<li echarts-type="pie"></li>
-						</ul>
-					</div>
+				
 				</div>
 				
-				<div class="timeline">
-					<div class="timeline-div">
-						 <div class="timeline-title">
-						  <i class="fa fa-line-chart" aria-hidden="true"></i>
-							 时间线
-						 </div>
-						 <div class="timeline-lenged">
-							<i class="fa fa-circle" style="color:#00FF00">运行</i>
-	                        <i class="fa fa-circle" style="color:#696969">停机</i>
-	                        <i class="fa fa-circle" style="color:#DC143C">报警</i>
-	                        <i class="fa fa-circle" style="color:#FFFF00">等待</i>
-	                        <i class="fa fa-circle" style="color:#7FFF00">手动</i>
-						 </div>
+				<div class="box2">
+					<div class="ranking">
+						<div class="ranking-title">
+							 <div class="ranking-head">
+							 <i class="fa fa-area-chart" aria-hidden="true"></i>
+								每日设备运行排行（单位：分钟）
+							 </div>
+						</div>
+						<div data-ranking="true" class="panel-body" style="height:100%;">
+							
+						</div>
 					</div>
-					<div time-line='true' class="panel-body" style="height:98%;">
+				
+					<div class="yxcs">
+						<div class="yxcs-div">
+							<div class="yxcs-head">
+								<i class="fa fa-list-ul" aria-hidden="true"></i>
+								设备实时运行参数
+							</div>
+							 <div class="yxcs-lenged">
+								<i class="fa fa-circle" style="color:#00FF00">运行</i>
+		                        <i class="fa fa-circle" style="color:#696969">停机</i>
+		                        <i class="fa fa-circle" style="color:#DC143C">报警</i>
+		                        <i class="fa fa-circle" style="color:#FFFF00">等待</i>
+		                        <i class="fa fa-circle" style="color:#7FFF00">手动</i>
+							 </div>
+						</div>
+				 		<div>
+							 <table class="table">
+							 	<thead>
+								 	<tr>
+								 		<th>设备名称</th>
+								 		<th>运转模式</th>
+								 		<th>设备状态</th>
+								 		<th>维护信号</th>
+								 		<th>快进倍率</th>
+								 		<th>主轴倍率</th>
+								 		<th>切削倍率</th>
+								 		<th>主轴模式</th>
+								 		<th>设备运行状态</th>
+								 	</tr>
+							 	</thead>
+							 	<tbody>
+							 		<tr ng-repeat="item in items">
+							      		<td>{{item.machineName}}</td>
+							      		<td>{{item.machineMode}}</td>
+							      		<td>{{item.machineStatus}}</td>
+							      		<td>{{item.maintenanceSignal}}</td>
+							      		<td>{{item.overrideRapid}}</td>
+							      		<td>{{item.overrideFeed}}</td>
+							      		<td>{{item.overrideSpindle}}</td>
+							      		<td>{{item.spindleMode}}</td>
+							      		<td ng-if="item.machineSignal=='RUNNING'" style="background-color:#00FF00"></td>
+							      		<td ng-if="item.machineSignal=='POWEROFF'" style="background-color:#696969"></td>
+							      		<td ng-if="item.machineSignal=='ALARM'" style="background-color:#DC143C"></td>
+							      		<td ng-if="item.machineSignal=='WAITING'" style="background-color:#FFFF00"></td>
+							      		<td ng-if="item.machineSignal=='MANUAL'" style="background-color:#7FFF00"></td>
+	 			      				</tr>
+							 	</tbody>
+							 </table>
+						</div>
+					</div>
+				
+					<div class="xlzx">
+					<div class="xlzx-div">
+					<div class="xlzxhead">
+						 <i class="fa fa-bar-chart" aria-hidden="true"></i>
+							设备每日运行状态时长折线图（单位：分钟）
+						 </div>
+						<div class="xlzx-lenged">
+							<i class="fa fa-circle" style="color:#00FF00">运行</i>
+							<i class="fa fa-circle" style="color:#696969">停机</i>
+							<i class="fa fa-circle" style="color:#DC143C">报警</i>
+							<i class="fa fa-circle" style="color:#FFFF00">等待</i>
+							<i class="fa fa-circle" style="color:#7FFF00">手动</i>
+						</div>
+					</div>
+						<div echarts-type="line"  class="panel-body"  style="height:273px;">
+						</div>
+					</div>
 					
 					</div>
 				</div>
-				
-				<div class="ranking">
-					<div class="ranking-title">
-						 <div class="ranking-head">
-						 <i class="fa fa-area-chart" aria-hidden="true"></i>
-							每日设备运行排行（单位：分钟）
-						 </div>
-					</div>
-					<div data-ranking="true" class="panel-body" style="height:100%;">
-						
-					</div>
-				</div>
-				
-				<div class="yxcs">
-					<div class="yxcs-div">
-						<div class="yxcs-head">
-							<i class="fa fa-list-ul" aria-hidden="true"></i>
-							设备实时运行参数
-						</div>
-						 <div class="yxcs-lenged">
-							<i class="fa fa-circle" style="color:#00FF00">运行</i>
-	                        <i class="fa fa-circle" style="color:#696969">停机</i>
-	                        <i class="fa fa-circle" style="color:#DC143C">报警</i>
-	                        <i class="fa fa-circle" style="color:#FFFF00">等待</i>
-	                        <i class="fa fa-circle" style="color:#7FFF00">手动</i>
-						 </div>
-					</div>
-			 		<div style="height:93%;">
-						 <table class="table">
-						 	<thead>
-							 	<tr>
-							 		<th>设备名称</th>
-							 		<th>运转模式</th>
-							 		<th>设备状态</th>
-							 		<th>维护信号</th>
-							 		<th>快进倍率</th>
-							 		<th>主轴倍率</th>
-							 		<th>切削倍率</th>
-							 		<th>主轴模式</th>
-							 		<th>设备运行状态</th>
-							 	</tr>
-						 	</thead>
-						 	<tbody>
-						 		<tr ng-repeat="item in items">
-						      		<td>{{item.machineName}}</td>
-						      		<td>{{item.machineMode}}</td>
-						      		<td>{{item.machineStatus}}</td>
-						      		<td>{{item.maintenanceSignal}}</td>
-						      		<td>{{item.overrideRapid}}</td>
-						      		<td>{{item.overrideFeed}}</td>
-						      		<td>{{item.overrideSpindle}}</td>
-						      		<td>{{item.spindleMode}}</td>
-						      		<td ng-if="item.machineSignal=='RUNNING'" style="background-color:#00FF00"></td>
-						      		<td ng-if="item.machineSignal=='POWEROFF'" style="background-color:#696969"></td>
-						      		<td ng-if="item.machineSignal=='ALARM'" style="background-color:#DC143C"></td>
-						      		<td ng-if="item.machineSignal=='WAITING'" style="background-color:#FFFF00"></td>
-						      		<td ng-if="item.machineSignal=='MANUAL'" style="background-color:#7FFF00"></td>
- 			      				</tr>
-						 	</tbody>
-						 </table>
-					</div>
-				</div>
-				
-			<div class="xlzx">
-			<div class="xlzx-div">
-			<div class="xlzxhead">
-				 <i class="fa fa-bar-chart" aria-hidden="true"></i>
-					设备每日运行状态时长折线图（单位：分钟）
-				 </div>
-				<div class="xlzx-lenged">
-					<i class="fa fa-circle" style="color:#00FF00">运行</i>
-					<i class="fa fa-circle" style="color:#696969">停机</i>
-					<i class="fa fa-circle" style="color:#DC143C">报警</i>
-					<i class="fa fa-circle" style="color:#FFFF00">等待</i>
-					<i class="fa fa-circle" style="color:#7FFF00">手动</i>
-				</div>
-			</div>
-				<div echarts-type="line" style="height:93%;">
-				</div>
-			</div>
 		</div>
 		<script src="/themes/website/mycharts/controller/controller.js"></script>
 	</body>

@@ -1,12 +1,13 @@
 @CHARSET "UTF-8";
 		body{
 			background-color:#00003b;
-			height:1080px;
+			/* height:1080px; */
 		}
 		.container-fluid1{
 			background-color: #00003b;
 			width:100%;
-			height:1070px;
+			padding: 0 10px;
+			/* height:1070px; */
 		}
 		.page-header{
 			background-color:white;
@@ -15,22 +16,6 @@
 			color: #658ced;
 			width:24%;
 		}
-		.pies{
-	 		display:block;
-	 		width:100%;
-	 		height:100%;
-	 		list-style:none;
-			margin:0;
-			padding:0;
- 			position:absolute;
-	 	}
-		.pies li{
-			display:block;
-			width:33%;
- 			height:86%;
- 			float:left;
- 			color:#658ced;
-		}
 		.table>thead>tr>th {
 		    vertical-align: bottom;
 		    border-bottom: 1px solid #005387;
@@ -38,140 +23,86 @@
 		.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
 		    color: wheat;
 		}
-		.header{width:100%;height:70px;margin-top:20px;border-bottom:solid 2px #005387}
-		.header .logo{width:80%;height:100%;float:left;}
+		.header{width:100%;height:100px;padding-bottom:20px;border-bottom:solid 2px #005387;}
+		.logo{width:50%;height:78px;float:left;padding:20px 0 0 0;}
 		.cjbj{ 
 			border-radius:5px;
-			position:absolute;
-			top:102px;
-			left:5px;
-			width:49.2%;
+			width:100%;
 			background-color:wheat;
 			height:281px;
 			border:solid 1px #005387;
 			background-color:#0b1647;
 			border-radius:5px;
 		}
-		.cjbj-div{height:7%;border-bottom:solid 1px #005387;}
-		.cjbj-title{ 
-			float:left;
-			margin:0px;
-			color:#ffffff;/*  #90acd6;*/
-			margin-left:3px;
-			width:49%;
-			margin-top:0px
+		.cjbj-div,.sbyxfx-div,.timeline-div,.ranking-head,.yxcs-div,.xlzx-div{
+		height: 35px;
+	    border-bottom: solid 1px #005387;
+	    line-height: 35px;
+	    padding:0 10px;
+	    color: #fff;
+	    }
+		.cjbjimg{
+			height:246px;
+			overflow:hidden;
+			padding: 20px 0;
 		}
 		.sbyxfx{
 			overflow:hidden;
 			border-radius:5px;
-			position:relative;
-			top:307px;
-			left:3px;
-			width:49.3%;
-			height:194px;
+			width:100%;
+			/* height:194px; */
 			border:solid 1px #005387;
 			background-color:#0b1647;
-			border-radius:5px;
+			margin-top:20px;
 		}
-		.panel-heading{
-			height:12%;
-			border-bottom:solid 1px #005387;
-		}
-		.sbyxfx-title{
-					float:left;
-					margin:0px;
-					color:#ffffff;
-					margin-left:-12px;
-					width:49%;
-					margin-top:-9px}
-		.sbyxfx-lenged{
+		
+		.sbyxfx-title,.timeline-title,.yxcs-head,.xlzxhead{
+			float:left;
+			width:50%;
+					}
+		.sbyxfx-lenged,.timeline-lenged,.yxcs-lenged,.xlzx-lenged{
 			float:right;
-			margin:0px;
-			color:#90acd6;
-			margin-left:5px;
-			width:49%;
+			width:50%;
 			text-align:right;
-			margin-top:-8px
 		}
-		.timeline{border-radius:5px;
-			position:relative;
-			top:321px;
-			left:3px;
-			width:49.3%;
+		.sbyxfx-chart{
+			width:100%;
+			height:200px;
+			overflow:hidden;
+		}
+		.pies{
+	 		width:100%;
+	 		height:100%;
+	 		list-style:none;
+			margin:0;
+			padding:0;
+	 	}
+		.sbyxfx-chart .pies li{
+			width:33%;
+ 			height:100%;
+ 			float:left;
+ 			color:#658ced;
+		}
+		.timeline{
+			width:100%;
 			height:424px;
 			border:solid 1px #005387;
 			background-color:#0b1647;
 			border-radius:5px;
+			margin-top:20px;
 		}
-		.timeline-div{height:24px;border-bottom:solid 1px #005387;}
-		.timeline-title{
-			float:left;
-			margin:0px;
-			color:#ffffff;
-			margin-left:5px;
-			width:49%;
-			margin-top:0px
-		}
-		.timeline-lenged{
-			float:right;
-			margin:0px;
-			color:#90acd6;
-			margin-left:5px;
-			width:49%;
-			text-align:right;
-			margin-top:-16px;
-			margin-right:13px
-		}
-		.ranking{
-			width:49%;
+		.ranking,.xlzx,.yxcs{
+			width:100%;
 			height:391px;
-			float:right;
 			border:solid 1px #005387;
 			background-color:#0b1647;
 			border-radius:5px;
-			position:absolute;
-			top:102px;
-			right:11px;
 		}
-		.ranking-title{border-bottom:solid 1px #005387;height:24px;}
-		.ranking-head{
-			float:left;
-			margin:0px;
-			color:#ffffff;
-			margin-left:4px;
-			width:49%;
-			margin-top:0px
-		}
+		
 		.yxcs{
-			width:49%;
-			height:210px;
-			float:right;
-			border:solid 1px #005387;
-			background-color:#0b1647;
-			border-radius:5px;
-			position:relative;
-			top:-205px;
-			right:11px;
+			height:230px;
 			overflow:hidden;
-		}
-		.yxcs-div{border-bottom:solid 1px #005387;height:24px;}
-		.yxcs-head{
-			float:left;
-			margin:0px;
-			color:#ffffff;
-			margin-left:4px;
-			width:49%;
-			margin-top:0px
-		}
-		.yxcs-lenged{
-			float:right;
-			margin:0px;
-			color:#90acd6;
-			margin-left:22px;
-			width:49%;
-			text-align:right;
-			margin-top:-16px;
-			margin-right:12px;
+			margin-top:20px;
 		}
 		.table{
 			width:97%;
@@ -180,47 +111,18 @@
 			margin-top: 9px;
 		}
 		.xlzx{
-			width:49%;
-			height:308px;
-			float:right;
-			border:solid 1px #005387;
-			background-color:#0b1647;
-			border-radius:5px;
-			position:absolute;
-			top:721px;
-			right:11px;
+			height:321px;
+			margin-top:20px;
 		}
-		.xlzx-div{border-bottom:solid 1px #005387;height:24px;}
-		.xlzxhead{
-			float:left;
-			margin:0px;
-			color:#ffffff;
-			margin-left:4px;
-			width:49%;
-			margin-top:0px
-		}
-		.xlzx-lenged{float:right;
-			margin:0px;
-			color:#90acd6;
-			margin-left:22px;
-			width:49%;
-			text-align:right;
-			margin-top:-15px;
-			margin-right:12px;
-		}
+		
 		.clock {
 		    font-family: 'Share Tech Mono', monospace;
 		    color: #ffffff;
-		    text-align:center;
-		    margin-top:9px;
-		    width:20%;
-		    height:35%;
+		    text-align:right;
+		    width:50%;
+		    height:100px;
+		    padding-right: 10px;
 		    float:right;
-		  	position: absolute;
-		    left: 94%;
-		    top: 16%;
-		    -webkit-transform: translate(-50%, -50%);
-		    transform: translate(-50%, -50%);
 		    color: #daf6ff;
 		    text-shadow: 0 0 20px #0aafe6, 0 0 20px rgba(10, 175, 230, 0);
 		}
@@ -249,3 +151,18 @@
 		margin-inline-end: 0px;
 		margin:0px;
 	}
+.box-cont{
+	width:100%;
+	height:auto;
+	clear:both;
+}
+.box,.box2{
+	margin-top:20px;
+	width:49.5%;
+	float:left;
+	margin-right:0.5%;
+}
+.box2{
+	margin-left:0.5%;
+	margin-right:0;
+}
