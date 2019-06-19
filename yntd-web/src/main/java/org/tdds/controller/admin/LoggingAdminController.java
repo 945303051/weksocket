@@ -94,6 +94,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid+type);
 		PageRequest pageable = FiltersUtils.getPageable(filters);
 		Map<String, Object> map=new HashMap<>();
+
 		if(type.equalsIgnoreCase(STATUS[0].toLowerCase())){
 			Page<RunningRecord> runningRecords = bizRunning.findAllRecords(filters,pageable);
 			map.put("runningRecords",runningRecords);
@@ -113,7 +114,6 @@ public class LoggingAdminController extends BaseWorkbenchController{
 			map.put("number",pageable.getPageNumber());
 		return map;
 	}
-	
 	
 	@RequestMapping(value = "/{type}/selectTimeDifferenceData", method = RequestMethod.POST)
 	public String selectTimeDifferenceData(HttpServletRequest request,

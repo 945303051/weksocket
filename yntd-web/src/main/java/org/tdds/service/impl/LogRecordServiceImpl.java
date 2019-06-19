@@ -94,6 +94,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 			WarningRecord warningRecord = new WarningRecord();
 				warningRecord.setMachineId(mid);
 				warningRecord.setMachineName(ml.getMachineName());
+				warningRecord.setRecordTime(new Date());
 				warningRecord.setAlarmMessage(ml.getAlarmMessage());
 				warningRecord.setAlarmNo(ml.getAlarmNo());
 				warningRecord.setMachineMode(ml.getMachineMode());
@@ -112,6 +113,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 			WaitingRecord wRecord = new WaitingRecord();
 			wRecord.setMachineId(mid);
 			wRecord.setMachineName(ml.getMachineName());
+			wRecord.setRecordTime(new Date());
 			wRecord.setAlarmMessage(ml.getAlarmMessage());
 			wRecord.setAlarmNo(ml.getAlarmNo());
 			wRecord.setMachineMode(ml.getMachineMode());
@@ -131,6 +133,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 				mr.setMachineId(mid);
 				mr.setMachineName(ml.getMachineName());
 				mr.setAlarmMessage(ml.getAlarmMessage());
+				mr.setRecordTime(new Date());
 				mr.setAlarmNo(ml.getAlarmNo());
 				mr.setMachineMode(ml.getMachineMode());
 				mr.setMachineStatus(ml.getMachineStatus());

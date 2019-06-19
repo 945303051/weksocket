@@ -45,4 +45,24 @@
 		FROM znzz_waiting_record
 		WHERE DATE(record_time) =#{date}
     </select>
+       <select id="exportData" resultType="map">
+	 SELECT 
+		machine_name as sbmc,
+		maintenance_signal as whxh,
+		partsCount_target as jgmbz,
+		partsCount_result as jgssz,
+		override_rapid as kjbl,
+		override_spindle as zzbl,
+		override_feed as qxbl,
+		spindle_mode as zzms,
+		record_time as jlss
+	FROM znzz_waiting_record
+	where  id &gt; 0
+	<if test="filter.startTime!=null and filter.startTime!='' and filter.endTime!=null and filter.endTime!=''">
+	    AND DATE(record_time) BETWEEN #{filter.startTime} AND #{filter.endTime};
+	</if>
+	<if test="filter.name!=null and filter.name!=''">
+		AND machine_name=#{filter.name}
+	</if>
+    </select>
 </mapper>
