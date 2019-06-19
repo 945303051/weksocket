@@ -36,7 +36,8 @@ var timeLineOption = {
             },
             data: [],
             splitLine: {
-                show: true
+                show: true,
+                interval:0
             }
         }],
         yAxis: [{
