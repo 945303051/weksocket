@@ -16,6 +16,7 @@ app.controller('myCtrl', function($scope,$http,$interval) {
 		pagination(totalElements,totalPages,number)
 })
 
+
 function pagination(totalElements,totalPages,number){
 	$(".tcdPageCode").createPage({
 		elementCount :totalElements,

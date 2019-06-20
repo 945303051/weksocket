@@ -27,6 +27,7 @@ function pagination(totalElements,totalPages,number){
 	})
 };
 
+
 $scope.chosenTime=function(){
 	layer.open({
 		type: 1,
