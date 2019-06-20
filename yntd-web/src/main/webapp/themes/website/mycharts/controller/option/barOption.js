@@ -75,7 +75,7 @@ var optionBar = {
 	            type: 'bar',
 	            yAxisIndex: 1,
 	            barGap: '-100%',
-	            data: [99.5, 99.5, 99.5, 99.5, 99.5, 99.5, 99.5, 99.5],
+	            data: [1000, 1000.5, 1000.5, 1000.5, 1000.5, 1000.5, 1000.5, 1000.5],
 	            barWidth: 20,
 	            itemStyle: {
 	                normal: {
@@ -89,7 +89,7 @@ var optionBar = {
 	            type: 'bar',
 	            yAxisIndex: 2,
 	            barGap: '-100%',
-	            data: [100, 100, 100, 100, 100, 100, 100, 100],
+	            data: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000],
 	            barWidth: 24,
 	            itemStyle: {
 	                normal: {
