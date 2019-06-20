@@ -12,11 +12,19 @@ app.controller('myCtrl', function($scope,$http,$interval) {
 			async:false}).then(function(res){
 			$scope.items=res.data.resault;
 		})
-	},2000)
+	},1000)
+	
+	$interval(function(){
+	$http({
+		method: 'GET',
+		url:"/member/insertLogging.json",
+		cache:false,
+		async:false})
+},3000*10)
 })
 
-var myPies = new MyPies();
 
+var myPies = new MyPies();
 setInterval(function(){
 	var now = new Date();
 	var weekArray  =  new Array("日", "一", "二", "三", "四", "五", "六");

@@ -3,7 +3,7 @@
  */
 ;(function($, e){
 var optionPie = {
-		color: ['#00FF00','#696969', '#DC143C','#FFFF00','#7FFF00'],
+		color: ['#00FF00','#696969', '#DC143C','#FFFF00'],
 		title:{
 			text:"",
 			textStyle:{
@@ -22,7 +22,7 @@ var optionPie = {
 		    	show:false,
 		        orient: 'vertical',
 		        x: 'left',
-		        data:['运行','停机','报警','等待','手动'],
+		        data:['运行','停机','报警','等待'/*,'手动'*/],
 		        top:"middle"
 		    },
 		    series: [

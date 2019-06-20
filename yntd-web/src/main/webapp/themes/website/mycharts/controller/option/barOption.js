@@ -31,7 +31,7 @@ var optionBar = {
 	                fontSize: '16',
 	            }
 	        },
-	        data: ['', '', '', '', '', '第三名', '第二名', '第一名']
+	        data: ['', '', '', '第三名', '第二名', '第一名']
 	    }, {
 	        nameGap: '50',
 	        nameTextStyle: {
@@ -75,7 +75,7 @@ var optionBar = {
 	            type: 'bar',
 	            yAxisIndex: 1,
 	            barGap: '-100%',
-	            data: [1000, 1000.5, 1000.5, 1000.5, 1000.5, 1000.5, 1000.5, 1000.5],
+	            data: [100000, 100000, 100000, 100000, 100000, 100000],
 	            barWidth: 20,
 	            itemStyle: {
 	                normal: {
@@ -89,7 +89,7 @@ var optionBar = {
 	            type: 'bar',
 	            yAxisIndex: 2,
 	            barGap: '-100%',
-	            data: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000],
+	            data: [100000, 100000, 100000, 100000, 100000, 100000],
 	            barWidth: 24,
 	            itemStyle: {
 	                normal: {
@@ -106,7 +106,7 @@ var optionBar = {
 	            name: '外圆',
 	            type: 'scatter',
 	            hoverAnimation: false,
-	            data: [0, 0, 0, 0, 0, 0, 0, 0],
+	            data: [0, 0, 0, 0, 0, 0],
 	            yAxisIndex: 2,
 	            symbolSize: 35,
 	            itemStyle: {

@@ -50,7 +50,10 @@ public class LogRecordServiceImpl implements LogRecordService {
 	
 	@Autowired
 	private MachineService bizMachine;
- 
+	/**
+	 * 西部大森 manual =running
+	 * 
+	 */
 	public void insert(MonitoringList ml) {
 		Long mid = getMachineIdByName(ml.getMachineName());
 		if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[0])){
@@ -129,7 +132,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 			wRecord.setSpindleMode(ml.getSpindleMode());
 			bizWaiting.insert(wRecord);
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[4])){
-			ManualRecord mr = new ManualRecord();
+			RunningRecord mr = new RunningRecord();
 				mr.setMachineId(mid);
 				mr.setMachineName(ml.getMachineName());
 				mr.setAlarmMessage(ml.getAlarmMessage());
@@ -145,7 +148,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 				mr.setOverrideSpindle(ml.getOverrideSpindle());
 				mr.setPartsCountResult(ml.getPartscountResult());
 				mr.setPartsCountTarget(ml.getPartscountTarget());
-			bizManualRecord.insert(mr);
+				bizRunning.insert(mr);
 		}
 		 
 	}
@@ -159,6 +162,11 @@ public class LogRecordServiceImpl implements LogRecordService {
 		return daoLogRecord.selectRankData(machineId);
 	}
 
+	/*
+	 * 西部大森 manual=running
+	 * (non-Javadoc)
+	 * @see org.tdds.service.LogRecordService#findData(java.lang.String, java.lang.String, java.lang.Long)
+	 */
 	@Override
 	public Double findData(String date, String status,Long id) {
 		Map<String, Object> map = new HashMap<>();
@@ -178,25 +186,9 @@ public class LogRecordServiceImpl implements LogRecordService {
 		}else if(status.equalsIgnoreCase(STATUS[3])){
 			count=daoLogRecord.findWaittingData(map);
 		}else if(status.equalsIgnoreCase(STATUS[4])){
-			count=daoLogRecord.findManaulData(map);
+			count=daoLogRecord.findRunningData(map);
 		}
 		return count;
-	}
-
-
-	@Override
-	public List<Map<String, Object>> exportPowerOffData(Long machineId, String startTime, String endTime) {
-		return daoLogRecord.exportPowerOffData(machineId,startTime,endTime);
-	}
-
-	@Override
-	public List<Map<String, Object>> exportAlarmData(Long machineId, String startTime, String endTime) {
-		return daoLogRecord.exportAlarmData(machineId,startTime,endTime);
-	}
-
-	@Override
-	public List<Map<String, Object>> exportWaittingData(Long machineId, String startTime, String endTime) {
-		return daoLogRecord.exportWaittingData(machineId,startTime,endTime);
 	}
 
 }

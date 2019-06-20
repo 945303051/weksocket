@@ -47,8 +47,9 @@ public class MachineController extends BasePortalController {
 	private List<Map<String, Object>> timeLineOption = new ArrayList<>();
 
 	private List<String> NAMES = new ArrayList<>();
-
-	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING","MANUAL"};
+	
+	//西部大森manual=running
+	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING"/*,"MANUAL"*/};
 
 	List<Map<String, Object>> statuslist = new ArrayList<>();
 
@@ -66,16 +67,21 @@ public class MachineController extends BasePortalController {
 				entity.setMachineSignal(getStatus(machine.getmIp()));
 				/* entity.setMachineSignal("POWEROFF"); */
 				entities.add(entity);
-				bizLogRecord.insert(entity);
 			}
-			bizLogRecord.insert(monitoringList);
 			entities.add(monitoringList);
 		}
 		map.put("success", success);
 		map.put("resault", entities);
 		return map;
 	}
-
+	
+	@RequestMapping(value = "insertLogging", method = RequestMethod.GET)
+	private void insertLogging(){
+ 		List<MonitoringList> entities = bizMonitoring.findAll();
+		for(MonitoringList monitoringList:entities){
+			bizLogRecord.insert(monitoringList);
+		}
+	}
 	/**
 	 * 每天每小时设备运行状况 一天24*60分钟
 	 * 

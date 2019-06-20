@@ -32,7 +32,6 @@ import org.tdds.entity.RunningRecord;
 import org.tdds.entity.WaitingRecord;
 import org.tdds.entity.WarningRecord;
 import org.tdds.service.LogRecordService;
-import org.tdds.service.MachineService;
 import org.tdds.service.ManualRecordService;
 import org.tdds.service.MonitoringService;
 import org.tdds.service.PowerOffRecordService;
@@ -42,7 +41,6 @@ import org.tdds.service.WarningRecordService;
 
 import cn.hxz.webapp.syscore.support.BaseWorkbenchController;
 import cn.hxz.webapp.util.ExcelExportUtils;
-import cn.hxz.webapp.util.echarts.StatusEnum;
 import net.chenke.playweb.QueryFilters;
 import net.chenke.playweb.support.mybatis.Page;
 import net.chenke.playweb.support.mybatis.PageRequest;
@@ -59,9 +57,6 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	private MonitoringService bizMonitoring;
 	
 	@Autowired
-	private MachineService bizMachine;
-	
-	@Autowired
 	private RunningRecordService bizRunning;
 	
 	@Autowired
@@ -76,7 +71,8 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	@Autowired
 	private ManualRecordService bizManual;
 	
-	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING","MANUAL"};
+	//西部大森 running=manual
+	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING"/*,"MANUAL"*/};
 	
 	private static final String uuid = HashUtils.MD5(LoggingAdminController.class.getName());
 	
@@ -224,9 +220,6 @@ public class LoggingAdminController extends BaseWorkbenchController{
 			HttpServletResponse response,@PathVariable(value = "type") String type) throws UnsupportedEncodingException {
 		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid+type);
 		String filename =null;
-		if(type!=null){
-			String statusZh=StatusEnum.getValue(type);
-		}
 		List<Map<String, Object>> entities = new ArrayList<>();
 		if(type.equalsIgnoreCase(STATUS[0].toLowerCase())){
 			filename="设备运行日志";

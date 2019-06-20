@@ -81,14 +81,14 @@ var timeLineOption = {
 					itemStyle:{
 						color:"#FFFF00"
 					}
-				}, {
+				}/*, {
 					name:'手动',
 					yAxisIndex: 0,
 					type: 'bar',
 					itemStyle:{
 						color:"#7FFF00"
 					}
-        }] },
+        }*/] },
     options:[]
 };
 	

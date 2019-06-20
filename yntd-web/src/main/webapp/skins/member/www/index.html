@@ -22,7 +22,7 @@
 		<div class="container-fluid1" ng-app="myApp" ng-controller="myCtrl">
 				<div class="header">
 					<div class="logo">
-					 	<img height="50px" style="margin-top:1px;" src="/themes/website/images/other/xbdslogo.jpeg" />
+					 	<img height="50px" style="margin-top:1px;" src="/themes/website/images/other/xbdslogo1.jpeg" />
 				 	</div>
 					<div id="clock" class="clock">
 						<p id="time" class="time"></p>
@@ -54,8 +54,8 @@
 		                        <i class="fa fa-circle" style="color:#696969">停机</i>
 		                        <i class="fa fa-circle" style="color:#DC143C">报警</i>
 		                        <i class="fa fa-circle" style="color:#FFFF00">等待</i>
-		                        <i class="fa fa-circle" style="color:#7FFF00">手动</i>
-							 </div>
+<!-- 		                        <i class="fa fa-circle" style="color:#7FFF00">手动</i>
+ -->							 </div>
 						</div>
 						<div class="sbyxfx-chart">
 							<ul class="pies" id="pies">
@@ -80,7 +80,7 @@
 		                        <i class="fa fa-circle" style="color:#696969">停机</i>
 		                        <i class="fa fa-circle" style="color:#DC143C">报警</i>
 		                        <i class="fa fa-circle" style="color:#FFFF00">等待</i>
-		                        <i class="fa fa-circle" style="color:#7FFF00">手动</i>
+		                       <!--  <i class="fa fa-circle" style="color:#7FFF00">手动</i> -->
 							 </div>
 						</div>
 						<div time-line='true' class="panel-body" style="height:389px;">
@@ -95,7 +95,7 @@
 						<div class="ranking-title">
 							 <div class="ranking-head">
 							 <i class="fa fa-area-chart" aria-hidden="true"></i>
-								每日设备运行排行（单位：分钟）
+								每日设备运行排行（单位：秒）
 							 </div>
 						</div>
 						<div data-ranking="true" class="panel-body" style="height:100%;">
@@ -114,7 +114,7 @@
 		                        <i class="fa fa-circle" style="color:#696969">停机</i>
 		                        <i class="fa fa-circle" style="color:#DC143C">报警</i>
 		                        <i class="fa fa-circle" style="color:#FFFF00">等待</i>
-		                        <i class="fa fa-circle" style="color:#7FFF00">手动</i>
+		                      <!--   <i class="fa fa-circle" style="color:#7FFF00">手动</i> -->
 							 </div>
 						</div>
 				 		<div>
@@ -146,8 +146,8 @@
 							      		<td ng-if="item.machineSignal=='POWEROFF'" style="background-color:#696969"></td>
 							      		<td ng-if="item.machineSignal=='ALARM'" style="background-color:#DC143C"></td>
 							      		<td ng-if="item.machineSignal=='WAITING'" style="background-color:#FFFF00"></td>
-							      		<td ng-if="item.machineSignal=='MANUAL'" style="background-color:#7FFF00"></td>
-	 			      				</tr>
+<!-- 							      		<td ng-if="item.machineSignal=='MANUAL'" style="background-color:#7FFF00"></td>
+ -->	 			      				</tr>
 							 	</tbody>
 							 </table>
 						</div>
@@ -164,7 +164,7 @@
 							<i class="fa fa-circle" style="color:#696969">停机</i>
 							<i class="fa fa-circle" style="color:#DC143C">报警</i>
 							<i class="fa fa-circle" style="color:#FFFF00">等待</i>
-							<i class="fa fa-circle" style="color:#7FFF00">手动</i>
+						<!-- 	<i class="fa fa-circle" style="color:#7FFF00">手动</i> -->
 						</div>
 					</div>
 						<div echarts-type="line"  class="panel-body"  style="height:273px;">

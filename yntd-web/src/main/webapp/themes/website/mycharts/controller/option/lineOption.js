@@ -3,7 +3,7 @@
  */
 ;(function($, e) {
 	var optionLine = {
-			color: ['#00FF00','#696969', '#DC143C','#FFFF00','#7FFF00'],
+			color: ['#00FF00','#696969', '#DC143C','#FFFF00'],
 		    tooltip: {
 		        trigger: 'axis'
 		    },

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.crypto.Mac;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,7 +18,6 @@ import org.tdds.entity.MonitoringList;
 import org.tdds.service.LogRecordService;
 import org.tdds.service.MachineService;
 import org.tdds.service.MonitoringService;
-import org.tdds.service.WarningRecordService;
 
 import cn.hxz.webapp.util.echarts.StatusEnum;
 import net.chenke.playweb.QueryFilters;
@@ -29,8 +27,9 @@ import net.chenke.playweb.util.HashUtils;
 @Controller
 @RequestMapping("${adminPath}/index")
 public class IndexAdminController {
-
-	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING","MANUAL"};
+	
+	//西部大森manual=running
+	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING"/*,"MANUAL"*/};
 	
 	@Autowired
 	private LogRecordService bizLogRecord;
@@ -61,7 +60,6 @@ public class IndexAdminController {
 	@RequestMapping(value = "/monitoring", method = RequestMethod.GET)
 	@ResponseBody
 	public Object warningRecord(HttpServletRequest request,HttpServletResponse response){
-		QueryFilters filters = FiltersUtils.getQueryFilters(request, response, uuid);
 		Map<String, Object> map =new HashMap<>();
 		List<Machine> machines = bizMachine.findMachine();
 		List<MonitoringList> entities = new ArrayList<>();

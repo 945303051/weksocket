@@ -1,6 +1,8 @@
 package org.tdds.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tdds.entity.MonitoringList;
@@ -20,6 +22,11 @@ public class MonitoringServiceImpl implements MonitoringService {
 	public MonitoringList findByName(String name) {
 		
 		return daoMonitoring.selectOneByName(name);
+	}
+
+	@Override
+	public List<MonitoringList> findAll() {
+		return daoMonitoring.selectAll();
 	}
 	 
 }

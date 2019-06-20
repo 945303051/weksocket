@@ -1,14 +1,14 @@
 /**
- * 
+ * 西部大森 running=manual
  * "RUNNING", "POWEROFF", "ALARM", "WAITTING","MANUAL"
  */
 	var optionLine = {
-			color: ['#00FF00','#696969', '#DC143C','#FFFF00','#7FFF00'],
+			color: ['#00FF00','#696969', '#DC143C','#FFFF00'/*,'#7FFF00'*/],
 		    tooltip: {
 		        trigger: 'axis'
 		    },
 		    legend: {
-		    	data:['运行','停机','报警','等待','手动']
+		    	data:['运行','停机','报警','等待'/*,'手动'*/]
 		    },
 		    grid: {
 		        left: '3%',

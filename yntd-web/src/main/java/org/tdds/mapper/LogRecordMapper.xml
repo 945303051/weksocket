@@ -91,49 +91,9 @@
     </select>
    <select id="selectRankData" resultType="java.lang.Double">
 		SELECT
-			IFNULL(TIMESTAMPDIFF(MINUTE,MIN(record_time),MAX(record_time)),0)  AS timed
+			IFNULL(TIMESTAMPDIFF(SECOND,MIN(record_time),MAX(record_time)),0)  AS timed
 		FROM znzz_running_record
 		WHERE machine_id =#{machineId}
 		AND DATE(record_time) =CURRENT_DATE
-    </select>
-    
-    <select id="exportPowerOffData" resultType="map">
-		SELECT
-			t1.record_time AS recordTime,
-			t2.NAME as name
-		FROM
-			znzz_poweroff_record t1
-			LEFT JOIN ( SELECT `name` AS NAME, id FROM znzz_machine ) t2 ON t1.machine_id = t2.id 
-		WHERE
-		t1.machine_id = #{machineId}
-		AND 
-		DATE( t1.record_time ) BETWEEN #{startTime} AND #{endTime};
-		
-    </select>
-    <select id="exportAlarmData" resultType="map">
-    	SELECT
-			t1.record_time AS recordTime,
-			t2.NAME as name
-		FROM
-			znzz_warning_record t1
-			LEFT JOIN ( SELECT `name` AS NAME, id FROM znzz_machine ) t2 ON t1.machine_id = t2.id 
-		WHERE
-			t1.machine_id = #{machineId}
-			AND
-			DATE( t1.record_time ) BETWEEN #{startTime} AND #{endTime};
-		
-    </select>
-     <select id="exportWaittingData" resultType="map">
-        SELECT
-			t1.record_time AS recordTime,
-			t2.NAME as name
-		FROM
-			znzz_waiting_record t1
-			LEFT JOIN ( SELECT `name` AS NAME, id FROM znzz_machine ) t2 ON t1.machine_id = t2.id 
-		WHERE
-			t1.machine_id = #{machineId}
-			AND 
-			DATE( t1.record_time ) BETWEEN #{startTime} AND #{endTime};
-		
     </select>
 </mapper>
