@@ -7,8 +7,8 @@
     <!-- 单表查询结果列 -->
     <sql id="Base_Column_List">
     </sql>
-    <select id="selectIdByName" parameterType= "java.lang.String" resultType="java.lang.Long">
-    	SELECT id as mid FROM znzz_machine WHERE name=#{machineName};
+    <select id="selectIdByName" parameterType= "java.lang.String" resultType="map">
+    	SELECT id as mid ,code as code FROM znzz_machine WHERE name=#{machineName};
     </select> 
     
     <select id="findMachine" resultType="org.tdds.entity.Machine">

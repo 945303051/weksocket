@@ -23,7 +23,7 @@ public class MachineServiceImpl implements MachineService {
 	private MachineMapper machineDao;
 
 	@Override
-	public Long selectMidByName(String machineName) {
+	public Map<String, Object> selectMidByName(String machineName) {
 		return machineDao.selectIdByName(machineName);
 	}
 

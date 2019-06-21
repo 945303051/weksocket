@@ -137,11 +137,11 @@ var uuid=$("#uuid").val();
 				area : ['750px','689px'],
 				content:$("#logging"),
 				success:function(){
-					$scope.loggingName=name;
-					$scope.loggingCode=code;
+					$scope.loggingName=code;
+					$scope.loggingCode=name;
 					$scope.loggingIp=ip;
 					$scope.loggingImage=image;
-					createPie(id,name);
+					createPie(id,code);
 					createLine(id,name);
 				}
 			})
@@ -179,11 +179,11 @@ var uuid=$("#uuid").val();
 		})
 	}
 	
-	$scope.realTimeData=function(id,name){
-		$scope.crName=name;
+	$scope.realTimeData=function(id,code){
+		$scope.crName=code;
 		layer.open({
 			type: 1,
-			title:name+"运行实时数据",
+			title:code+"运行实时数据",
 			offset : 'auto',
 			border : [ 10, 0.3, '#000', true ],
 			area : ['800px','689px'],

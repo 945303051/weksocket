@@ -30,6 +30,7 @@ import org.tdds.service.MonitoringService;
 import com.alibaba.fastjson.JSONObject;
 
 import cn.hxz.webapp.syscore.support.BasePortalController;
+import cn.hxz.webapp.util.echarts.StatusEnum;
 import cn.hxz.webapp.util.modbus.Modbus4jUtil;
 
 @Controller
@@ -61,9 +62,10 @@ public class MachineController extends BasePortalController {
 		List<MonitoringList> entities = new ArrayList<>();
 		for (Machine machine : machines) {
 			MonitoringList monitoringList = bizMonitoring.findByName(machine.getName());
+			monitoringList.setMachineName(machine.getCode());
 			if (monitoringList == null) {
 				MonitoringList entity = new MonitoringList();
-				entity.setMachineName(machine.getName());
+				entity.setMachineName(machine.getCode());
 				entity.setMachineSignal(getStatus(machine.getmIp()));
 				/* entity.setMachineSignal("POWEROFF"); */
 				entities.add(entity);
@@ -105,7 +107,7 @@ public class MachineController extends BasePortalController {
 				value.add(num); 
 			}
 			entity.put("data", value);
-			entity.put("name", status);
+			entity.put("name", StatusEnum.getValue(status));
 			entity.put("type", "line");
 			maps.add(entity);
 		}
@@ -148,12 +150,12 @@ public class MachineController extends BasePortalController {
 				Map<String, Object> entity = new HashMap<>();
 				Double num = bizLogRecord.findData(null,status,machine.getId());
 				entity.put("value", num);
-				entity.put("name", status);
+				entity.put("name", StatusEnum.getValue(status));
 				entities.add(new JSONObject(entity));
 			}
 			Map<String, Object> map = new HashMap<>();
 			map.put("data", entities);
-			map.put("machineName",machine.getName());
+			map.put("machineName",machine.getCode());
 			list.add(map);
 		}
 		return list;
@@ -175,7 +177,8 @@ public class MachineController extends BasePortalController {
 		Map<String, Double> sortMap = new HashMap<>();
 		for (Machine machine : machines) {
 			Double num = bizLogRecord.findRankData(machine.getId());
-			sortMap.put(machine.getName(), num);
+			sortMap.put(machine.getCode(), num);
+			
 		}
 		return sortMap(sortMap);
 	}
@@ -207,7 +210,7 @@ public class MachineController extends BasePortalController {
 		List<Machine> machines = bizMachine.findMachine();
 		List<String> names = new ArrayList<>();
 		for (Machine machine : machines) {
-			names.add(machine.getName());
+			names.add(machine.getCode());
 		}
 		Map<String, Object> resault = new HashMap<>();
 		resault.put("names", names);

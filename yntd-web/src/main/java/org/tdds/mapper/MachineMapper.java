@@ -11,7 +11,7 @@ import net.chenke.playweb.support.mybatis.DynaMapper;
 
 public interface MachineMapper extends DynaMapper<Machine> {
 
-	Long selectIdByName(@Param("machineName") String machineName);
+	Map<String,Object> selectIdByName(@Param("machineName") String machineName);
 
 	List<Machine> findMachine();
 

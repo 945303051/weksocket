@@ -59,18 +59,6 @@ public class MachineAdminController extends BaseWorkbenchController {
 		return map;
 	}
  
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String add(Model model, @RequestParam(value = "id", required = false) Long id) {
-		Machine entity = null;
-		if (id != null) {
-			entity = bizMachine.load(id);
-		} else {
-			entity = new Machine();
-		}
-		model.addAttribute("entity", entity);
-		return this.view("/tdds/machine/edit");
-	}
-	
 	
 	@ResponseBody
 	@RequestMapping(value = "/uploadImg", method = RequestMethod.POST)

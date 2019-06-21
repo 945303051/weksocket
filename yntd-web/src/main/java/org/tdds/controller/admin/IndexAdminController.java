@@ -65,6 +65,7 @@ public class IndexAdminController {
 		List<MonitoringList> entities = new ArrayList<>();
 		for (Machine machine : machines) {
 				MonitoringList monitoringList = bizMonitoring.findByName(machine.getName());
+				monitoringList.setMachineName(machine.getCode());
 				entities.add(monitoringList);
 		}
 		map.put("resault", entities);
@@ -87,7 +88,7 @@ public class IndexAdminController {
 		List<Machine> machines = bizMachine.findMachines(filters);
 		if(names.isEmpty()){
 			for(Machine machine:machines){
-				names.add(machine.getName());
+				names.add(machine.getCode());
 			}
 		}
 		Map<String,Object> finalmap = new HashMap<>();

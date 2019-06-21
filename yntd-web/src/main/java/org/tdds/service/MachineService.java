@@ -9,7 +9,7 @@ import net.chenke.playweb.QueryFilters;
 
 public interface MachineService{
 
-	Long selectMidByName(String machineName);
+	Map<String, Object> selectMidByName(String machineName);
 	
 	List<Machine> findMachine();
 

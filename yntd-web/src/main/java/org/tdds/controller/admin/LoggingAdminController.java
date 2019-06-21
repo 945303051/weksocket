@@ -41,6 +41,7 @@ import org.tdds.service.WarningRecordService;
 
 import cn.hxz.webapp.syscore.support.BaseWorkbenchController;
 import cn.hxz.webapp.util.ExcelExportUtils;
+import cn.hxz.webapp.util.echarts.StatusEnum;
 import net.chenke.playweb.QueryFilters;
 import net.chenke.playweb.support.mybatis.Page;
 import net.chenke.playweb.support.mybatis.PageRequest;
@@ -131,7 +132,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 			Map<String, Object> entity = new HashMap<>();
 			Double num= bizLogRecord.findData(null,status,id);
 			entity.put("value", num);
-			entity.put("name",status);
+			entity.put("name",StatusEnum.getValue(status));
 			entities.add(entity);
 		}
 		Map<String, Object> map = new HashMap<>();
@@ -154,8 +155,11 @@ public class LoggingAdminController extends BaseWorkbenchController{
 	@RequestMapping(value = "/monitor", method = RequestMethod.GET)
 	@ResponseBody
 	public Object monitor(@RequestParam(value="name",required=false)String name,HttpServletRequest request,HttpServletResponse response){
-		MonitoringList montior = bizMonitoring.findByName(name);
-		return montior;
+		MonitoringList monitor = bizMonitoring.findByName(name);
+		for(String status: STATUS){
+			monitor.setMachineSignal(StatusEnum.getValue(status));
+		}
+		return monitor;
 	}
 	
 	@ResponseBody
@@ -168,7 +172,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 		}else{
 			map.put("value", num);
 		}
-		map.put("name", status);
+		map.put("name", StatusEnum.getValue(status));
 		list.add(map);
 		return list;
 	}
@@ -189,7 +193,7 @@ public class LoggingAdminController extends BaseWorkbenchController{
 				value.add(num);
 			}
 				entity.put("data", value);
-				entity.put("name", status);
+				entity.put("name", StatusEnum.getValue(status));
 				entity.put("type", "line");
 				maps.add(entity);
 		}

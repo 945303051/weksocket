@@ -2,13 +2,12 @@ package org.tdds.service.impl;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.tdds.entity.ManualRecord;
 import org.tdds.entity.MonitoringList;
 import org.tdds.entity.PowerOffRecord;
 import org.tdds.entity.RunningRecord;
@@ -17,7 +16,6 @@ import org.tdds.entity.WarningRecord;
 import org.tdds.mapper.LogRecordMapper;
 import org.tdds.service.LogRecordService;
 import org.tdds.service.MachineService;
-import org.tdds.service.ManualRecordService;
 import org.tdds.service.PowerOffRecordService;
 import org.tdds.service.RunningRecordService;
 import org.tdds.service.WaitingRecordService;
@@ -39,9 +37,6 @@ public class LogRecordServiceImpl implements LogRecordService {
 	private PowerOffRecordService bizPowerOff;
 	
 	@Autowired
-	private ManualRecordService bizManualRecord;
-	
-	@Autowired
 	private WarningRecordService bizWarning;
 	
 	@Autowired
@@ -55,11 +50,13 @@ public class LogRecordServiceImpl implements LogRecordService {
 	 * 
 	 */
 	public void insert(MonitoringList ml) {
-		Long mid = getMachineIdByName(ml.getMachineName());
+		Map<String, Object> entity = getMachineIdByName(ml.getMachineName());
+		Long mid = Long.parseLong(Objects.toString(entity.get("mid"),null));
+		String code = Objects.toString(entity.get("code"),null);
 		if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[0])){
 			RunningRecord rr = new RunningRecord();
 				rr.setMachineId(mid);
-				rr.setMachineName(ml.getMachineName());
+				rr.setMachineName(code);
 				rr.setRecordTime(new Date());
 				rr.setAlarmMessage(ml.getAlarmMessage());
 				rr.setAlarmNo(ml.getAlarmNo());
@@ -78,7 +75,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[1])){
 			PowerOffRecord pr= new PowerOffRecord();
 				pr.setMachineId(mid);
-				pr.setMachineName(ml.getMachineName());
+				pr.setMachineName(code);
 				pr.setAlarmMessage(ml.getAlarmMessage());
 				pr.setAlarmNo(ml.getAlarmNo());
 				pr.setMachineMode(ml.getMachineMode());
@@ -96,7 +93,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[2])) {
 			WarningRecord warningRecord = new WarningRecord();
 				warningRecord.setMachineId(mid);
-				warningRecord.setMachineName(ml.getMachineName());
+				warningRecord.setMachineName(code);
 				warningRecord.setRecordTime(new Date());
 				warningRecord.setAlarmMessage(ml.getAlarmMessage());
 				warningRecord.setAlarmNo(ml.getAlarmNo());
@@ -115,7 +112,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[3])){
 			WaitingRecord wRecord = new WaitingRecord();
 			wRecord.setMachineId(mid);
-			wRecord.setMachineName(ml.getMachineName());
+			wRecord.setMachineName(code);
 			wRecord.setRecordTime(new Date());
 			wRecord.setAlarmMessage(ml.getAlarmMessage());
 			wRecord.setAlarmNo(ml.getAlarmNo());
@@ -134,7 +131,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 		}else if(StringUtils.isNotBlank(ml.getMachineSignal()) && ml.getMachineSignal().equalsIgnoreCase(STATUS[4])){
 			RunningRecord mr = new RunningRecord();
 				mr.setMachineId(mid);
-				mr.setMachineName(ml.getMachineName());
+				mr.setMachineName(code);
 				mr.setAlarmMessage(ml.getAlarmMessage());
 				mr.setRecordTime(new Date());
 				mr.setAlarmNo(ml.getAlarmNo());
@@ -153,7 +150,7 @@ public class LogRecordServiceImpl implements LogRecordService {
 		 
 	}
 	
-	private Long getMachineIdByName(String machineName){
+	private Map<String, Object> getMachineIdByName(String machineName){
 		return bizMachine.selectMidByName(machineName);
 	}
 
