@@ -25,7 +25,7 @@ import org.tdds.service.WarningRecordService;
 @Service
 public class LogRecordServiceImpl implements LogRecordService {
 
-	private static final String[] STATUS = {"RUNNING", "POWEROFF", "WARNING", "WAITING","MANUAL"};
+	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING","MANUAL"};
 	
 	@Autowired
 	private LogRecordMapper daoLogRecord;

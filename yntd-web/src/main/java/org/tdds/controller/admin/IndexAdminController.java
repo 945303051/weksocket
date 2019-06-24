@@ -29,7 +29,7 @@ import net.chenke.playweb.util.HashUtils;
 public class IndexAdminController {
 	
 	//西部大森manual=running
-	private static final String[] STATUS = {"RUNNING", "POWEROFF", "WARNING", "WAITING"/*,"MANUAL"*/};
+	private static final String[] STATUS = {"RUNNING", "POWEROFF", "ALARM", "WAITING"/*,"MANUAL"*/};
 	
 	@Autowired
 	private LogRecordService bizLogRecord;
