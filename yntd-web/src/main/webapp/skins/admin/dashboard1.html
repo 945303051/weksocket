@@ -117,10 +117,10 @@
 			      		<td>{{item.spindleMode}}</td>
 			      		<td ng-if="item.machineSignal=='RUNNING'" style="background-color:#00FF00"></td>
 			      		<td ng-if="item.machineSignal=='POWEROFF'" style="background-color:#696969"></td>
-			      		<td ng-if="item.machineSignal=='ALARM'" style="background-color:#DC143C"></td>
+			      		<td ng-if="item.machineSignal=='WARNING'" style="background-color:#DC143C"></td>
 			      		<td ng-if="item.machineSignal=='WAITING'" style="background-color:#FFFF00"></td>
-<!-- 			      		<td ng-if="item.machineSignal=='MANUAL'" style="background-color:#7FFF00"></td>
- -->    				</tr>
+			      		<td ng-if="item.machineSignal=='MANUAL'" style="background-color:#00FF00"></td>
+    				</tr>
                 </tbody>
               </table>
              </div>

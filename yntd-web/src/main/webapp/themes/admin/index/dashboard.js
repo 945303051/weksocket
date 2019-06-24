@@ -12,7 +12,7 @@ app.controller('myCon', function($scope,$http,$interval) {
 			async:false}).then(function(res){
 			$scope.runningTimes=res.data.RUNNING;
 			$scope.poweroffTimes=res.data.POWEROFF;
-			$scope.alarmTimes=res.data.ALARM;
+			$scope.alarmTimes=res.data.WARNING;
 			$scope.waitingTimes=res.data.WAITING;
 			$scope.manualTimes=res.data.MANUAL;
 			createBar();
