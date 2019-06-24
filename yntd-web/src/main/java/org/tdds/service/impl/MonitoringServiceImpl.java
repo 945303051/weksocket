@@ -20,7 +20,7 @@ public class MonitoringServiceImpl implements MonitoringService {
 
 	@Override
 	public MonitoringList findByName(String name) {
-		
+		MonitoringList ml = new MonitoringList();
 		return daoMonitoring.selectOneByName(name);
 	}
 

@@ -179,8 +179,8 @@ var uuid=$("#uuid").val();
 		})
 	}
 	
-	$scope.realTimeData=function(id,code){
-		$scope.crName=code;
+	$scope.realTimeData=function(id,name,code){
+		$scope.crName=name;
 		layer.open({
 			type: 1,
 			title:code+"运行实时数据",
@@ -206,7 +206,6 @@ var uuid=$("#uuid").val();
 			cache : false,
 			ifModified:true,
 			success : function(data) {
-				console.info(data);
 				$scope.monitor=data;
 			}
 		})
