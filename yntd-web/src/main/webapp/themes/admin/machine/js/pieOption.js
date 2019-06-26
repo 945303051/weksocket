@@ -22,6 +22,7 @@ var optionPie = {
 		    },
 		    toolbox:{
 		    	show:true,
+		    	right: '15',
 		    	feature:{
 		    		saveAsImage:{
 		    			type:"png",

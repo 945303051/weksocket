@@ -118,7 +118,7 @@ var uuid=$("#uuid").val();
 				$scope.updateFilter(key,val);
 			}
 		}
-		
+	
 		$scope.updateFilter=function(key,val){
 			Fw.updateFilter(uuid,key,val);
 		}

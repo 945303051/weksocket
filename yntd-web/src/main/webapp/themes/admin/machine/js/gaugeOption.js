@@ -6,9 +6,16 @@ var gaugeOption = {
         formatter: "{a} <br/>{b} : {c}%"
     },
     toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
+    	show:true,
+    	right:'15',
+    	feature:{
+    		saveAsImage:{
+    			type:"png",
+    			show:true,
+    			title:'保存为图片',
+    				
+    		}
+    	}
     },
     series:[{
     		data: [{value: 50, name: '完成率'}],

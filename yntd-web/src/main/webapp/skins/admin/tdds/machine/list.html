@@ -80,7 +80,7 @@
 							<tbody>
 							 <tr role="row" class="odd" ng-repeat="item in items">
 							   <td>{{item.code}}</td>
-							   <td>{{item.name}}</td>
+							   <td>{{item.machineNo}}</td>
 							 <!--   <td>{{item.type}}</td> -->
 							   <td>{{item.mIp}}</td>
 							   <td style="text-align:center;">
@@ -138,11 +138,6 @@
 	          <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">设备当日运行状态时长占比(单位:分钟)</h3>
-	              <div class="box-tools pull-right">
-	                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-	                </button>
-	                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-	              </div>
 	            </div>
 	            <div class="box-body" style="padding:0px">
 	              <div id="piechart" class="chart" style="height:250px; width:90%;">
@@ -155,12 +150,7 @@
 				<div class="box box-info" style="margin:0px">
            		 <div class="box-header with-border">
               	<h3 class="box-title">设备信息</h3>
-             	 <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
+            	</div>
             <div class="box-body" style="height:100px">
               	<img width="70%" height="100%" src="{{loggingImage}}" />
             </div>
@@ -189,8 +179,8 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="box-body" style="pdding:0">
-              <div id="lineCharts" class="chart" style="height:250px;width:100%;">
+            <div class="box-body" style="pdding:0 10px">
+              <div id="lineCharts" class="chart" style="height:250px;width:100%;margin-right:20px">
                 	
               </div>
             </div>
@@ -300,50 +290,8 @@
 				     </div>
 				</div>
 				</div>
-				
           </div>
         <!--设备实时数据end  -->
-        <!--设备日志数据导出start--->
-        	<div id="exportLogging" style="display:none">
-        	<div class="box box-primary" style="height:0px">
-            <div class="box-body">
-            <form id="exportForm" action="/admin/logging/exportdata" method="post">
-            	<input type="hidden" name="machineId" value="{{machineId}}">
-            	<input type="hidden" name="node" value="machine_">
-					<div class="form-group">
-					    	<div class="input-group">
-								<div class="input-group-addon">
-									<label>开始时间:</label>
-								</div>
-					     		<input type="text" id="startTime" name="startTime" class="Wdate form-control" 
-					     		style="height:33px;border-color:#d2d6de;" required onclick="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}'})">
-						       <div class="input-group-addon">
-						        	 <label>结束时间:</label>
-						       </div>
-					      	<input type="text" id="endTime" name="endTime" required class="Wdate form-control" 
-					      	style="height:33px;border-color:#d2d6de;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}'})">
-					    </div>
-					</div>
-					<div class="checkbox">
-					    <label>
-					      <input type="radio" id="status" name="status" value="POWEROFF" required/>POWEROFF
-					    </label>
-					    <label>
-					      <input type="radio" id="status1" name="status" value="ALARM"  required/>ALARM
-					    </label>
-					    <label>
-					      <input type="radio" id="status2" name="status" value="WAITING"  required/>WAITING
-					    </label>
-					</div>
-              </div>
-              <div class="box-footer clearfix" style="line-height:40px">
-              	<button type="submit" class="btn btn-success btn-xs">确定</button>
-              	<button type="reset" class="btn btn-warning btn-xs">重置</button>
-              </div>
-              </form>
-            </div>
-          </div>
-        <!--设备日志数据导出end--->
 	</div>
 </@layout.override>
 <@layout.override name="js">

@@ -51,7 +51,7 @@ public class MachineServiceImpl implements MachineService {
 		 if(StringUtils.hasText(Objects.toString(filters.get("name"), null))){
 			 criteria.andEqualTo("name", Objects.toString(filters.get("name")));
 		 }else if(StringUtils.hasText(Objects.toString(filters.get("machineNo"), null))){
-			 criteria.andEqualTo("machineNo", Objects.toString(filters.get("name")));
+			 criteria.andEqualTo("machineNo", Objects.toString(filters.get("machineNo")));
 		 }else if(StringUtils.hasText(Objects.toString(filters.get("type"), null))){
 			 String type =Objects.toString(filters.get("type"));
 			 criteria.andEqualTo("type",Long.parseLong(type));

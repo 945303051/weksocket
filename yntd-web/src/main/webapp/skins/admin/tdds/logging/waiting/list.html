@@ -141,13 +141,13 @@
 						</div>
 			     		<input type="text" id="startTime" name="startTime" class="Wdate form-control" 
 			     		style="height:33px;border-color:#d2d6de;" 
-			onclick="WdatePicker({maxDate:'#F{$dp.$D(\'endTime\')}'})">
+			onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss', maxDate:'#F{$dp.$D(\'endTime\')}'})">
 			 <div class="input-group-addon">
 			  	 <label>结束时间:</label>
 			 </div>
 			<input type="text" id="endTime" name="endTime" class="Wdate form-control" 
 			style="height:33px;border-color:#d2d6de;" 
-			onclick="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}'})">
+			onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss', minDate:'#F{$dp.$D(\'startTime\')}'})">
 			   </div>
 			</div>
 		</div>

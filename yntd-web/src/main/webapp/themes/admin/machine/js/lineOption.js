@@ -11,17 +11,19 @@
 		    	data:['运行','停机','报警','等待'/*,'手动'*/]
 		    },
 		    grid: {
-		        left: '3%',
-		        right: '4%',
+		        left: '5%',
+		        right: '8%',
 		        bottom: '3%',
 		        containLabel: true
 		    },toolbox:{
 		    	show:true,
+		    	right:'15',
 		    	feature:{
 		    		saveAsImage:{
 		    			type:"png",
 		    			show:true,
-		    			title:'保存为图片'
+		    			title:'保存为图片',
+		    				
 		    		}
 		    	}
 		    	
@@ -50,6 +52,7 @@
 		        type: 'value',
 		        name:'运行时间单位：分钟',
 		        axisLabel: {
+		        	margin: 10,
 	                textStyle: {
 	                    color: '#33cc66',//坐标值得具体的颜色
 	                }
