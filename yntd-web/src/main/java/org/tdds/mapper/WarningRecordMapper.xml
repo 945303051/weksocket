@@ -59,7 +59,7 @@
 	FROM znzz_warning_record
 	where  id &gt; 0
 	<if test="filter.startTime!=null and filter.startTime!='' and filter.endTime!=null and filter.endTime!=''">
-	    AND DATE(record_time) BETWEEN #{filter.startTime} AND #{filter.endTime};
+	    AND DATE_FORMAT(record_time,'%Y-%m-%d %H:%i:%s') BETWEEN #{filter.startTime} AND #{filter.endTime};
 	</if>
 	<if test="filter.name!=null and filter.name!=''">
 		AND machine_name=#{filter.name}
