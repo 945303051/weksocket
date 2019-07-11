@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>装配进度表</title>
+	<meta charset="utf-8">
+	<script src="/assets/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/assets/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<link href="/assets/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="/themes/website/mycharts/controller/detail.js"></script>
+	<style type="text/css">
+	h3{
+		color: #00FFFF;
+		padding-top: 20px;
+		margin-right: -100px; 
+		text-align: center;
+	}
+	.box-left li{
+		list-style: none;
+		font-size: 20px; 
+		color: #00FFFF;
+	}
+	.captio{
+		width:400px; 
+		height:35px; 
+		overflow:hidden;
+		border:solid 1px #005387;
+		background-color:#0b1647;
+		transform: rotateX(7deg);
+		transition: 0.6s;
+        transform-style: preserve-3d;
+		margin:0 auto; 
+		font-size: 20px;
+		text-align:center; 
+		color: #00FFFF;
+	}
+	#mass{
+		width: 1800px;
+		margin-top: 90px;
+	}
+	.box-left{
+			float: left;
+			width: 55%;
+			opacity: 0.5;
+	}
+	.header{
+			overflow:hidden;
+			border-radius:5px;
+			width:100%;
+			height:230px;
+			border:solid 1px #005387;
+			background-color:#0b1647;
+			margin-top: 30px;
+			margin-left:30px;
+	}
+	.header ul{
+			margin-left:80px;
+	}
+	.box-right ul{
+			margin-top: 50px;
+			margin-left:50px;
+			margin-right:20px;
+	}
+	#control{
+			overflow:hidden;
+			border-radius:5px;
+			width:100%;
+			height:510px;
+			border:solid 1px #005387;
+			background-color:#0b1647;
+			margin-top: 30px;
+			margin-left:30px;
+			padding-left:0px;
+	}
+	.control{
+			display:inline-block;
+			overflow:hidden;
+			border-radius:5px;
+			width:275px;
+			height:180px;
+			border:solid 1px #005387;
+			background-color:#0b1647;
+			margin-top:40px;
+			margin-left: 30px;
+			color: #1E90FF;
+			text-align: center;
+			padding-top:20px;
+	}
+	.box-right{
+			opacity: 0.5;
+			position: relative;
+			float: right; 
+			overflow:hidden;
+			border-radius:5px;
+			width:43%;
+			height:770px;
+			border:solid 1px #005387;
+			background-color:#0b1647;
+			margin-top: 30px;
+			margin-right:-30px;
+	}
+	.box-right li{
+			list-style: none;
+			font-size: 18px; 
+			color: #00FFFF;
+	}
+	ul{
+			
+			padding-left:0px;
+	}
+</style>
+</head>
+<body style="background:url(/themes/website/images/other/stonebrg01.jpg)"  ng-app="myApp" ng-controller="myCtrl">
+	<div id="mass">
+		<input type="hidden" id="id" value="${id}" />
+		<div>
+			<h3>{{item.pname}}详情</h3>
+		</div>
+		<div class="box-left">
+			<div class="header" >
+				<div class="captio">项目信息</div>
+				<!-- <p style="text-align: center; font-size: 20px; color: #FFFFFF; position: absolute;">项目信息</p> -->
+				<ul>
+					<li style="padding-top: 80px;">客户名称：{{item.name}}</li>
+					<li>交付时间：{{item.doneTime|date:'yyyy-MM-dd'}}</li>
+				</ul>
+			</div>
+			<div id="control" >
+				<div class="captio">进度监控</div>
+				<div class="control">
+					<ul>
+						<li>分装</li>
+						<li style="padding-top: 50px;">计划时间：{{item.splitChargingPlan|date:'yyyy-MM-dd'}}</li>
+						<li>实际时间：{{item.splitChargingActual|date:'yyyy-MM-dd'}}</li>
+					</ul>
+				</div>
+				<div class="control">
+					<ul>
+						<li>总装</li>
+						<li style="padding-top: 50px;">计划时间：{{item.finalAssemblyPlan|date:'yyyy-MM-dd'}}</li>
+						<li>实际时间：{{item.finalAssemblyActual|date:'yyyy-MM-dd'}}</li>
+					</ul>
+				</div>
+				<div class="control">
+					<ul>
+						<li>调试</li>
+						<li style="padding-top: 50px;">计划时间：{{item.debugPlan|date:'yyyy-MM-dd'}}</li>
+						<li>实际时间：{{item.debugActual|date:'yyyy-MM-dd'}}</li>
+					</ul>
+				</div>
+				<div class="control">
+					<ul>
+						<li>检查</li>
+						<li style="padding-top: 50px;">计划时间：{{item.checkupPlan|date:'yyyy-MM-dd'}}</li>
+						<li>实际时间：{{item.checkupActual|date:'yyyy-MM-dd'}}</li>
+					</ul>
+				</div>
+				<div class="control">
+					<ul>
+						<li>交检</li>
+						<li style="padding-top: 50px;">计划时间：{{item.beInspectedPlan|date:'yyyy-MM-dd'}}</li>
+						<li>实际时间：{{item.beInspectedActual|date:'yyyy-MM-dd'}}</li>
+					</ul>
+				</div>
+				<div class="control">
+					<ul>
+						<li>入库</li>
+						<li style="padding-top: 50px;">计划时间：{{item.storagePlan|date:'yyyy-MM-dd'}}</li>
+						<li>实际时间：{{item.storageActual|date:'yyyy-MM-dd'}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="box-right">
+			<div class="captio">问题汇总</div>
+			<ul>
+				<li style="float: left">{{item.recordTime}}</li>
+				<li style="block: inline-block; margin-right: 0px;">{{item.manager}}</li>
+				<li>{{item.problemSummary}}</li>
+			</ul>
+		</div>
+	</div>
+</body>
+
+</html>

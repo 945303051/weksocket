@@ -49,6 +49,7 @@
 	<script type="text/javascript" src="/themes/admin/afx/js/afx.js"></script>
 	<script type="text/javascript" src="/assets/jquery-page/js/jquery.page.js"></script>
 	<script src="/assets/dist/js/demo.js"></script>
+	<script src="/themes/admin/assemble/process.js"></script>
 	</@layout.block>
 </head>
 <@sys.currentUser; user>
@@ -405,6 +406,19 @@
             <li><a href=""><i class="fa fa-circle-o"></i>设备报警日志</a></li>
             <li><a href=""><i class="fa fa-circle-o"></i>设备等待日志</a></li>
             <li><a href=""><i class="fa fa-circle-o"></i>设备手动日志</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i><span>装配管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/admin/assemble/process"><i class="fa fa-circle-o"></i>装配进度管理</a></li>
           </ul>
         </li>
       </ul>

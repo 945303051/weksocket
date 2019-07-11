@@ -14,6 +14,8 @@ app.controller('myCtrl', function($scope,$http,$interval) {
 		var totalPages=res.data.runningRecords.totalPages;
 		var number=res.data.number;
 		pagination(totalElements,totalPages,number)
+		var para="RUNNING";
+		showLineChart(para);
 })
 
 
@@ -79,6 +81,78 @@ $scope.removeFilter=function(key){
 
 $scope.exportData=function(){
 	window.location.href="/admin/logging/running/exportdata";
+}
+
+function showLineChart(para){
+	var myChart=echarts.init(document.getElementById('line'));
+	$.ajax({
+		type :"GET",
+		url :"/admin/logging/line2?para="+para,  
+		async:true,
+		cache : false,
+		ifModified:true,
+		success : function(data){
+			 var type = data.type;
+			 var optionLine = {
+						color: ['#00FF00','#696969', '#DC143C','#FFFF00'],
+					    tooltip: {
+					        trigger: 'axis'
+					    },
+					    grid:{
+					        left: '5%',
+					        right: '10%',
+					        bottom: '3%',
+					        containLabel: true
+					    },
+					    dataZoom: [
+				               {   // 这个dataZoom组件，默认控制x轴。
+				                   type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+				                   xAxisIndex: 0,
+				                   start: 0,      // 左边在 10% 的位置。
+				                   end: 100         // 右边在 60% 的位置。
+				               },
+					    ],
+					    xAxis: {
+					        type: 'category',
+				            axisLine: {onZero: true},
+				            name:"日期",
+				            nameTextStyle:{
+				        		color:"red",
+				        		fontSize:12
+				    		},
+					        boundaryGap: false,
+					        data: [],
+					        axisLabel: {
+				                textStyle: {
+				                    color: '#33cc66',//坐标值得具体的颜色
+				                }
+				            }
+					    },
+					    yAxis: {
+					        type: 'value',
+					        axisLabel: {
+				                textStyle: {
+				                    color: '#33cc66',//坐标值得具体的颜色
+				                }
+				            },
+				            name:'运行时间单位：分钟',
+				            nameTextStyle:{
+				        		color:"red",
+				        		fontSize:12
+				    		},	
+					    },
+						series: [{
+				            name:'运行时间',
+				            type:'line',
+						    data:[]
+						}]
+				};
+			 optionLine.xAxis.data=data.xAxis;
+			 optionLine.series=data.series;
+			 myChart.setOption(optionLine);
+		} 
+	})
+	
 }
 
 })

@@ -202,6 +202,30 @@ public class LoggingAdminController extends BaseWorkbenchController{
 		return map;
 	}
 	
+	@RequestMapping(value = "/line2", method = RequestMethod.GET)
+	@ResponseBody
+	public Object line2(@RequestParam(value="id",required=false)Long id,
+			@RequestParam(value="para")String para,
+			HttpServletRequest request,HttpServletResponse response){
+		Map<String, Object> map = new HashMap<>();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String time= sdf.format(new Date());
+		List<String> days = getMonthDate(time);
+		List<Map<String, Object>> maps = new ArrayList<>();
+		Map<String, Object> entity = new HashMap<>();
+		List<Object> value=new LinkedList<>();
+		for(String str:days){
+			Double num=bizLogRecord.findData(str,para,id);
+			value.add(num);
+		}
+		entity.put("data", value);
+		entity.put("type", "line");
+		maps.add(entity);
+		map.put("xAxis",days);
+		map.put("series",maps);
+		return map;
+	}
+	
 	private List<String> getMonthDate(String time){
 		List<String> days = new LinkedList<>();
 		String strs[] = time.split("-");

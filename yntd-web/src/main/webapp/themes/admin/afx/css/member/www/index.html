@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>金石机器人</title>
+ 	<script src="/assets/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/themes/website/js/jquery.liMarquee.js"></script>
+	<script src="/assets/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<link href="/assets/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="/themes/website/mycharts/controller/assemblyprogress.js"></script>
+</head>
+<body>
+	<div style="background:url(/themes/website/images/other/stonebrg01.jpg)">
+		<div class="container-fluid1" ng-app="myApp" ng-controller="myCtrl">
+			<div class="header">
+				<!-- <div class="logo">
+				 	<img height="50px" style="margin-top:1px;" src="/themes/website/images/other/stonegslogo.png" />
+			 	</div> -->
+				<div id="clock" class="clock">
+					<p id="time" class="time"></p>
+					<p id="date" class="date"></p>
+				</div> 
+			</div>	
+			<div class="cjbj">
+				<div class="cjbj-div">
+					 <div class="cjbj-title">
+					 <i class="fa fa-university" aria-hidden="true"></i>
+						 车间布局
+					 </div>
+				</div>
+				<div class="cjbjimg">
+				     <img id="img" class="img-responsive" width="1500px" height="600px" src="/themes/website/images/other/stoneback01.png">
+					 <div id="machine" class="machine" ng-click="toIndex()">机械加工作业区</div>
+					 <div id="order" class="order" ng-click="list()">装配作业区</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<style type="text/css">
+	.clock{
+		float: right;
+	}
+	#cjbjimg, #machine, #order{
+		position: absolute;
+	}
+	#img{
+	}
+	#machine{
+		font-size: 40px; 
+		left:0px;
+	}
+	#order{
+		font-size: 40px; 
+		right: 400px;
+	}
+</style>
+</html>

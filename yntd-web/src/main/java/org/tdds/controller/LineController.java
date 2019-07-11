@@ -1,7 +1,5 @@
 package org.tdds.controller;
 
-import java.io.IOException;
-
 import javax.websocket.CloseReason;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -14,9 +12,6 @@ import javax.websocket.server.ServerEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.tdds.service.LogRecordService;
 import org.tdds.service.MachineService;
-import org.tdds.service.MonitoringService;
-
-import cn.hxz.webapp.util.CopyFileUtils;
 
 
 

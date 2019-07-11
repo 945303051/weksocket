@@ -33,7 +33,7 @@ var optionPie = {
 		            avoidLabelOverlap: false,
 		            clockwise: true, //饼图的扇区是否是顺时针排布
 		            minAngle:14,
-		            minShowLabelAngle:20,
+		            minShowLabelAngle:60,
 		            itemStyle: { //图形样式
 		                normal:{
 		                    borderColor:'#0b1647',

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>金石装配作业区</title>
+<link rel="stylesheet" href="/assets/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="/assets/jquery/dist/jquery.min.js"></script>
+<script src="/assets/angular/angular.min.js" charset="utf-8"></script>
+<script src="/themes/website/mycharts/controller/assemble.js"></script>
+<style type="text/css">
+	.out{
+			width: 1800px;
+			height: 900px;
+			padding-top: 100px;
+			margin-left: 50px;
+	}
+	.element{
+			width: 400px;
+			height: 280px;
+			display: inline-block;
+			margin-top: 30px;
+			margin-left: 30px;
+			background-color: #00FFFF;
+			opacity: 0.5;
+			
+	}
+	ul>li{
+			font-size: 20px;
+			list-style: none;
+			color: #ffffff;
+			margin-left: -27px;
+			text-align: center;
+	}
+</style>
+</head>
+<body style="background:url(/themes/website/images/other/stonebrg01.jpg)">
+	<div class="out" ng-app="myApp" ng-controller="myCtrl">
+		<div class="element" ng-repeat="item in items" ng-click="gain(item.id)">
+			<ul>
+				<li style="padding-top: 20px;">{{item.pname}}</li>
+				<li style="padding-top: 100px;">交付日期：{{item.doneTime}}</li>
+				<li>项目负责人：{{item.manager}}</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

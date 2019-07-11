@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>项目详情</title>
+<link rel="stylesheet" href="/assets/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="/assets/jquery/dist/jquery.min.js"></script>
+<script src="/assets/angular/angular.min.js" charset="utf-8"></script>
+<script src="/themes/website/mycharts/controller/detail.js"></script>
+<style type="text/css">
+	.body{
+		color: #5F9FF1;
+		opacity: 0.5;
+	}
+	.title{
+		width: 500px;
+		font-size: 25px;
+		margin: 0 auto;
+		padding-top: 100px;
+		padding-left: 50px; 
+	}
+	.col-md-6{
+		width: 54%;
+	}
+	.box-top{
+		height: 300px;
+		background-color: #031F3A;
+		margin-left: 20px;
+	}
+	.box-title{
+		font-size: 20px;
+		width: 400px;
+		height: 30px;
+		color: #468FEC;
+		border: 1px solid #A2A2A2;
+		margin: 20px auto ;  
+		text-align: center;
+	}
+	span{
+		font-size: 20px;
+		margin-top: 100px;
+		padding-left: 50px;
+	}
+	.box-bottom{
+		height: 460px;
+		margin-top: 20px;
+		margin-left: 20px;
+		background-color: #031F3A;
+	}
+	.inner{
+		padding-left: 15px;
+	}
+	ul{
+		height: 170px;
+		list-style: none;
+		display: inline-block;
+		background-color: #5F9FF1;
+		text-align: center;
+		margin-left: 15px;
+		margin-top: 15px;
+		color: #00FFFF;
+		font-size: 20px;
+	}
+	.col-md-4{width: 31%}
+	.col-md-5{width: 44%}
+	.box-right{
+		height: 780px;
+		background-color: #031F3A;
+	}
+</style>
+</head>
+<body style="background:url(/themes/website/images/other/stonebrg01.jpg)">
+	<div class="body" ng-app="myApp" ng-controller="myCtrl">
+		<input type="hidden" id="id" name="id" value="${(id)!}"/>
+		<div>
+			<p class="title">{{item.pname}}详情</p>
+		</div>
+			<div class="col-md-6">
+				<div class="box-top">
+					<p class="box-title">项目信息</p>
+					<span style="display: block">客户名称： {{item.name}}</span><br/>
+					<span>完成时间： {{item.doneTime}}</span>
+				</div>
+				<div class="box-bottom">
+					<p class="box-title">进度监控</p>
+					<div class="inner">
+						<ul class="col-md-4">
+							<li style="padding-top: 20px;">分装</li>
+							<li style="padding-top: 40px;">{{item.splitChargingPlan}}</li>
+							<li>{{item.splitChargingActual}}</li>
+						</ul>
+						<ul class="col-md-4">
+							<li style="padding-top: 20px;">总装</li>
+							<li style="padding-top: 40px;">{{item.finalAssemblyPlan}}</li>
+							<li>{{item.finalAssemblyActual}}</li>
+						</ul>
+						<ul class="col-md-4">
+							<li style="padding-top: 20px;">调试</li>
+							<li style="padding-top: 40px;">{{item.debugPlan}}</li>
+							<li>{{item.debugActual}}</li>
+						</ul>
+						<ul class="col-md-4">
+							<li style="padding-top: 20px;">检查</li>
+							<li style="padding-top: 40px;">{{item.checkupPlan}}</li>
+							<li>{{item.checkupActual}}</li>
+						</ul>
+						<ul class="col-md-4">
+							<li style="padding-top: 20px;">交检</li>
+							<li style="padding-top: 40px;">{{item.beInspectedPlan}}</li>
+							<li>{{item.beInspectedActual}}</li>
+						</ul>
+						<ul class="col-md-4">
+							<li style="padding-top: 20px;">入库</li>
+							<li style="padding-top: 40px;">{{item.storagePlan}}</li>
+							<li>{{item.storageActual}}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="box-right">
+					<p class="box-title">项目信息</p>
+					<span>{{item.recordTime}}</span>
+					<span>{{item.manager}}</span><br/>
+					<span>{{item.problemSummary}}</span>
+				</div>
+			</div>
+	</div>
+</body>
+</html>

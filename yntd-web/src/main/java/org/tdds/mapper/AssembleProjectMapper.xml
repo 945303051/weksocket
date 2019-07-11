@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.tdds.mapper.AssembleProjectMapper">
+	<!-- 单表查询映射结果 -->
+	<resultMap id="BaseResultMap" type="org.tdds.entity.AssembleProject">
+	</resultMap>
+    <!-- 单表查询结果列 -->
+    <sql id="Base_Column_List">
+    </sql>
+    <select id="findProject" resultType="org.tdds.entity.AssembleProject">
+    	select * from assemble_project where pname=#{pname}
+    </select>
+    <select id="findAllProject" resultType="org.tdds.entity.AssembleProject">
+    	select id, pname, donetime, manager, name, problem_summary as problemSummary, record_time as recordTime from assemble_project 
+    		<if test="pname != null and pname != ''">
+    		  where pname=#{pname}
+    		</if>
+    </select>
+    <select id="findProjectDetails" resultType="org.tdds.entity.AssembleProject">
+    	select pname, manager, name, donetime as doneTime, split_charging_plan as splitChargingPlan, split_charging_actual as splitChargingActual,
+    	final_assembly_plan as finalAssemblyPlan, final_assembly_actual as finalAssemblyActual, debug_plan as debugPlan, debug_actual as debugActual, 
+    	checkup_plan as checkupPlan, checkup_actual as checkupActual, be_inspected_plan as beInspectedPlan, be_inspected_actual as beInspectedActual, 
+    	storage_plan as storagePlan, storage_actual as storageActual, problem_summary as problemSummary, record_time as recordTime
+    	from assemble_project where id=#{id} 
+    </select>
+    <update id="updateProject" parameterType="org.tdds.entity.AssembleProject">
+    	update assemble_project set pname=#{project.pname}, manager=#{project.manager}, name=#{project.name}, donetime=#{project.doneTime}, split_charging_plan=#{project.splitChargingPlan},
+    	final_assembly_plan=#{project.finalAssemblyPlan}, final_assembly_actual=#{project.finalAssemblyActual}, debug_plan=#{project.debugPlan}, debug_actual=#{project.debugActual},
+    	checkup_plan=#{project.checkupPlan}, checkup_actual=#{project.checkupActual}, be_inspected_plan=#{project.beInspectedPlan}, be_inspected_actual=#{project.beInspectedActual},
+    	storage_plan=#{project.storagePlan}, storage_actual=#{project.storageActual}, problem_summary=#{project.problemSummary}, record_time=#{project.recordTime}
+    	 where id=#{project.id}
+    </update>
+    <insert id="addProject">
+    	insert into assemble_project(pname, manager, name, donetime, split_charging_plan, split_charging_actual, final_assembly_plan, final_assembly_actual, debug_plan, debug_actual, checkup_plan, checkup_actual, be_inspected_plan, be_inspected_actual, storage_plan, storage_actual, problem_summary, record_time) 
+    	values(#{pname}, #{manager}, #{name}, #{doneTime}, #{splitChargingPlan}, #{splitChargingActual}, #{finalAssemblyPlan}, #{finalAssemblyActual}, #{debugPlan}, #{debugActual}, #{checkupPlan}, #{checkupActual}, #{beInspectedPlan}, #{beInspectedActual}, #{storagePlan}, #{storageActual}, #{problemSummary}, #{recordTime})
+    </insert>
+    <delete id="deleteProject" parameterType="java.lang.Long">
+    	delete from assemble_project where id = #{id}
+    </delete>
+</mapper>

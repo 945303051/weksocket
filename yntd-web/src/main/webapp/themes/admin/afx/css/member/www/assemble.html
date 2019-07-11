@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>金石机器人</title>
+		<meta charset="utf-8">
+		 <link rel="stylesheet" type="text/css" href="/assets/jquery-page/css/jquery.page.css">
+		  <link rel="stylesheet" href="/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+		  <link rel="stylesheet" type="text/css" href="/themes/admin/afx/css/afx.css">
+		<script src="/assets/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<link href="/assets/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+		<script type="text/javascript" src="/themes/admin/afx/js/afx.js"></script>
+		<script type="text/javascript" src="/assets/jquery-page/js/jquery.page.js"></script>	
+		<script src="/themes/website/mycharts/controller/assemblyprogress.js"></script>
+		<style type="text/css">
+			.totop{
+				margin-top:90px;
+				margin-left:50px;
+			}
+			#line{
+				display:inline-block;
+				overflow:hidden;
+				border-radius:5px;
+				width:22%;
+				height:240px;
+				border:solid 1px #005387;
+				background-color:#0b1647;
+				margin-top:40px;
+				margin-left: 30px;
+				color: #00FFFF;
+				opacity: 0.5;
+			}
+			ul{
+				list-style: none;
+				font-color: #ffffff;
+				text-align: center;
+				font-size: 20px;
+				margin-top:30px;
+				padding-left:0;
+			}
+		</style>
+	</head>
+	<body style="background:url(/themes/website/images/other/stonebrg01.jpg)" ng-app="myApp" ng-controller="myCtrl">
+		<div class="totop">
+			<div id="line" ng-repeat="item in items">
+				<div ng-click="gain(item.id)">
+					<ul>
+						<li id="name">{{item.pname}}</li> 
+						<li id="doneTime" style="padding-top: 80px;">交付日期：{{item.doneTime}}</li>
+						<li id="manager">项目负责人：{{item.manager}}</li>
+					</ul>
+				</div>
+			</div>			
+		</div>
+		<div class="row"> 
+				 	<div class="col-sm-7" style="float:right;text-align: right;">
+		 				<div class="pull-right tcdPageCode"></div>
+					</div>
+				</div>
+		<script src="/themes/website/mycharts/controller/assemble.js"></script>
+	</body>
+</html>
+
